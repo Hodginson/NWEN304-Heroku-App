@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<title>Book Shop</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<script src="_js/jquery.min.js"></script>
+<script src="_js/jquery-ui.min.js"></script>
+
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Verdana", serif
+  }
+
+  .w3-bar,
+  h1,
+  button {
+    font-family: "Helvetica", serif
+  }
+
+  .fa-anchor,
+  .fa-coffee {
+    font-size: 200px
+  }
+</style>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-border w3-red w3-large">
+      <a href="index.html" class="w3-bar-item w3-button ">Home</a>
+      <button onclick = "browse()" type ="button" class="w3-bar-item w3-button">Browse All</button>
+      <div class="w3-dropdown-hover">
+        <button class="w3-button ">Books</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+          <a href="#" class="w3-bar-item w3-button">Fiction</a>
+          <a href="#" class="w3-bar-item w3-button">Young Adults</a>
+          <a href="#" class="w3-bar-item w3-button">Children's Books</a>
+          <a href="#" class="w3-bar-item w3-button">Science Books</a>
+        </div>
+      </div>
+      <a href="login.html" class="w3-bar-item w3-button w3-right">Login</a>
+      <a button onclick="searchFunction()" class="w3-bar-item w3-button w3-grey w3-right">Go</a>
+      <input type="search" id="mySearch" class="w3-bar-item w3-input w3-right" placeholder="Search..">
+
+    </div>
+  </div>
+
+  <script>
+    function searchFunction() {
+      var x = document.getElementById("mySearch").value;
+      var url = "search.html?search="
+      window.location.href = url + x;
+    }
+    function browse() {
+      sessionStorage.page = 1;
+      window.location.href = "browsePage.html";
+    }
+    </script>
+
+  <!-- Header -->
+  <header class="w3-container w3-white w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Book Shop</h1>
+    <p class="w3-xlarge">Suggested Books:</p>
+    <div class="w3-row-padding w3-container w3-center">
+        <div class="w3-content">
+          <div class="w3-third">
+            <img src="Example1.jpg" alt="exampleImage" style="width:60%">
+            <div class="w3-container">
+              <p>Books Title</p>
+              <p>Price/other information</p>
+            </div>
+          </div>
+          <div class="w3-third">
+            <img src="Example2.jpg" alt="exampleImage" style="width:64%">
+            <div class="w3-container">
+              <p>Books Go here</p>
+            </div>
+          </div>
+          <div class="w3-third">
+            <img src="Example3.jpg" alt="exampleImage" style="width:90%">
+            <div class="w3-container">
+              <p> Books go here</p>
+            </div>
+          </div>
+        </div>
+  </header>
+
+
+
+
+    <!-- Footer -->
+<footer class="w3-padding-40 w3-red w3-small w3-center w3-bottom" id="footer">
+    <div class="w3-row-padding">
+
+
+        <h4>shop footer</h4>
+        <p><a href="#">About us</a></p>
+        <p><a href="#">Support</a></p>
+        <p><a href="#">Payment</a></p>
+        <p><a href="#">Help</a></p>
+
+    </div>
+  </footer>
+</body>
+</html>
