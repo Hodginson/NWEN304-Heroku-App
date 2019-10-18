@@ -1,0 +1,26 @@
+{
+  "name": "group-project",
+  "version": "1.0.0",
+  "description": "NWEN304 group 17 project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.ecs.vuw.ac.nz/rawsonzane/nwen304-group-17-project.git"
+  },
+  "keywords": [
+    "NWEN304",
+    "Book",
+    "Shop",
+    "Group",
+    "Project"
+  ],
+  "author": "Zane Rawson Mars Tsai",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
+}
