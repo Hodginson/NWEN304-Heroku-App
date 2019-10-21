@@ -7,8 +7,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="_js/jquery.min.js"></script>
-<script src="_js/jquery-ui.min.js"></script>
+<!-- <script src="_js/jquery.min.js"></script>
+<script src="_js/jquery-ui.min.js"></script> -->
+<script src = "login.js"></script>
 <style>
     body,
     h1,
@@ -111,22 +112,25 @@
 
   <div class="container center">
     <div>
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="email"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="email" id="email" required>
     </div>
     <div>
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="pass"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
     </div>
-    <button type="submit">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
   </div>
 
   <div class="container center">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span>Forgot <a href="#">password?</a></span>
+    <button type="button" class="cancelbtn" onclick="login()">Login</button>
+    <button type="button" class="cancelbtn" onclick="cancel()">Cancel</button>
+  </div>
+  <span>Forgot <a href="#">password?</a></span>
+  <div>
+  <span>New here? <a href="#" color="blue">Sign Up now!</a></span>
   </div>
 </form>
 
