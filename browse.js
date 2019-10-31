@@ -13,7 +13,7 @@ $(document).ready(function (e) {
     }
   }
 
-  function createTask(books) {
+  function createBook(books) {
     var div = document.createElement("div");
     div.className = "card";
 
