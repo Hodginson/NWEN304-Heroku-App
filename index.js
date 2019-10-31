@@ -5,10 +5,10 @@ const {
 } = require('pg');
 
 const app = Express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5432;
 
 const pool = new Pool({
-  connectionString: "postgres://hmwrrladplnxbm:52cc755255837add4d9aa96e6f7528a75d5fbbee5d16be8c01b058895f8c000e@ec2-54-235-92-244.compute-1.amazonaws.com:5432/d166o09cksv49j",
+  connectionString: "postgres://tlytmbyzzcydfw:113545f7066f32de88f12a258e21e6b35647288147ebb4062332187c065ec1d4@ec2-174-129-194-188.compute-1.amazonaws.com:5432/dcadl9s1e5frsb",
   ssl: true,
 });
 
@@ -26,14 +26,14 @@ app.use(function (req, res, next) { //what we want to allow
 pool.connect();
 
 app.listen(port, function () {
-  console.log('Listening on port 5000!');
+  console.log('Listening on port ' + port);
 });
 
 // Get all tasks.
-app.get('/todo', function (req, res) {
+app.get('/books', function (req, res) {
   console.log('Getting tasks...');
   const query = {
-    text: "SELECT * FROM todo"
+    text: "SELECT * FROM books"
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
@@ -49,7 +49,7 @@ app.get('/todo', function (req, res) {
 app.patch('/update-task', function (req, res) {
   console.log("upadting task " + req.body.id + " to \'" + req.body.item + "\'...");
   const query = {
-    text: "UPDATE todo SET item = '" + req.body.item + "' WHERE id = \'" + req.body.id + "\'",
+    text: "UPDATE books SET item = '" + req.body.item + "' WHERE id = \'" + req.body.id + "\'",
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {

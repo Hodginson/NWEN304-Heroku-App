@@ -1,0 +1,68 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Verdana", serif
+}
+
+.w3-bar,
+h1,
+button {
+    font-family: "Helvetica", serif
+}
+
+.fa-anchor,
+.fa-coffee {
+    font-size: 200px
+}
+
+form {}
+
+input[type=text],
+input[type=password] {
+    /* width: 100%;*/
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.submitButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    /*margin: 8px 0;*/
+    border: none;
+    cursor: pointer;
+    /*    width: 100%;*/
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+
+    padding: 10px 13px;
+    background-color: #f44336;
+}
+.registerButton{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    /*margin: 8px 0;*/
+    border: none;
+    cursor: pointer;
+}
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}

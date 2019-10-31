@@ -7,78 +7,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="_js/jquery.min.js"></script>
-<script src="_js/jquery-ui.min.js"></script>
-<style>
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: "Verdana", serif
-    }
-
-    .w3-bar,
-    h1,
-    button {
-        font-family: "Helvetica", serif
-    }
-
-    .fa-anchor,
-    .fa-coffee {
-        font-size: 200px
-    }
-
-    form {}
-
-    input[type=text],
-    input[type=password] {
-        /* width: 100%;*/
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
-
-    .submitButton {
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        /*margin: 8px 0;*/
-        border: none;
-        cursor: pointer;
-        /*    width: 100%;*/
-    }
-
-    button:hover {
-        opacity: 0.8;
-    }
-
-    .cancelbtn {
-
-        padding: 10px 13px;
-        background-color: #f44336;
-    }
-    .registerButton{
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        /*margin: 8px 0;*/
-        border: none;
-        cursor: pointer;
-    }
-    .container {
-        padding: 16px;
-    }
-
-    span.psw {
-        float: right;
-        padding-top: 16px;
-    }
-</style>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="books.js"></script>
+<link href="browse.css" rel="stylesheet">
 
 <body>
 
@@ -106,98 +38,19 @@
    <h1 class="w3-margin w3-jumbo">Browse All Books</h1>
   </header>
 
-   <!-- First Row -->
-   <div class="w3-row-padding w3-container">
-   <div class="w3-content">
-   <a href="/Book" id = "link1">
-     <div class="w3-third Bk">
-       <img id = "img1" src="" alt="" class = "w3-hover-opacity" style="width:100%">
-       <div class="w3-container">
-         <p id = "title1"> </p>
-         <p id = "price1"> </p>
-       </div>
-     </div>
-     </a>
-     <a href="/Book" id = "link2">
-     <div class="w3-third Bk">
-       <img id = "img2" src="" alt="" class = "w3-hover-opacity" style="width:100%">
-       <div class="w3-container">
-         <p id = "title2"> </p>
-       </div>
-     </div>
-     </a>
-      <a href="/Book" id = "link3">
-     <div class="w3-third Bk">
-       <img id = "img3" src="" alt="" class = "w3-hover-opacity" style="width:100%">
-       <div class="w3-container">
-         <p id = "title3"> </p>
-       </div>
-     </div>
-     </a>
-   </div>
-   </div>
-   <!-- Second Row -->
-   <div class="w3-row-padding w3-container">
-   <div class="w3-content">
-   <a href="/Book" id = "link4">
-     <div class="w3-third Bk">
-       <img id = "img4" src="" alt="" class = "w3-hover-opacity" style="width:100%">
-       <div class="w3-container">
-         <p id = "title4"> </p>
-       </div>
-     </div>
-     </a>
-     <a href="/Book" id = "link5">
-     <div class="w3-third Bk">
-       <img id = "img5" src="" alt="" class = "w3-hover-opacity" style="width:100%">
-       <div class="w3-container">
-         <p id = "title5"> </p>
-       </div>
-     </div>
-     </a>
-      <a href="/Book" id = "link6">
-     <div class="w3-third Bk">
-       <img id = "img6" src="" alt="" class = "w3-hover-opacity" style="width:100%">
-       <div class="w3-container">
-         <p id = "title6"> </p>
-       </div>
-     </div>
-     </a>
-   </div>
-   </div>
-   <!-- Third Row -->
-   <div class="w3-row-padding w3-container">
-   <div class="w3-content">
-   <a href="/Book" id = "link7">
-     <div class="w3-third Bk">
-       <img id = "img7" src="" alt="" class = "w3-hover-opacity" style="width:100%">
-       <div class="w3-container">
-         <p id = "title7"> </p>
-       </div>
-     </div>
-     </a>
-     <a href="/Book" id = "link8">
-     <div class="w3-third Bk">
-       <img id = "img8" src="" alt="" class = "w3-hover-opacity" style="width:100%">
-       <div class="w3-container">
-         <p id = "title8"> </p>
-       </div>
-     </div>
-     </a>
-      <a href="/Book" id = "link9">
-     <div class="w3-third Bk">
-       <img id = "img9" src="" alt="" class = "w3-hover-opacity" style="width:100%">
-       <div class="w3-container">
-         <p id = "title9"> </p>
-       </div>
-     </div>
-     </a>
-   </div>
+  <div id = "books">
+    <ul id = "column-1">
+
+    </ul>
+
+    <ul id = "column-2">
+
+    </ul>
   </div>
 
 
 
-<footer class="w3-padding-40 w3-red w3-small w3-center w3-bottom" id="footer">
+  <footer class="w3-padding-40 w3-red w3-small w3-center w3-bottom" id="footer">
     <div class="w3-row-padding">
 
 
