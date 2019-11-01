@@ -55,8 +55,8 @@ app.get('/search', function (req, res) {
       console.log("Error getting books: " + err);
     } else {
       console.log(queryResponse.rows);
-      res.alert(req.body);
-      res.status(200).send(queryResponse.rows);
+
+      res.status(200).send(req.body);
     }
   });
 });
