@@ -66,3 +66,22 @@ span.psw {
     float: right;
     padding-top: 16px;
 }
+
+ul {
+  padding-left: 1.4em;
+  list-style: square;
+  display: inline-block;
+
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  margin-bottom: 24px;
+  margin-left: 50px;
+  margin-right: 50px;
+  left: 50%;
+}

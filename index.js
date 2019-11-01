@@ -37,7 +37,22 @@ app.get('/books', function (req, res) {
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
-      console.log("Error getting tasks: " + err);
+      console.log("Error getting books: " + err);
+    } else {
+      console.log(queryResponse.rows);
+      res.status(200).send(queryResponse.rows);
+    }
+  });
+});
+
+app.get('/product', function (req, res) {
+  console.log('Getting tasks...');
+  const query = {
+    text: "SELECT * FROM books"
+  };
+  pool.query(query, (err, queryResponse) => {
+    if (err) {
+      console.log("Error getting books: " + err);
     } else {
       console.log(queryResponse.rows);
       res.status(200).send(queryResponse.rows);

@@ -5,27 +5,40 @@ $(document).ready(function (e) {
 })
 
   function loadBooks(books) {
-    for (let row = 0; row < books.length; row++) {
+    for (let row = 0; row < books.length-2; row+=3) {
       //console.log(tasks[row]);
-      i = 1;
-      createBook(books[row]);
-      i+=1;
+
+      createBook(books[row],0);
+      createBook(books[row+1],1);
+      createBook(books[row+2],2);
     }
   }
-
-  function createBook(books) {
+// load the books into the browse page -- Zane
+  function createBook(books,i) {
     var div = document.createElement("div");
     div.className = "card";
 
-
+    var oImg = document.createElement("img");
+    oImg.setAttribute('src', 'Images/' + books.imgsrc);
+    div.append(oImg)
     var span = document.createElement('span');
     span.innerHTML += "<br/>"+ books.title;
-
+    span.innerHTML += "<br/> $"+ books.price + "<br/>";
     div.append(span);
-    var oImg = document.createElement("img");
-    oImg.setAttribute('src', 'https://www.bookmestatic.net.nz/images/activities/4321_image1_monteiths%20brewery%20tour%203.jpg');
-    div.append(oImg)
-    $('#column-1').prepend(div);
+    var button = document.createElement('button');
+    button.innerHTML += "View Item";
+    button.onclick = "view()";
+    div.append(button);
+    button.addEventListener ("click", function() {
+      view(books.isbn);
+    });
+    if(i==0){
+      $('#column-1').append(div);
+    } else if(i==1){
+      $('#column-2').prepend(div);
+    }else{
+      $('#column-3').prepend(div);
+    }
   }
 
 
@@ -47,4 +60,9 @@ function queryAPI(method, path, data, callback) {
       console.log("Error")
     }
   });
+}
+
+function view(title) {
+  window.location.href = "product.html?=" + title;
+
 }

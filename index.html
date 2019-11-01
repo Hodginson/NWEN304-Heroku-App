@@ -39,7 +39,7 @@
   <div class="w3-top">
     <div class="w3-bar w3-border w3-red w3-large">
       <a href="index.html" class="w3-bar-item w3-button ">Home</a>
-      <button onclick = "browse()" type ="button" class="w3-bar-item w3-button">Browse All</button>
+      <button onclick = "browse()" href="browse.html" type ="button" class="w3-bar-item w3-button">Browse All</button>
       <div class="w3-dropdown-hover">
         <button class="w3-button ">Books</button>
         <div class="w3-dropdown-content w3-bar-block w3-card-4">
@@ -64,7 +64,7 @@
     }
     function browse() {
       sessionStorage.page = 1;
-      window.location.href = "browsePage.html";
+      window.location.href = "browse.html";
     }
     </script>
 
