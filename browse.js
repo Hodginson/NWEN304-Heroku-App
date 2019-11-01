@@ -11,7 +11,7 @@ $(document).ready(function (e) {
     var queryEnd = url.length + 1;
     query = url.slice(queryStart + 1, queryEnd - 1);
     console.log(query);
-    queryAPI('GET', '/search', {search:url.slice(queryStart + 1, queryEnd - 1)}, loadBooks);
+    queryAPI('GET', '/search', {search:query}, loadBooks);
   }
 
 

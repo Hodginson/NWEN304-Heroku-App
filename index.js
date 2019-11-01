@@ -56,7 +56,7 @@ app.get('/search', function (req, res) {
     } else {
       console.log(queryResponse.rows);
 
-      res.status(200).send(req.body.search);
+      res.status(200).send(req.body);
     }
   });
 });
