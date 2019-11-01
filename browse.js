@@ -63,6 +63,6 @@ function queryAPI(method, path, data, callback) {
 }
 
 function view(title) {
-  window.location.href = "product.html?=" + title;
+  window.location.href = "Product.html?=" + title;
 
 }
