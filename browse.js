@@ -10,8 +10,9 @@ $(document).ready(function (e) {
   }else if(queryStart!=-1){
     var queryEnd = url.length + 1;
     query = url.slice(queryStart + 1, queryEnd - 1);
+    const search = url.slice(queryStart + 1, queryEnd - 1);
     console.log(query);
-    queryAPI('GET', '/search', {search:query}, loadBooks);
+    queryAPI('GET', '/search', {search:search}, loadBooks);
   }
 
 
@@ -67,7 +68,7 @@ function queryAPI(method, path, data, callback) {
     dataType: "json",
     success: function (res) {
       console.log("API successfully queried!");
-      console.log(res + "hi");
+      console.log(JSON.stringify(res) + "hi");
       callback(res);
     },
     error: function (res) {
