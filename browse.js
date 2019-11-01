@@ -12,7 +12,7 @@ $(document).ready(function (e) {
     query = url.slice(queryStart + 1, queryEnd - 1);
     const search = url.slice(queryStart + 1, queryEnd - 1);
     console.log(query);
-    queryAPI('GET', '/search', {search:search}, loadBooks);
+
   }
 
 
@@ -81,6 +81,7 @@ function searchFunction() {
 
   var search = document.getElementById("mySearch").value;
   window.location.href = "Browse.html?=" + search;
+  queryAPI('GET', '/search', {search:mySearch}, function(){});
   console.log(search);
 }
 function view(title) {

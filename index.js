@@ -48,7 +48,7 @@ app.get('/book', function (req, res) {
 app.get('/search', function (req, res) {
 
   const query = {
-    text:"SELECT * FROM books" //  "SELECT * FROM books WHERE title LIKE '%"+req.body+"%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
+    text: "SELECT * FROM books WHERE title LIKE '%"+req.body.search+"%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
@@ -56,7 +56,7 @@ app.get('/search', function (req, res) {
     } else {
       console.log(queryResponse.rows);
 
-      res.status(200).send(req.body);
+      res.status(200).send(queryResponse.rows);
     }
   });
 });
