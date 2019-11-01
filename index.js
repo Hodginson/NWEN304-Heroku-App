@@ -47,7 +47,7 @@ app.get('/book', function (req, res) {
 
 app.get('/search', function (req, res) {
   const someStr = req.body.search
-  someStr = someStr.replace(/^"(.*)"$/, '$1')
+  //someStr = someStr.replace(/^"(.*)"$/, '$1')
   const query = {
     //text: "SELECT * FROM books"
     text: "SELECT * FROM books WHERE title LIKE '%"+someStr+"%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"

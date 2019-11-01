@@ -79,11 +79,11 @@ function queryAPI(method, path, data, callback) {
 
 function searchFunction() {
 
-  var search = document.getElementById("mySearch").value;
+  var mySearch = document.getElementById("mySearch").value;
   queryAPI('GET', '/search', {search:mySearch}, function(){});
   //window.location.href = "Browse.html?=" + search;
 
-  console.log(search);
+  console.log(mySearch);
 }
 function view(title) {
   window.location.href = "Product.html?=" + title;
