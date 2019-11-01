@@ -1,3 +1,4 @@
+var query;
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
   var url = document.URL;
@@ -8,7 +9,7 @@ $(document).ready(function (e) {
     queryAPI('GET', '/book', {}, loadBooks);
   }else if(queryStart!=-1){
     var queryEnd = url.length + 1;
-    var query = url.slice(queryStart + 1, queryEnd - 1);
+    query = url.slice(queryStart + 1, queryEnd - 1);
     console.log(query);
     queryAPI('GET', '/search', {search:url.slice(queryStart + 1, queryEnd - 1)}, loadBooks);
   }
@@ -17,12 +18,12 @@ $(document).ready(function (e) {
 })
 
   function loadBooks(books) {
-    for (let row = 0; row < books.length-2; row+=3) {
+    for (let row = 0; row < books.length; row++) {
       //console.log(tasks[row]);
 
       createBook(books[row],0);
-      createBook(books[row+1],1);
-      createBook(books[row+2],2);
+      //createBook(books[row+1],1);
+      //createBook(books[row+2],2);
     }
   }
 // load the books into the browse page -- Zane
@@ -57,11 +58,11 @@ $(document).ready(function (e) {
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
-      console.log(data);
+      console.log(query);
   $.ajax({
     method: method,
     url: 'https://nwne304-group-17.herokuapp.com' + path,
-    data: JSON.stringify(data),
+    data: JSON.stringify(query),
     contentType: "application/json",
     dataType: "json",
     success: function (res) {
