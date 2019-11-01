@@ -30,7 +30,7 @@ app.listen(port, function () {
 });
 
 // Get all tasks.
-app.get('/books', function (req, res) {
+app.get('/book', function (req, res) {
   console.log('Getting tasks...');
   const query = {
     text: "SELECT * FROM books"
@@ -48,7 +48,7 @@ app.get('/books', function (req, res) {
 app.get('/search', function (req, res) {
   console.log('Getting tasks...');
   const query = {
-    text: "select * from books where title like '%"+req.body.search+"%' or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
+    text: "SELECT * FROM books"//"select * from books where title like '%"+req.body.search+"%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
