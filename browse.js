@@ -68,7 +68,7 @@ function queryAPI(method, path, data, callback) {
     dataType: "json",
     success: function (res) {
       console.log("API successfully queried!");
-      console.log(JSON.stringify(res) + "hi");
+      console.log(res);
       callback(res);
     },
     error: function (res) {
@@ -80,8 +80,9 @@ function queryAPI(method, path, data, callback) {
 function searchFunction() {
 
   var search = document.getElementById("mySearch").value;
-  window.location.href = "Browse.html?=" + search;
   queryAPI('GET', '/search', {search:mySearch}, function(){});
+  //window.location.href = "Browse.html?=" + search;
+
   console.log(search);
 }
 function view(title) {
