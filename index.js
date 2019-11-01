@@ -46,7 +46,7 @@ app.get('/book', function (req, res) {
 });
 
 app.get('/search', function (req, res) {
-  const someStr = req.body.search
+  //const someStr = req.body.search
   //someStr.replace(/['"]+/g, '')
   const query = {
     text: "SELECT * FROM books"
