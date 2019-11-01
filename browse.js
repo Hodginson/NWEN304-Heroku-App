@@ -58,11 +58,11 @@ $(document).ready(function (e) {
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
-      console.log(query);
+      console.log(JSON.stringify(query));
   $.ajax({
     method: method,
     url: 'https://nwne304-group-17.herokuapp.com' + path,
-    data: JSON.stringify(query),
+    data: query,
     contentType: "application/json",
     dataType: "json",
     success: function (res) {
