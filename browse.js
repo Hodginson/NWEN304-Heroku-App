@@ -67,7 +67,7 @@ function queryAPI(method, path, data, callback) {
     dataType: "json",
     success: function (res) {
       console.log("API successfully queried!");
-      console.log(res);
+      console.log(res + "hi");
       callback(res);
     },
     error: function (res) {
