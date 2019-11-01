@@ -10,7 +10,7 @@ $(document).ready(function (e) {
     var queryEnd = url.length + 1;
     var query = url.slice(queryStart + 1, queryEnd - 1);
     console.log(query);
-    queryAPI('GET', '/search', {query:query}, loadBooks);
+    queryAPI('GET', '/search', {query}, loadBooks);
   }
 
 
