@@ -46,7 +46,7 @@ app.get('/book', function (req, res) {
 });
 
 app.get('/search', function (req, res) {
-  var someStr = req.body.search
+  const someStr = req.body.search
   //someStr.replace(/['"]+/g, '')
   const query = {
     text: "SELECT * FROM books"
@@ -58,7 +58,7 @@ app.get('/search', function (req, res) {
     } else {
       console.log(queryResponse.rows);
 
-      res.status(200).send("hi");
+      res.status(200).send(const);
     }
   });
 });
