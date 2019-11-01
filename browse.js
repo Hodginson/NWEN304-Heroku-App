@@ -62,7 +62,7 @@ function queryAPI(method, path, data, callback) {
   $.ajax({
     method: method,
     url: 'https://nwne304-group-17.herokuapp.com' + path,
-    data: query,
+    data: JSON.stringify(query),
     contentType: "application/json",
     dataType: "json",
     success: function (res) {
