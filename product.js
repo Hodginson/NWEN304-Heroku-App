@@ -42,13 +42,22 @@ function createBook(books) {
   button.innerHTML += "Add to cart";
   div.append(button);
   button.addEventListener ("click", function() {
-    addToCart(books.isbn);
+    addToCart(books);
   });
     $('#column-1').prepend(div);
 
 }
 
-
+function addToCart(books){
+  const isbn = books.isbn;
+  if(loggedon){
+    const username;
+    queryAPI('PATCH', '/add-to-cart', {
+      isbn: isbn;
+      username: user;
+    }, function());
+  }
+}
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
