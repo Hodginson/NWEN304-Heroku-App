@@ -49,7 +49,7 @@ app.get('/search', function (req, res) {
   var someStr = req.body.search
   someStr.replace(/['"]+/g, '')
   const query = {
-    text: "SELECT * FROM books WHERE title LIKE '%"+someStr+"%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
+    //text: "SELECT * FROM books WHERE title LIKE '%"+someStr+"%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
@@ -57,7 +57,7 @@ app.get('/search', function (req, res) {
     } else {
       console.log(queryResponse.rows);
 
-      res.status(200).send(queryResponse.rows);
+      res.status(200).send(someStr);
     }
   });
 });
