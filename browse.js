@@ -18,12 +18,12 @@ $(document).ready(function (e) {
 })
 
   function loadBooks(books) {
-    for (let row = 0; row < books.length; row++) {
+    for (let row = 0; row < books.length-2; row+=3) {
       //console.log(tasks[row]);
 
       createBook(books[row],0);
-      //createBook(books[row+1],1);
-      //createBook(books[row+2],2);
+      createBook(books[row+1],1);
+      createBook(books[row+2],2);
     }
   }
 // load the books into the browse page -- Zane
