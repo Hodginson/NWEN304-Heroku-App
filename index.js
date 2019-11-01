@@ -49,7 +49,7 @@ app.get('/search', function (req, res) {
   const someStr = req.body.search
   //someStr = someStr.slice(1, -1);
   const query = {
-    text: "SELECT * FROM <table> WHERE <column> ~* '" + somestr + "'"
+    text: "SELECT * FROM books WHERE title ~* '" + somestr + "'"
 
     //text: "SELECT * FROM books WHERE title LIKE '%"+someStr+"%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
   };
