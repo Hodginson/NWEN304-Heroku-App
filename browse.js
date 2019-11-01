@@ -63,7 +63,7 @@ function queryAPI(method, path, data, callback) {
   $.ajax({
     method: method,
     url: 'https://nwne304-group-17.herokuapp.com' + path,
-    data: data,
+    data: JSON.stringify(data),
     contentType: "application/json",
     dataType: "json",
     success: function (res) {
@@ -80,7 +80,7 @@ function queryAPI(method, path, data, callback) {
 function searchFunction() {
 
   var mySearch = document.getElementById("mySearch").value;
-  queryAPI('GET', '/search', {search:mySearch}, function(){});
+  queryAPI('GET', '/search', {search:mySearch}, loadBooks);
   //window.location.href = "Browse.html?=" + search;
 
   console.log(mySearch);
