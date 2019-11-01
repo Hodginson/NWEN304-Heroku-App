@@ -10,7 +10,7 @@ $(document).ready(function (e) {
     var queryEnd = url.length + 1;
     var query = url.slice(queryStart + 1, queryEnd - 1);
     console.log(query);
-    queryAPI('GET', '/search', {query}, loadBooks);
+    queryAPI('GET', '/search', {search:url.slice(queryStart + 1, queryEnd - 1)}, loadBooks);
   }
 
 
@@ -57,6 +57,7 @@ $(document).ready(function (e) {
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
+      console.log(data);
   $.ajax({
     method: method,
     url: 'https://nwne304-group-17.herokuapp.com' + path,
@@ -71,7 +72,6 @@ function queryAPI(method, path, data, callback) {
     error: function (res) {
       console.log("Error")
     }
-    console.log(url);
   });
 }
 
