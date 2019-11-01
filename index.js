@@ -58,7 +58,7 @@ app.get('/search', function (req, res) {
     } else {
       console.log(queryResponse.rows);
 
-      res.status(200).send(someStr);
+      res.status(200).send("hi");
     }
   });
 });
