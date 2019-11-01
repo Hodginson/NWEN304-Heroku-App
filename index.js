@@ -48,7 +48,7 @@ app.get('/book', function (req, res) {
 app.get('/search', function (req, res) {
   console.log('Getting tasks...');
   const query = {
-    text: "select * from books where contains(query,'"+req.body.query+"')"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
+    text: "select * from books where contains(title,'"+req.body.query+"')"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
