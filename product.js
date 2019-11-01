@@ -1,5 +1,8 @@
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
+  var url = document.URL;
+  var queryStart = url.indexOf("=");
+
   queryAPI('GET', '/books', {}, setupFunction);
 
 })
@@ -48,16 +51,14 @@ function createBook(books) {
 
 }
 
-function addToCart(books){
+/*function addToCart(books){
   const isbn = books.isbn;
   if(loggedon){
-    const username;
     queryAPI('PATCH', '/add-to-cart', {
-      isbn: isbn;
-      username: user;
+      isbn: isbn
     }, function());
   }
-}
+}*/
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");

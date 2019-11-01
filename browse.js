@@ -1,6 +1,17 @@
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
-  queryAPI('GET', '/books', {}, loadBooks);
+  var url = document.URL;
+  var queryStart = url.indexOf("=");
+
+  if(queryStart==-1){
+    console.log("what");
+    queryAPI('GET', '/books', {}, loadBooks);
+  }else if(queryStart!=-1){
+    var queryEnd = url.length + 1;
+    var query = url.slice(queryStart + 1, queryEnd - 1);
+    queryAPI('GET', '/search', {search:query}, loadBooks);
+  }
+
 
 })
 
@@ -62,6 +73,11 @@ function queryAPI(method, path, data, callback) {
   });
 }
 
+function searchFunction() {
+  var search = document.getElementById("mySearch").value;
+  window.location.href = "Browse.html?=" + search;
+
+}
 function view(title) {
   window.location.href = "Product.html?=" + title;
 

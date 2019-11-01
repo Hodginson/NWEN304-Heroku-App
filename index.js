@@ -3,7 +3,7 @@ const BodyParser = require('body-parser');
 const {
   Pool
 } = require('pg');
-
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 const app = Express();
 const port = process.env.PORT || 5432;
 
@@ -45,6 +45,21 @@ app.get('/books', function (req, res) {
   });
 });
 
+app.get('/search', function (req, res) {
+  console.log('Getting tasks...');
+  const query = {
+    text: "select * from books where title ilike '%"+search+"%' or author ilike '%"+search+"%' genre ilike '%"+search+"%'"
+  };
+  pool.query(query, (err, queryResponse) => {
+    if (err) {
+      console.log("Error getting books: " + err);
+    } else {
+      console.log(queryResponse.rows);
+      res.status(200).send(queryResponse.rows);
+    }
+  });
+});
+
 app.get('/product', function (req, res) {
   console.log('Getting tasks...');
   const query = {
@@ -61,8 +76,8 @@ app.get('/product', function (req, res) {
 });
 
 // Update a task details.
-app.patch('/update-task', function (req, res) {
-  console.log("upadting task " + req.body.id + " to \'" + req.body.item + "\'...");
+app.patch('/add-to-cart', function (req, res) {
+  console.log("upadting task " + req.body.isbn + " to \'" + req.body.title + "\'...");
   const query = {
     text: "UPDATE books SET item = '" + req.body.item + "' WHERE id = \'" + req.body.id + "\'",
   };
