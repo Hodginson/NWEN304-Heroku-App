@@ -46,7 +46,7 @@ app.get('/book', function (req, res) {
 });
 
 app.get('/search', function (req, res) {
-  console.log('Getting tasks...');
+  alert('Getting tasks...');
   const query = {
     text: "select * from books where title like '%"+req.query+"%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
   };
