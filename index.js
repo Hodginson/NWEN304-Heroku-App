@@ -46,9 +46,9 @@ app.get('/book', function (req, res) {
 });
 
 app.get('/search', function (req, res) {
-  alert('Getting tasks...');
+
   const query = {
-    text: "SELECT * FROM books WHERE title LIKE '%"+req.body.search+"%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
+    text: "SELECT * FROM books WHERE title LIKE '%Potter%'"// or author like '%"+req.body.search+"%' genre like '%"+req.body.search+"%'"
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
