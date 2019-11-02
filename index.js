@@ -1,5 +1,6 @@
 const Express = require('express');
 const BodyParser = require('body-parser');
+var path = require('path');
 const {
   Pool
 } = require('pg');
@@ -14,6 +15,9 @@ const pool = new Pool({
 
 app.use(BodyParser.json());
 
+app.set('views', path.join(__dirname, 'views'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use(function (req, res, next) { //what we want to allow
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -27,6 +31,10 @@ pool.connect();
 
 app.listen(port, function () {
   console.log('Listening on port ' + port);
+});
+
+app.get('/',function(req,res){
+  res.render('index')
 });
 
 // Get all tasks.
