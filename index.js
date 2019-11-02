@@ -37,7 +37,7 @@ app.get('/',function(req,res){
   res.render('index')
 });
 
-app.get('/browse',function(req,res){
+app.get('/',function(req,res){
   res.render('browse')
 });
 
