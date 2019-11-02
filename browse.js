@@ -1,30 +1,46 @@
-var query;
+//All work done by Zane
+var searchItem;
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
-  var url = document.URL;
-  var queryStart = url.indexOf("=");
-  console.log(queryStart);
-  if(queryStart==-1){
-    console.log("what");
-    queryAPI('GET', '/book', {}, loadBooks);
-  }else if(queryStart!=-1){
-    var queryEnd = url.length + 1;
-    query = url.slice(queryStart + 1, queryEnd - 1);
-    const search = url.slice(queryStart + 1, queryEnd - 1);
-    console.log(query);
 
-  }
+
+    queryAPI('GET', '/book', {}, loadBooks);
+
 
 
 })
 
   function loadBooks(books) {
-    for (let row = 0; row < books.length-2; row+=3) {
-      //console.log(tasks[row]);
+    var url = document.URL;
+    var queryStart = url.indexOf("=");
+    var queryEnd = url.length + 1;
+    var query = url.slice(queryStart + 1, queryEnd - 1);
+    var split = query.split('%20');
+    var searchString = split.join(' ');
 
-      createBook(books[row],0);
-      createBook(books[row+1],1);
-      createBook(books[row+2],2);
+    console.log(searchString);
+    //ensure_only_letters_and_numbers(query);
+    var i = 0;
+    let matches = books.filter(books => books.title.includes(searchString))
+    console.log(JSON.stringify(query));
+    if(queryStart == -1){
+      for (let row = 0; row < books.length; row++) {
+
+        createBook(books[row],i);
+
+      }
+
+    }
+    if(queryStart > -1){
+      for (let row = 0; row < matches.length; row++) {
+
+        createBook(matches[row],i);
+        i+=1;
+        if(i==3){
+          i =0;
+        }
+      }
+
     }
   }
 // load the books into the browse page -- Zane
@@ -55,11 +71,12 @@ $(document).ready(function (e) {
     }
   }
 
-
+  function ensure_only_letters_and_numbers(word){
+  	return /^\w+$/.test(word);
+  }
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
-      console.log(JSON.stringify(query));
   $.ajax({
     method: method,
     url: 'https://nwne304-group-17.herokuapp.com' + path,
@@ -79,11 +96,10 @@ function queryAPI(method, path, data, callback) {
 
 function searchFunction() {
 
-  var mySearch = document.getElementById("mySearch").value;
-  queryAPI('GET', '/search', {search:mySearch}, loadBooks);
-  //window.location.href = "Browse.html?=" + search;
-
-  console.log(mySearch);
+  search = document.getElementById("mySearch").value;
+  //queryAPI('GET', '/search', {search:mySearch}, loadBooks);
+  window.location.href = "Browse.html?=" + search;
+  console.log('\"hell102o"');
 }
 function view(title) {
   window.location.href = "Product.html?=" + title;

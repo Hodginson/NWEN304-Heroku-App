@@ -1,7 +1,7 @@
+//All work done by Zane
+
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
-  var url = document.URL;
-  var queryStart = url.indexOf("=");
 
   queryAPI('GET', '/books', {}, setupFunction);
 
