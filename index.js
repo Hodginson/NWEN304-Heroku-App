@@ -34,12 +34,10 @@ app.listen(port, function () {
 });
 
 app.get('/',function(req,res){
-  res.render('index')
-});
-
-app.get('/',function(req,res){
   res.render('browse')
 });
+
+
 
 // Get all tasks.
 app.get('/book', function (req, res) {
