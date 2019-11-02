@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <title>Browse</title>
 <meta charset="UTF-8">
@@ -6,16 +7,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="product.js"></script>
-<link href="browse.css" rel="stylesheet">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../browse.js"></script>
+<link href="../browse.css" rel="stylesheet">
 
 <body>
 
   <div class="w3-top">
     <div class="w3-bar w3-border w3-red w3-large">
-      <a href="index.html" class="w3-bar-item w3-button ">Home</a>
+      <a href="views/index.html" class="w3-bar-item w3-button ">Home</a>
       <button onclick = "browse()" type ="button" class="w3-bar-item w3-button">Browse All</button>
       <div class="w3-dropdown-hover">
         <button class="w3-button ">Books</button>
@@ -27,7 +28,7 @@
         </div>
       </div>
       <a href="login.html" class="w3-bar-item w3-button w3-right">Login</a>
-      <a button onclick="searchFunction()" class="w3-bar-item w3-button w3-grey w3-right">Go</a>
+      <a button onclick="searchFunction()" type = "button" class="w3-bar-item w3-button w3-grey w3-right">Go</a>
       <input type="search" id="mySearch" class="w3-bar-item w3-input w3-right" placeholder="Search..">
 
     </div>
@@ -41,9 +42,28 @@
     <ul id = "column-1">
 
     </ul>
-  <div>
 
+    <ul id = "column-2">
+
+    </ul>
+    <ul id = "column-3">
+
+    </ul>
+  </div>
+
+
+
+<!--  <footer class="w3-padding-40 w3-red w3-small w3-center w3-bottom" id="footer">
+    <div class="w3-row-padding">
+
+
+        <h4>shop footer</h4>
+        <p><a href="#">About us</a></p>
+        <p><a href="#">Support</a></p>
+        <p><a href="#">Payment</a></p>
+        <p><a href="#">Help</a></p>
+
+    </div>
+  </footer>-->
 </body>
-
-
 </html>

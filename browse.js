@@ -22,12 +22,23 @@ $(document).ready(function (e) {
     //ensure_only_letters_and_numbers(query);
     var i = 0;
     let matches = books.filter(books => books.title.includes(searchString))
-    console.log(JSON.stringify(query));
+    let author = books.filter(books => books.author.includes(searchString))
+    let genre = books.filter(books => books.genre.includes(searchString))
+    for(let row = 0; row < author.length; row++){
+      matches.push(author[row]);
+    }
+    for(let row = 0; row < genre.length; row++){
+      matches.push(genre[row]);
+    }
+    console.log(matches);
     if(queryStart == -1){
       for (let row = 0; row < books.length; row++) {
 
         createBook(books[row],i);
-
+        i+=1;
+        if(i==3){
+          i =0;
+        }
       }
 
     }
@@ -49,7 +60,7 @@ $(document).ready(function (e) {
     div.className = "card";
 
     var oImg = document.createElement("img");
-    oImg.setAttribute('src', 'Images/' + books.imgsrc);
+    oImg.setAttribute('src', '../Images/' + books.imgsrc);
     div.append(oImg)
     var span = document.createElement('span');
     span.innerHTML += "<br/>"+ books.title;
@@ -99,7 +110,6 @@ function searchFunction() {
   search = document.getElementById("mySearch").value;
   //queryAPI('GET', '/search', {search:mySearch}, loadBooks);
   window.location.href = "Browse.html?=" + search;
-  console.log('\"hell102o"');
 }
 function view(title) {
   window.location.href = "Product.html?=" + title;
