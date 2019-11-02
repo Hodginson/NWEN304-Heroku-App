@@ -3,7 +3,7 @@
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
 
-  queryAPI('GET', '/books', {}, setupFunction);
+  queryAPI('GET', '/book', {}, setupFunction);
 
 })
 
@@ -32,7 +32,7 @@ function createBook(books) {
   div.className = "card";
 
   var oImg = document.createElement("img");
-  oImg.setAttribute('src', 'Images/' + books.imgsrc);
+  oImg.setAttribute('src', '../Images/' + books.imgsrc);
   div.append(oImg)
   var span = document.createElement('span');
   span.innerHTML += "<br/>"+ books.title;
