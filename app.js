@@ -215,7 +215,9 @@ app.post('/signUp', function (req,res){
 
      console.log('Getting new user...');
 
-    const query = ("insert into users (username,password) values("+req.body.username+"', "+req.body.password+");");
+    const query = {
+     text:"insert into users (username,password) values("+req.body.username+"', "+req.body.password+")"
+    }
 
     pool.query(query, (err, queryResponse) => {
       if (err) {
