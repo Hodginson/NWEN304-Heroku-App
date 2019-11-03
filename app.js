@@ -223,7 +223,7 @@ app.post('/signUp', function (req,res){
       if (err) {
         console.log("Error creating new user: " + err);
       } else {
-        res.status(201).send(queryResponse.rows[0]);
+        res.status(201).send(queryResponse);
       }
     });
 
