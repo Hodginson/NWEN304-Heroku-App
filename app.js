@@ -11,7 +11,7 @@ var express = require('express');
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
 
-//var loginRouter = require('./routes/login');
+var loginRouter = require('./routes/login');
 var homeRouter = require('./routes/home');
 var storeRouter = require('./routes/store');
 var cartRouter = require('./routes/cart');
@@ -62,7 +62,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRouter);
-//app.use('/login', loginRouter);
+app.use('/login', loginRouter);
 app.use('/store', storeRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
