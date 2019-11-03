@@ -21,6 +21,8 @@ $(document).ready(function(e) {
 }); // end ready
 
 function loginFunction(){
+  var email = $('#email').val();
+  var pass = $("#pass").val();
   if(email === '' || pass ===''){
       alert("Please Confirm your input");
   }else{
@@ -28,7 +30,7 @@ function loginFunction(){
     username:email,
     password: pass
   }, function(msg){
-    
+
     alert(msg);
   });
 }
