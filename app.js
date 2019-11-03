@@ -330,14 +330,14 @@ app.delete('/api/clear',urlencodedParser, async (req,res)=>{
 
 
 //******Andy DB***** PUT Request*************/
-app.put('/addToCart',urlencodedParser, async (req,res)=>{
+app.put('/addToCart', function(req,res)=>{
   console.log('Getting tasks...');
   const query = {
     text: "update users set cart=array_cat(cart,ARRAY["+req.body.isbn+"]) Where username='zane'"
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
-      console.log("Error getting books: " + err);
+      //print("Error getting books: " + err);
     } else {
       console.log(queryResponse.rows);
       res.status(200).send(queryResponse.rows);
