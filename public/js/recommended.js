@@ -11,7 +11,7 @@ function loadBooks(books) {
       i+=1;
     }
   }
-}
+
 // load the books into the browse page -- Zane
 function createBook(books,i) {
   var div = document.createElement("div");
