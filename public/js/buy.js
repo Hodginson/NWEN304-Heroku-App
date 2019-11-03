@@ -27,8 +27,14 @@ function setupFunction(books) {
 
 function createBook(books) {
   var para = document.createElement("p");
-  para.innerHTML += books.title;
-  para.href = "product.html?=" + books.isbn;
+  var a = document.createElement('a');
+  a.innerHTML += books.title;
+  a.href = "product.html?=" + books.isbn;
+  para.append(a);
+  var span = document.createElement('span');
+  span.className = "price";
+  span.innerHTML = "$" + books.price;
+  para.append(span);
     $('#products').prepend(para);
 
 }
