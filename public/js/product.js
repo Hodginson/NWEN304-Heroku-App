@@ -52,10 +52,10 @@ function createBook(books) {
 }
 
 function addToCart(isbn){
-
+ var name = "zane";
   console.log(isbn);
     //$.put("/api/addCart", { "isbn": isbn}, function (){});
-    queryAPI('PUT', '/addToCart', {isbn:isbn}, function(){});
+    queryAPI('PUT', '/addToCart', {isbn:isbn, user:name}, function(){});
   }
 
 function queryAPI(method, path, data, callback) {
