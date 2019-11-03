@@ -397,6 +397,25 @@ app.put('/addToCart', function(req,res){
 
 });
 
+app.put('/buyBook', function(req,res){
+  console.log('Getting tasks...');
+
+  const query = {
+
+    text:'update books set sold=sold+1 where isbn='+req.body.isbn
+
+  };
+  pool.query(query, (err, queryResponse) => {
+    if (err) {
+      //print("Error getting books: " + err);
+    } else {
+      console.log(queryResponse.rows);
+      res.status(200).send(queryResponse.rows);
+    }
+  });
+
+});
+
 
 
 

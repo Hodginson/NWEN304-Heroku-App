@@ -1,15 +1,16 @@
+var query;
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
-
+  var url = document.URL;
+  var queryStart = url.indexOf("=");
+  var queryEnd = url.length + 1;
+  query = url.slice(queryStart + 1, queryEnd - 1);
   queryAPI('GET', '/book', {}, setupFunction);
 
 })
 
 function setupFunction(books) {
-  var url = document.URL;
-  var queryStart = url.indexOf("=");
-  var queryEnd = url.length + 1;
-  var query = url.slice(queryStart + 1, queryEnd - 1);
+
 
   for (let row = 0; row < books.length; row++) {
 
@@ -33,12 +34,15 @@ function createBook(books) {
   para.append(a);
   var span = document.createElement('span');
   span.className = "price";
-  span.innerHTML = "$" + books.price;
+  span.innerHTML = "    $" + books.price;
   para.append(span);
     $('#products').prepend(para);
 
 }
 
+function buyBook(){
+  queryAPI('PUT', '/buyBook', {isbn:query}, function(){});
+}
 
 
 function queryAPI(method, path, data, callback) {
