@@ -1,15 +1,15 @@
 $(document).ready(function(e) {
 
     $("#login").button().click(function(){
-    var username = $('#email').val();
-    var password = $("#pass").val();
-    console.log(username +" / " + password);
-    if(username === '' || password ===''){
+    var email = $('#email').val();
+    var pass = $("#pass").val();
+    console.log(email +" / " + pass);
+    if(email === '' || pass ===''){
         alert("Please Confirm your input");
     }
     queryAPI('POST', '/login', {
-      username:userEmail,
-      password: password
+      username:email,
+      password: pass
     }, function(){});
 
   })

@@ -191,15 +191,18 @@ app.get('/', (req, res) => res.sendFile('public/login.html', { root : __dirname}
 
 //login
 app.post('/login', async function (req, res){
-  var email = req.body.username;
+  console.log("logining now....")
+  var uname = req.body.username;
   var pass = req.body.password;
   var hashPass = "";
   try{
     const client = await pool.connect();
-    const result = await client.query("SELECT username hashpassword FROM Users WHERE username='"+req.body.username+"')");
+    const result = await client.query(`SELECT username, password FROM users WHERE username='${uname}'`);
     const results = { results: result ? result.rows : null };
-
+    console.log("result: "+result);
+    console.log("results: "+results);
     if(results.results.length == 0 ){
+      console.log("no such a user !");
       res.status(200).send(false);
       client.release;
       return;
