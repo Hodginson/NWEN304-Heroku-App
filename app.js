@@ -7,7 +7,7 @@ var errorHandler = require('errorhandler')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var express = require('express');
-//var bcrypt = require('bcrypt');
+var User = require('./models/Users');
 
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
@@ -72,11 +72,32 @@ app.use('/checkout', checkoutRouter);
 
 
 app.use(session({
-  secret: '7b23f897hy34ybrrxiuhbfdrfgs',
+  key: 'userID',
+  secret: 'something',
   resave: true,
-  saveUnitialized: false
+  saveUnitialized: false,
+  cookie: {
+        expires: 600000
+    }
 }));
-app.use(oidc.router);
+
+app.use((req, res, next) => {
+    if (req.cookies.user_sid && !req.session.user) {
+        res.clearCookie('user_sid');
+    }
+    next();
+});
+
+// middleware function to check for logged-in users
+var sessionChecker = (req, res, next) => {
+    if (req.session.user && req.cookies.user_sid) {
+        res.redirect('/dashboard');
+    } else {
+        next();
+    }
+};
+
+/*app.use(oidc.router);
 
 app.use((req, res, next) => {
   if (!req.userinfo) {
@@ -91,7 +112,7 @@ app.use((req, res, next) => {
     }).catch(err => {
       next(err);
     });
-});
+});*/
 
 function loginRequired(req, res, next) {
   if (!req.user) {
