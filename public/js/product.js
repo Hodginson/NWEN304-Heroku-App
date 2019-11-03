@@ -56,9 +56,7 @@ function addToCart(isbn){
 
     queryAPI('PUT', '/addToCart', {
       isbn: isbn
-    }, function());
-
-}
+    }, function(){});}
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
