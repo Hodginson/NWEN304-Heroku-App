@@ -8,14 +8,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var express = require('express');
 
-const {
-  Pool
-} = require('pg');
-
-const pool = new Pool({
-  connectionString: "postgres://tlytmbyzzcydfw:113545f7066f32de88f12a258e21e6b35647288147ebb4062332187c065ec1d4@ec2-174-129-194-188.compute-1.amazonaws.com:5432/dcadl9s1e5frsb",
-  ssl: true,
-});
 
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
@@ -112,7 +104,7 @@ function loginRequired(req, res, next) {
 /**
 app.get('/', (req, res) => res.sendFile('public/login.html', { root : __dirname}));
 
-// 
+//
 // /* PASSPORT SETUP */
 //
 //
