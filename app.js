@@ -331,22 +331,20 @@ app.delete('/api/clear',urlencodedParser, async (req,res)=>{
 
 //******Andy DB***** PUT Request*************/
 app.put('/addToCart',urlencodedParser, async (req,res)=>{
-  try {
-    const client = await pool.connect();
+  console.log('Getting tasks...');
+  const query = {
+    text: "update users set cart=array_cat(cart,ARRAY["+req.body.isbn+"]) Where username='zane'"
+  };
+  pool.query(query, (err, queryResponse) => {
+    if (err) {
+      console.log("Error getting books: " + err);
+    } else {
+      console.log(queryResponse.rows);
+      res.status(200).send(queryResponse.rows);
+    }
+  });
 
-    var result = await client.query("update users set cart=array_cat(cart,"+req.body.isbn+") Where username='zane';");
-    if (!result) {
-         return res.send("PUT Failure");
-       } else {
-         console.log("successful");
-       }
-       res.send(result.rows);
-       client.release();
-     } catch (err) {
-       console.error(err);
-       res.send("Error " + err);
-  }
- });
+});
 
 
 
