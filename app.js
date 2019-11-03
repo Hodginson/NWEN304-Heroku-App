@@ -251,7 +251,7 @@ app.post('/login', function (req,res){
       if (err) {
         console.log("Error creating new user: " + err);
       } else {
-        console.log(query);
+        console.log(queryResponse.rows[0].username + ":" + queryResponse.rows[0].password);
         res.status(200).send(queryResponse.rows);
       }
     });
