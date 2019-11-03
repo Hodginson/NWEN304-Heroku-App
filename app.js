@@ -97,7 +97,7 @@ var sessionChecker = (req, res, next) => {
     }
 };
 
-/*app.use(oidc.router);
+app.use(oidc.router);
 
 app.use((req, res, next) => {
   if (!req.userinfo) {
@@ -112,7 +112,7 @@ app.use((req, res, next) => {
     }).catch(err => {
       next(err);
     });
-});*/
+});
 
 function loginRequired(req, res, next) {
   if (!req.user) {
