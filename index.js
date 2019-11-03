@@ -14,7 +14,7 @@ const pool = new Pool({
 });
 
 app.use(BodyParser.json());
-app.use(express.static(__dirname + '/public'));
+app.use(Express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
