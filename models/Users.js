@@ -1,43 +1,43 @@
-const mongoose = require('mongoose');
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
+var Sequelize = require('sequelize');
+var bcrypt = require('bcrypt');
 
-const { Schema } = mongoose;
+// create a sequelize instance with our local postgres database information.
+var sequelize = new Sequelize('postgres://tlytmbyzzcydfw:113545f7066f32de88f12a258e21e6b35647288147ebb4062332187c065ec1d4@ec2-174-129-194-188.compute-1.amazonaws.com:5432/dcadl9s1e5frsb');
 
-const UsersSchema = new Schema({
-  email: String,
-  hash: String,
-  salt: String,
+// setup User model and its fields.
+var User = sequelize.define('users', {
+    username: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
+    },
+    email: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+}, {
+    hooks: {
+      beforeCreate: (user) => {
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync(user.password, salt);
+      }
+    },
+    instanceMethods: {
+      validPassword: function(password) {
+        return bcrypt.compareSync(password, this.password);
+      }
+    }
 });
 
-UsersSchema.methods.setPassword = function(password) {
-  this.salt = crypto.randomBytes(16).toString('hex');
-  this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-};
+// create all the defined tables in the specified database.
+sequelize.sync()
+    .then(() => console.log('users table has been successfully created, if one doesn\'t exist'))
+    .catch(error => console.log('This error occured', error));
 
-UsersSchema.methods.validatePassword = function(password) {
-  const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-  return this.hash === hash;
-};
-
-UsersSchema.methods.generateJWT = function() {
-  const today = new Date();
-  const expirationDate = new Date(today);
-  expirationDate.setDate(today.getDate() + 60);
-
-  return jwt.sign({
-    email: this.email,
-    id: this._id,
-    exp: parseInt(expirationDate.getTime() / 1000, 10),
-  }, 'secret');
-}
-
-UsersSchema.methods.toAuthJSON = function() {
-  return {
-    _id: this._id,
-    email: this.email,
-    token: this.generateJWT(),
-  };
-};
-
-mongoose.model('Users', UsersSchema);
+// export User model for use in other files.
+module.exports = User;
