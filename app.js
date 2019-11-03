@@ -71,7 +71,7 @@ app.use('/cart', cartRouter);
 app.use('/checkout', checkoutRouter);
 
 
-/*app.use(session({
+app.use(session({
   key: 'userID',
   secret: 'something',
   resave: true,
@@ -95,7 +95,7 @@ var sessionChecker = (req, res, next) => {
     } else {
         next();
     }
-};*/
+};
 
 app.use(oidc.router);
 
