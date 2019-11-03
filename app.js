@@ -27,6 +27,14 @@ const pool = new Pool({
   ssl: true
 });
 
+app.use(function (req, res, next) { //what we want to allow
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-AllowHeaders');
+  // Pass to the middlelayer
+  next();
+});
+
 
 var oktaClient = new okta.Client({
   orgUrl: 'https://dev-310068.oktapreview.com',
