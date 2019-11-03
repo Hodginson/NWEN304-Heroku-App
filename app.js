@@ -8,7 +8,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var express = require('express');
 
-
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
 
@@ -19,6 +18,7 @@ var cartRouter = require('./routes/cart');
 var usersRouter = require('./routes/users');
 var checkoutRouter = require('./routes/checkout');
 
+// const bcrypt = require('bcrypt');
 
 var urlencodedParser= bodyParser.urlencoded({extended: false});
 const { Pool } = require('pg');
@@ -197,7 +197,7 @@ app.post('/login', async function (req, res){
   var hashPass = "";
   try{
     const client = await pool.connect();
-    const result = await client.query(`SELECT username, password FROM users WHERE username='${uname}'`);
+    const result = await client.query("SELECT password FROM users WHERE username='"+uname+"';");
     const results = { results: result ? result.rows : null };
     console.log("result: "+result[0]);
     console.log("results: "+results);
