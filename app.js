@@ -191,6 +191,7 @@ app.get('/', (req, res) => res.sendFile('public/login.html', { root : __dirname}
 
 //login
 app.post('/login', async function (req, res){
+  console.log("logining now....")
   var email = req.body.username;
   var pass = req.body.password;
   var hashPass = "";
