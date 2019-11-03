@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<!--Andy Yang's work 300356106-->
+<head>
+  <meta charset="UTF-8">
+  <title>Main Store Page</title>
+  <link rel="stylesheet" href="stylesheets/store.css">
+  <link href="stylesheets/browse.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/browse.js"></script>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-border w3-red w3-large">
+      <a href="/" class="w3-bar-item w3-button ">Home</a>
+      <a  href="/browse" class="w3-bar-item w3-button">Browse All</a>
+      <div class="w3-dropdown-hover">
+        <button class="w3-button ">Books</button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+          <a href="#" class="w3-bar-item w3-button">Fiction</a>
+          <a href="#" class="w3-bar-item w3-button">Crime</a>
+          <a href="#" class="w3-bar-item w3-button">Childrens Books</a>
+          <a href="#" class="w3-bar-item w3-button">Autobiography</a>
+        </div>
+      </div>
+      <div class="w3-dropdown-hover">
+        <button class="w3-button ">Sign in</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="/login" class="w3-bar-item w3-button">Sign In</a>
+            <a href="/users/login" class="w3-bar-item w3-button">Sign in with OKTA</a>
+          </div>
+      </div>
+
+      <a button onclick="searchFunction()" class="w3-bar-item w3-button w3-grey w3-right">Go</a>
+      <input type="search" id="mySearch" class="w3-bar-item w3-input w3-right" placeholder="Search..">
+
+    </div>
+  </div>
+
+
+  </html>

@@ -199,7 +199,7 @@ app.post('/login', async function (req, res){
     const client = await pool.connect();
     const result = await client.query(`SELECT username, password FROM users WHERE username='${uname}'`);
     const results = { results: result ? result.rows : null };
-    console.log("result: "+result);
+    console.log("result: "+result[0]);
     console.log("results: "+results);
     if(results.results.length == 0 ){
       console.log("no such a user !");
