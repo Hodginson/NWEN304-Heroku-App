@@ -18,7 +18,7 @@ var cartRouter = require('./routes/cart');
 var usersRouter = require('./routes/users');
 var checkoutRouter = require('./routes/checkout');
 
-//const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 var urlencodedParser= bodyParser.urlencoded({extended: false});
 const { Pool } = require('pg');
@@ -197,7 +197,7 @@ app.post('/login', async function (req, res){
   var hashPass = "";
   try{
     const client = await pool.connect();
-    const result = await client.query(`SELECT username, password FROM users WHERE username='${uname}'`);
+    const result = await client.query("SELECT password FROM users WHERE username='"+uname+"';");
     const results = { results: result ? result.rows : null };
     console.log("result: "+result);
     console.log("results: "+results);
