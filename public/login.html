@@ -7,105 +7,58 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <style>
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: "Verdana", serif
-    }
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Verdana", serif
+  }
 
-    .w3-bar,
-    h1,
-    button {
-        font-family: "Helvetica", serif
-    }
+  .w3-bar,
+  h1,
+  button {
+    font-family: "Helvetica", serif
+  }
 
-    .fa-anchor,
-    .fa-coffee {
-        font-size: 200px
-    }
-
-    form {}
-
-    input[type=text],
-    input[type=password] {
-        /* width: 100%;*/
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
-
-    .submitButton {
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        /*margin: 8px 0;*/
-        border: none;
-        cursor: pointer;
-        /*    width: 100%;*/
-    }
-
-    button:hover {
-        opacity: 0.8;
-    }
-
-    .cancelbtn {
-
-        padding: 10px 13px;
-        background-color: #f44336;
-    }
-    .registerButton{
-        background-color: #4CAF50;
-        color: white;
-        padding: 14px 20px;
-        /*margin: 8px 0;*/
-        border: none;
-        cursor: pointer;
-    }
-    .container {
-        padding: 16px;
-    }
-
-    span.psw {
-        float: right;
-        padding-top: 16px;
-    }
+  .fa-anchor,
+  .fa-coffee {
+    font-size: 200px
+  }
 </style>
 
 <body>
-  <!--Main NavBar starts-->
-  <body>
 
+  <!-- Navbar -->
   <div class="w3-top">
     <div class="w3-bar w3-border w3-red w3-large">
-      <a href="index.html" class="w3-bar-item w3-button ">Home</a>
-      <button onclick = "browse()" type ="button" class="w3-bar-item w3-button">Browse All</button>
+      <a href="/" class="w3-bar-item w3-button ">Home</a>
+      <a  href="/browse" class="w3-bar-item w3-button">Browse All</a>
       <div class="w3-dropdown-hover">
         <button class="w3-button ">Books</button>
         <div class="w3-dropdown-content w3-bar-block w3-card-4">
           <a href="#" class="w3-bar-item w3-button">Fiction</a>
-          <a href="#" class="w3-bar-item w3-button">Young Adults</a>
-          <a href="#" class="w3-bar-item w3-button">Children's Books</a>
-          <a href="#" class="w3-bar-item w3-button">Science Books</a>
+          <a href="#" class="w3-bar-item w3-button">Crime</a>
+          <a href="#" class="w3-bar-item w3-button">Childrens Books</a>
+          <a href="#" class="w3-bar-item w3-button">Autobiography</a>
         </div>
       </div>
-      <a href="login.html" class="w3-bar-item w3-button w3-right">Login</a>
+      <div class="w3-dropdown-hover">
+        <button class="w3-button ">Sign in</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="/login" class="w3-bar-item w3-button">Sign In</a>
+            <a href="/users/login" class="w3-bar-item w3-button">Sign in with OKTA</a>
+          </div>
+      </div>
+
       <a button onclick="searchFunction()" class="w3-bar-item w3-button w3-grey w3-right">Go</a>
       <input type="search" id="mySearch" class="w3-bar-item w3-input w3-right" placeholder="Search..">
 
     </div>
   </div>
-
-  <header class="w3-container w3-white w3-center" style="padding:40px 10px">
-    <h1> Long Time No See</h1>
-  </header>
 
   <!--Main NavBar ends-->
 
@@ -114,7 +67,7 @@
   <div class="container center">
 
 
-    <form action="/" method="post" class = "loginForm" >
+    <form action="/" method="post" class="w3-center">
 
       <div class="container center">
         <input type="text" placeholder="Username" name="username" required>
