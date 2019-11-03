@@ -348,7 +348,7 @@ app.delete('/api/clear',urlencodedParser, async (req,res)=>{
 
 
 //******Andy DB***** PUT Request*************/
-app.put('/addToCart', function(req,res)=>{
+app.put('/addToCart', function(req,res){
   console.log('Getting tasks...');
   const query = {
     text: "update users set cart=array_cat(cart,ARRAY["+req.body.isbn+"]) Where username='zane'"
