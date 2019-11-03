@@ -27,13 +27,7 @@ const pool = new Pool({
   ssl: true
 });
 
-app.use(function (req, res, next) { //what we want to allow
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-AllowHeaders');
-  // Pass to the middlelayer
-  next();
-});
+
 
 
 var oktaClient = new okta.Client({
@@ -58,6 +52,14 @@ const oidc = new ExpressOIDC({
   }
 });
 var app = express();
+
+app.use(function (req, res, next) { //what we want to allow
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-AllowHeaders');
+  // Pass to the middlelayer
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
