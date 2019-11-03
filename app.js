@@ -252,7 +252,7 @@ app.post('/login', function (req,res){
         console.log("Error creating new user: " + err);
       } else {
         console.log(query);
-        res.status(201).send(queryResponse);
+        res.status(200).send(queryResponse.rows);
       }
     });
 
