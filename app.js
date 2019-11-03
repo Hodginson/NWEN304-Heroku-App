@@ -1,6 +1,6 @@
 var createError = require('http-errors');
 var path = require('path');
-const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var session = require('express-session');
 var cors = require('cors');
 var errorHandler = require('errorhandler')
@@ -21,24 +21,11 @@ var checkoutRouter = require('./routes/checkout');
 
 
 var urlencodedParser= bodyParser.urlencoded({extended: false});
-/*const {
-  Pool
-} = require('pg');
-const pool = new Pool({
-  connectionString: "postgres://tlytmbyzzcydfw:113545f7066f32de88f12a258e21e6b35647288147ebb4062332187c065ec1d4@ec2-174-129-194-188.compute-1.amazonaws.com:5432/dcadl9s1e5frsb",
-  ssl: true,
-});
-
-pool.connect();*/
-
-
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
 });
-
-
 
 
 var oktaClient = new okta.Client({
@@ -64,14 +51,6 @@ const oidc = new ExpressOIDC({
 });
 var app = express();
 
-app.use(function (req, res, next) { //what we want to allow
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-AllowHeaders');
-  // Pass to the middlelayer
-  next();
-});
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -82,7 +61,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
+
 app.use('/', homeRouter);
 app.use('/login', loginRouter);
 app.use('/browse', storeRouter);
@@ -215,7 +194,7 @@ app.post('/signUp', function (req,res){
 
      console.log('Getting new user...');
 
-    const query = ("insert into users (username,password) values("+req.body.username+"', "+req.body.password+");");
+    const query = ("insert into users (username,password) values("+req.body.username+", "+req.body.password+");");
 
     pool.query(query, (err, queryResponse) => {
       if (err) {
@@ -349,10 +328,10 @@ app.delete('/api/items',urlencodedParser, async (req,res)=>{
 
 
   //*******Andy DB for Zihui's clear database****** Delete REQUEST (cart_table)*********************/
-app.put('/api/addCart',urlencodedParser, async (req,res)=>{
+app.delete('/api/clear',urlencodedParser, async (req,res)=>{
   try {
     const client = await pool.connect();
-    var result = await client.query('update users set cart=array_cat(cart,ARRAY['+ req.body.isbn +']) Where username=\'zane\'');
+    var result = await client.query('delete from cart_table;');
     if (!result) {
          return res.send("DELETION Failure");
        } else {
@@ -371,17 +350,16 @@ app.put('/api/addCart',urlencodedParser, async (req,res)=>{
 //******Andy DB***** PUT Request*************/
 app.put('/addToCart', function(req,res){
   console.log('Getting tasks...');
-  //var int = parseInt(req.body.isbn);
+  var int = parseInt(req.body.isbn);
   const query = {
-    text: "UPDATE users SET cart=array_cat(cart, "+req.body.isbn+") WHERE username='zane'",
-    //text:'update books set sold=sold+1 where isbn='+req.body.isbn
+    text: "update users set cart=ARRAY[5] Where username='zane'"
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
       //print("Error getting books: " + err);
     } else {
-      console.log(queryResponse);
-      res.status(200).send(queryResponse);
+      console.log(queryResponse.rows);
+      res.status(200).send(queryResponse.rows);
     }
   });
 
