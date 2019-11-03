@@ -1,0 +1,433 @@
+<!doctype html>
+<html>
+<!--Andy Yang's work 300356106-->
+<head>
+  <meta charset="UTF-8">
+  <title>Main Store Page</title>
+  <link rel="stylesheet" href="stylesheets/store.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link href="css/jquery-ui.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+</head>
+<!--Temporary CSS-->
+<style>
+  p{
+    font-family: 'Karla', sans-serif;
+  }
+ #cart_btn{
+   font-size:28px;
+   float: right;
+   margin-top: 90px;
+   margin-right: 75px;
+ }
+ #logged_sloggan{
+   color: crimson;
+   font-family: 'Spicy Rice', cursive;
+ }
+ #user_info{
+  color: brown;
+  font-size: 32px; 
+  font-family: 'Spicy Rice', cursive;
+ }
+
+  .itemImage {
+    width: 5em;
+  }
+
+  .filterDiv :hover {
+    background-color:yellow;
+  }
+
+  .filterDiv {
+    float: left;
+    background-color: white;
+    border-bottom: 1px solid black;
+    color: #1b0202;
+    width: 100%;
+    line-height: 100px;
+    text-align: center;
+    display: none;
+    padding: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .container {
+    margin-top: 20px;
+    overflow: hidden;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    width: 85%;
+    padding: none;
+  }
+
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #ddd;
+  }
+
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+
+  a {
+    color: black;
+  }
+
+  a:hover {
+    color: black;
+    text-decoration: none;
+    opacity: 0.5;
+  }
+</style>
+
+<body onload="Load()">
+  <!--Main NavBar starts-->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" id="user_info">{USER INFO}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="store.html">Product <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Contact us
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">022-XXX-XXXX</a>
+            <a class="dropdown-item" href="#">banana@gmail.com</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">#Instagram</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Account
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="users/login">Log in</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Need Help?</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-sjuccess my-2 my-sm-0" type="submit" Log out id="logout_btn" href="users/logout">Log
+          Out
+        </button>
+      </form>
+    </div>
+  </nav>
+  <!--Main NavBar ends-->
+
+
+
+
+  <!--Side bar starts-->
+  <div class="sidenav">
+      <button class="dropdown-btn">Item Details
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <a href="Cute Banana.html">1. Cute Banana</a>
+          <a href="Green Banana.html">2. Green Banana</a>
+          <a href="Crazy Banana.html">3. Crazy Banana</a>
+          <a href="Brown Banana.html">4. Brown Banana</a>
+          <a href="Angel Banana.html">5. Angel Banana</a>
+        </div>
+        <button class="dropdown-btn">Color
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a onclick="filterSelection('yellow')">Yellow</a>
+            <a onclick="filterSelection('green')">Green</a>
+            <a onclick="filterSelection('brown')">Brown</a>
+          </div>
+    <a href="#services">Size</a>
+    <a href="#clients">Origin</a>
+    <a href="#contact">Flavour</a>
+    <a href="#contact">Search</a>
+  </div>
+  <!--Side bar ends-->
+
+
+
+  <div class="main">
+    <!-- add to cart dialog box here -->
+    <h2>Banana Market <a href="cart"><button id="cart_btn">View my Cart</button></a></h2>
+    <p id='sloggan'>You have not logged in yet. Please login to personalise your cart.</p>
+    <p id="logged_sloggan"> </p>
+
+
+    <div id="myBtnContainer">
+      <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+      <button class="btn" onclick="filterSelection('green')"> Green</button>
+      <button class="btn" onclick="filterSelection('yellow')"> Yellow</button>
+      <button class="btn" onclick="filterSelection('brown')"> Brown</button>
+      <button class="btn" onclick="filterSelection('emotion')"> Emotion</button>
+      <button class="btn" onclick="filterSelection('fairy')"> Fairy</button>
+      <button class="btn" onclick="filterSelection('general')"> General</button>
+    </div>
+
+    <div class="container">
+      <div class="filterDiv yellow general">
+        <p>1<img class="itemImage" src="images/Cute Banana.jpg" alt=""> <a href="Cute Banana.html" </a>Cute banana</a> 1.49/kg<a
+            href="#"><img class="add-to-cart" src="images/Add-to-cart.png" alt=""></a></p>
+      </div>
+      <div class="filterDiv green general">
+        <p>2<img class="itemImage" src="images/Green Banana.png" alt=""> <a href="Green Banana.html">Green Banana</a> 2.99/kg<a
+            href="#"><img class="add-to-cart" src="images/Add-to-cart.png" alt=""></a></p>
+      </div>
+      <div class="filterDiv emotion general yellow">
+        <p>3<img class="itemImage" src="images/Crazy Banana.png" alt=""> <a href="Crazy Banana.html">Crazy banan</a> 2.59/kg<a
+            href="#"><img class="add-to-cart" src="images/Add-to-cart.png" alt=""></a></p>
+      </div>
+      <div class="filterDiv brown general">
+        <p>4<img class="itemImage" src="images/Brown Banana.png" alt=""> <a href="Brown Banana.html">Brown banana</a> 1.99/kg<a
+            href="#"><img class="add-to-cart" src="images/Add-to-cart.png" alt=""></a></p>
+      </div>
+      <div class="filterDiv fairy yellow">
+        <p>5<img class="itemImage" src="images/Angel Banana.png" alt=""> <a href="Angel Banana.html">Angel banan</a> 3.99/kg<a
+            href="#"><img class="add-to-cart" src="images/Add-to-cart.png" alt=""></a></p>
+      </div>
+
+    </div>
+
+
+    <div id="add-dialog" title="ADD TO CART">
+      <form>
+        <p id='item_target'></p>
+        Quantity(kg): <input type="number" name="quantity" id="Q_value" value=1><br>
+      </form>
+    </div>
+
+  </div>
+
+
+
+
+  <!--JS-->
+  <script>
+
+    //This will be executed whenever the page is loaded.
+    var stat = '';
+    function Load() {
+
+      $('#cart_btn').button({
+        icons: { primary: "ui-icon-circle-plus" }
+      });
+
+      $.ajax({
+        url: "/api/logged",
+        method: "GET"
+      }).done(function (msg) {
+        stat = msg;
+        console.log('login status: ' + msg);
+        if (msg == '0') {
+          // Hide some functions from unautheticated users
+          $('#cart_btn').hide();
+          $('#logout_btn').hide();
+        }
+        else {
+          // Find method to get the users first and last name (or email address)
+          document.getElementById("user_info").innerHTML = msg;
+          $('#sloggan').hide();
+          document.getElementById('logged_sloggan').innerHTML = 'Hi ' + msg + ', you are now logged in! Enjoy shopping.<img src="images/smile.png" width= 5% alt="">';
+        }
+      }).fail(function (data, status) {
+        alert(status);
+      });
+
+
+      $.ajax({
+        url: "/api/products",
+        method: "GET"
+      }).done(function (msg) {
+        console.log(msg);
+
+      }).fail(function (data, status) {
+        alert(status);
+      });
+
+      $.ajax({
+        url: "https://org.okta.com/api/v1/sessions/me",
+        type: "GET",
+        headers: {
+          'Authorization': '00TQX0GkJdk_QJ9xxVsuFlInL8mY1MK1aXGNB-f7J-',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        success: function (result) {
+          $("user_info").html(result);
+        }
+      })
+    }
+
+    //main
+    $(document).ready(function (e) {
+
+      var user_info = document.getElementById('user_info');
+      user_info.innerHTML = '<img src="images/user.png" width= 15% alt=""> Visitor';
+
+      var x = document.getElementsByClassName('add-to-cart');
+      //initialise the dialog
+      $("#add-dialog").dialog({ modal: true, autoOpen: false });
+
+      //ADD TO CART
+      $(x).click(function () {
+        if (!stat == '0') {
+          var name = $(this).parents('p').text(); //search for the targeted item name
+          document.getElementById('item_target').innerText = name; //place and show this target name in the dialog
+          $("#add-dialog").dialog('open');
+        }
+        //otherwise (not logged in yet):
+        if (stat == '0') {
+          window.location.href = "https://dev-310068.oktapreview.com/login/login.htm?fromURI=/oauth2/v1/authorize/redirect?okta_key=ZWrxmgUAPtgjnBLtkzu8P6AoMF3MI6Thl5a7Yv9XxQc";
+        }
+      });
+
+
+      //DIALOG
+      $('#add-dialog').dialog({
+        modal: true,
+        autoOpen: false,
+        buttons: {
+          "Confirm": function () {
+            //AJAX FOR ADD (POST)
+            var quan = $("#Q_value").val();
+            var item_id = document.getElementById('item_target').innerHTML.substr(0, 1);
+            console.log('You added something of item_id:' + item_id);
+
+            $.post("/api/products", { "cart_id": 999, "item_id": item_id, "item_quantity": quan }, function (msg) {
+              if (msg != 0) {
+                console.log(msg);
+                //There are same items in the cart already!!! UPDATE the value:
+                $.ajax({
+                  url: "/api/products",
+                  method: "PUT",
+                  data: { "item_quantity": parseInt(msg.rows[0].item_quantity) + parseInt(quan), "item_id": item_id }
+                }).done(function (msg) {
+                  console.log(msg);
+                }).fail(function (data, status) {
+                  alert(status);
+                });
+              }
+            });
+
+
+
+            $(this).dialog('close');
+          },
+
+          "Cancel": function () { $(this).dialog('close'); }
+        }
+      });
+
+    });
+    // end ready
+
+
+
+
+
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+
+  </script>
+
+  <script>
+
+    var user_info = document.getElementById('user_info');
+    user_info.innerHTML = "Test text";
+
+    filterSelection("all")
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("filterDiv");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+
+      }
+
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+        }
+      }
+
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+
+      // Add active class to the current button (highlight it)
+      var btnContainer = document.getElementById("myBtnContainer");
+      var btns = btnContainer.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

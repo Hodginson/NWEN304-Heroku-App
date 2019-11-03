@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="Contect-Type"contect="text/html;charset=gb2312'/>
+		<title>Item</title>
+		<link rel="stylesheet" href="stylesheets/store.css"> 
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+			crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
+    <script language ="javascript" type ="text/javascript">
+    function time(){
+      var now=new Date();
+      var year = now.getFullYear();
+      var month = now.getMonth();
+      var day = now.getDate();
+      document.getElementById("info").innerHTML=year +"-"+month+"-"+day;
+    }
+    </script>
+</head>
+<style>
+div.payedDiv{
+	border: 1px solid #D4D4D4;
+	max-width: 1013px;
+	margin: 10px auto 20px auto;
+}
+div.payedTextDiv{
+	height: 61px;
+	background-color: #ECFFDC;
+	padding: 17px 0px 0px 25px;
+}
+div.payedTextDiv span{
+	font-weight: bold;
+	font-size: 14px;
+	margin-left: 10px;
+}
+div.payedAddressInfo{
+	padding: 26px 35px;
+}
+div.payedAddressInfo li{
+	background-image:url(http://how2j.cn/tmall/img/site/li_dot.png);
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-attachment: scroll;
+	background-position: 0px 13px;
+	list-style-type: none;
+	color: #333333;
+	padding-left: 15px;
+	padding-top: 5px;
+}
+span.payedInfoPrice{
+	color: #B10000;
+	font-weight: bold;
+	font-size: 14px;
+	font-family: arial;
+}
+div.paedCheckLinkDiv{
+	margin-left: 38px;
+}
+a.payedCheckLink{
+	color: #2D8CBA;
+}
+a.payedCheckLink:hover{
+	color: #2D8CBA;
+	text-decoration: underline;
+}
+div.payedSeperateLine{
+	border-top: 1px dotted #D4D4D4;
+	margin: 0px 31px;
+}
+div.warningDiv{
+	margin: 23px 45px;
+	color:black;
+}
+body{
+	font-size: 12px;
+	font-family: Arial;
+}
+.boldWord{
+	font-weight: bold;
+}
+.redColor{
+	color: #C40000;
+}
+.r{position:fixed;bottom:0;}
+</style>
+<body onload="Load()">
+  <!--Main NavBar starts-->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#" id="user_info">{USER INFO}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="store.html">Product <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Contact us
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">022-XXX-XXXX</a>
+              <a class="dropdown-item" href="#">banana@gmail.com</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">#Instagram</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="users/login">Log in</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Need Help?</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-sjuccess my-2 my-sm-0" type="submit" Log out id="logout_btn" href="users/logout">Log
+            Out
+          </button>
+        </form>
+      </div>
+    </nav>
+    <!--Main NavBar ends-->
+              <div class="payedDiv">
+                    <div class="payedTextDiv">
+                        <img src="images/success.jpg">
+                        <span>Your payment is successful!</span> 
+                    </div>
+              <div>
+                 <div class="r">
+                    <a href="store.html"><input type="submit" value="Back to Home"  class="btn btn-primary"/></a>
+                 </div>
+              </div>
+             </div> 
+             
+    <script>
+
+      var cartTable;
+		var itemTable;
+		df1 = 0;
+		df2 = 0;
+		var df3 = calculateCartTotal();
+		console.log(df3);
+		$(function () {
+
+			var df11 = df1;
+			$("#td1").text('$ ' + df11);
+
+		});
+		$(function () {
+
+			var df21 = df2;
+			$("#td2").text('$ ' + df21);
+
+		});
+		$(function () {
+
+			var df3 = df1 + df2;
+			$("#td3").text('$ ' + df3);
+
+		});
+
+		$('input[type=radio][name=deltype]').change(function () {
+			if (this.id == 'de1') {
+				df2 = 15;
+			}
+			else if (this.id == 'de2') {
+				df2 = 0;
+			}
+			var df21 = df2;
+			$("#td2").text('$ ' + df21);
+
+			var df3 = df1 + df2;
+			$("#td3").text('$ ' + df3);
+		});
+
+		function Load() {
+			getItems();
+
+			$.ajax({
+				url: "/api/logged",
+				method: "GET"
+			}).done(function (msg) {
+				stat = msg;
+				console.log('login status: ' + msg);
+				if (msg != '0') {
+					// Find method to get the users first and last name (or email address)
+					document.getElementById("user_info").innerHTML = msg;
+				}
+			}).fail(function (data, status) {
+				alert(status);
+			});
+		}
+
+		$(document).ready(function () {
+			$('submitbin').click(function () {
+				alert($('input:radio[name=deltype]:checked').val());
+			});
+
+			document.getElementById('check-out-btn').click(function(){
+				$.ajax({
+				url: "/api/clear",
+				method: "DELETE"
+			}).done(function (msg) {
+				console.log(msg);
+			}).fail(function (data, status) {
+				alert(status);
+			});
+			});
+
+		});
+
+		function getItems() {
+			// item table
+			$.ajax({
+				url: "/api/items",
+				method: "GET"
+			}).done(function (msg) {
+				console.log(msg);
+				itemTable = msg;
+				getCart();
+			}).fail(function (data, status) {
+				alert(status);
+			});
+		}
+
+		function getCart() {
+			// cart table
+			$.ajax({
+				url: "/api/products",
+				method: "GET"
+			}).done(function (msg) {
+				console.log(msg);
+				cartTable = msg;
+				calculateCartTotal();
+			}).fail(function (data, status) {
+				alert(status);
+			});
+		}
+
+
+
+		function calculateCartTotal() {
+			var total = 0;
+			if (cartTable.length > 0) {
+				for (var i = 0; i < cartTable.length; i++) {
+					var currentItem = itemTable[cartTable[i].item_id - 1];
+					total += currentItem.item_price * cartTable[i].item_quantity;
+				}
+			}
+			df1 = total;
+			$("#td1").text('$ ' + df1);
+			var df3 = df1 + df2;
+			$("#td3").text('$ ' + df3);
+      return df3;
+		}
+
+		$(function () {
+			$('#div1').toggle();
+			$('#div2').toggle();
+
+			$('#button1').on('click', function () {
+				$('#div1').toggle();
+			});
+
+			$('#button2').on('click', function () {
+				$('#div2').toggle();
+			});
+
+    });
+    function time(){
+
+       var now= new Date();
+
+       var year=now.getFullYear();
+
+       var month=now.getMonth();
+
+       var date=now.getDate();
+
+      document.getElementById("info").innerHTML=year+"-"+(month+1)+"-"+date;
+
+} 
+   
+	</script>
+  
+</body>
+</html>
+
+	
+
