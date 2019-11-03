@@ -225,6 +225,21 @@ app.get('/api/logged', async (req, res) => {
    });
  });
 
+ app.get('/recommend', function (req, res) {
+   console.log('Getting tasks...');
+   const query = {
+     text: "SELECT * FROM books ORDER BY sold desc limit 3"
+   };
+   pool.query(query, (err, queryResponse) => {
+     if (err) {
+       console.log("Error getting books: " + err);
+     } else {
+       console.log(queryResponse.rows);
+       res.status(200).send(queryResponse.rows);
+     }
+   });
+ });
+
 
 app.get('/api/products', async (req, res) => {
   try {
