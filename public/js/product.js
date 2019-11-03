@@ -51,10 +51,13 @@ function createBook(books) {
   buy.innerHTML += "Buy";
   div.append(buy);
   buy.addEventListener ("click", function() {
-    addToCart(books.isbn);
+    buy(books.isbn);
   });
     $('#column-1').prepend(div);
 
+}
+function buy(isbn){
+  window.location.href = "buy.html?=" + isbn;
 }
 
 function addToCart(isbn){
