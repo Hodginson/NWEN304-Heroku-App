@@ -38,7 +38,7 @@ app.get('/',function(req,res){
 });
 
 app.get('/browse', (req, res) => res.render('browse'));
-app.get('/login', (req, res) => res.render('login'));
+app.get('/login', (req, res) => res.render('../01-login/gglogin'));
 app.get('/register', (req, res) => res.render('register'));
 
 // Get all tasks.
