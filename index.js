@@ -56,11 +56,11 @@ app.get('/book', function (req, res) {
 
 // register
 app.post('/register', function (req,res){
- 
+
      console.log('Getting new user...');
- 
-    const query = ("insert into users (username,password) values("+req.body.username+"', "+req.body.password+");");   
-    
+
+    const query = ("insert into users (username,password) values("+req.body.username+"', "+req.body.password+");");
+
     pool.query(query, (err, queryResponse) => {
       if (err) {
         console.log("Error creating new user: " + err);
@@ -68,17 +68,17 @@ app.post('/register', function (req,res){
         res.status(201).send(queryResponse.rows[0]);
       }
     });
-  
+
  })
 
 
 // password reset  //need to use the user ID !!!!!!!!!!!!!!!!!!!
 app.post('/passwordReset', function (req,res){
- 
+
   console.log('Setting a new password...');
 
- const query = ("update into users set password="+req.body.password+" where username="+req.body.username+");");   
- 
+ const query = ("update into users set password="+req.body.password+" where username="+req.body.username+");");
+
  pool.query(query, (err, queryResponse) => {
    if (err) {
      console.log("Error creating new user: " + err);

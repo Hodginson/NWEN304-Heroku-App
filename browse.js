@@ -58,7 +58,6 @@ $(document).ready(function (e) {
   function createBook(books,i) {
     var div = document.createElement("div");
     div.className = "card";
-
     var oImg = document.createElement("img");
     oImg.setAttribute('src', '../Images/' + books.imgsrc);
     div.append(oImg)
