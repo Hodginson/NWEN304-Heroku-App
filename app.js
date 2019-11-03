@@ -64,7 +64,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRouter);
 app.use('/login', loginRouter);
-app.use('/store', storeRouter);
+app.use('/browse', storeRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/checkout', checkoutRouter);
