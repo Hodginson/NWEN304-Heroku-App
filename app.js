@@ -7,7 +7,7 @@ var errorHandler = require('errorhandler')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var express = require('express');
-var User = require('./models/Users');
+//var User = require('./models/Users');
 
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
