@@ -29,7 +29,7 @@ function createBook(books) {
   var para = document.createElement("p");
   p.innerHTML += books.title;
   p.href = "product.html?=" + books.isbn;
-    $('#column-1').prepend(div);
+    $('#products').prepend(div);
 
 }
 
