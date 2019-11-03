@@ -29,11 +29,11 @@ var checkoutRouter = require('./routes/checkout');
 
 
 var urlencodedParser= bodyParser.urlencoded({extended: false});
-/*const { Pool } = require('pg');
+const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
-});*/
+});
 
 
 var oktaClient = new okta.Client({
@@ -115,7 +115,7 @@ app.get('/', (req, res) => res.sendFile('public/login.html', { root : __dirname}
 
 /* PASSPORT SETUP */
 
-/**
+
 const passport = require('passport');
 app.use(passport.initialize());
 app.use(passport.session());
@@ -132,12 +132,12 @@ passport.deserializeUser(function(id, cb) {
     cb(err, user);
   });
 });
-**/
+
 
 
 
 /** MONGOOSE SETUP HELP **/
-/**
+
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/MyDatabase', function (err, res) {
@@ -155,14 +155,14 @@ const UserDetail = new Schema({
     });
 const UserDetails = mongoose.model('userInfo', UserDetail, 'userInfo');
 
-**/
+
 
 
 
 
 /* PASSPORT LOCAL AUTHENTICATION */
 
-/**
+
 const LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
@@ -192,7 +192,7 @@ app.post('/',
     res.redirect('/success?username='+req.user.username);
   });
 
-**/
+
 
 
 /* ********************************************* */
