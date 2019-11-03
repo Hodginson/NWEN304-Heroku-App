@@ -55,8 +55,8 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({extended: true}));
+//app.use(express.urlencoded({ extended: false }));
+//app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -258,8 +258,8 @@ app.delete('/api/items',urlencodedParser, async (req,res)=>{
   try {
     const client = await pool.connect();
     var result = await client.query("DELETE FROM cart_table WHERE cart_id="+999+" AND item_id="+req.body.item_id+";");
-    
-      
+
+
     if (!result) {
          return res.send("DELETION Failure");
        } else {
@@ -269,7 +269,7 @@ app.delete('/api/items',urlencodedParser, async (req,res)=>{
        client.release();
      } catch (err) {
        console.error(err);
-       res.send("Error " + err); 
+       res.send("Error " + err);
   }
  });
 
@@ -288,10 +288,10 @@ app.delete('/api/clear',urlencodedParser, async (req,res)=>{
        client.release();
      } catch (err) {
        console.error(err);
-       res.send("Error " + err); 
+       res.send("Error " + err);
   }
  });
- 
+
 
 
 //******Andy DB***** PUT Request*************/
