@@ -373,8 +373,8 @@ app.patch('/addToCart', function(req,res){
   console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
-    text: "update users set cart=array_cat(cart,ARRAY[$1]) Where username='zane'",
-    values:[int]
+    text: "update users set cart=array_cat(cart,ARRAY["+req.body.isbn+"]) Where username='zane'",
+
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
