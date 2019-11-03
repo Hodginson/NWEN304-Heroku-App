@@ -354,12 +354,10 @@ app.put('/addToCart', function(req,res){
   console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
-<<<<<<< HEAD
-    text: "update users set cart=ARRAY[5] Where username='zane'"
-=======
+
     text: "UPDATE users SET cart=array_cat(cart, ARRAY["+req.body.isbn+"]) WHERE username='"+req.body.user+"'",
     //text:'update books set sold=sold+1 where isbn='+req.body.isbn
->>>>>>> 6f053d89a6cbbbf3397efdd2a35604dad0169562
+
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
