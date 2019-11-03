@@ -259,14 +259,14 @@ app.post('/signUp', function (req,res){
 
 
 //isLoggedIn (Andy)
-app.get('/api/logged', async (req, res) => {
+app.get('/isSignedIn', async (req, res) => {
   try {
      if(!req.user){
        res.send('0');
       }
       console.log();
       // Need a way to send the users email through here? Hmm
-      res.send(req.user.profile.firstName); // someone currently logged in
+      res.send(req.user.username); // someone currently logged in
       client.release();
 
   } catch (err) {
@@ -397,7 +397,7 @@ app.delete('/api/clear',urlencodedParser, async (req,res)=>{
 
 
 
-//******Andy DB***** PUT Request*************/
+//******Zane***** PUT Request*************/
 app.put('/addToCart', function(req,res){
   console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);

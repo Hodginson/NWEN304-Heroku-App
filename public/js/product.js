@@ -59,7 +59,7 @@ function addToCart(isbn){
       if(msg != '0'){
         queryAPI('PUT', '/addToCart', {isbn:isbn, user:name}, function(){});
       } else{
-        console.log("log in");
+        console.log(msg + " log in");
       }
     });
 
