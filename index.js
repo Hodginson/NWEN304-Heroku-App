@@ -38,6 +38,7 @@ app.get('/',function(req,res){
 });
 
 app.get('/browse', (req, res) => res.render('browse'));
+app.get('/login', (req, res) => res.render('login'));
 
 // Get all tasks.
 app.get('/book', function (req, res) {
