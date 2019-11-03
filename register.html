@@ -2,14 +2,16 @@
 <html>
 <title>Login</title>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <script src="_js/jquery.min.js"></script>
-<script src="_js/jquery-ui.min.js"></script> -->
-<script src = "login.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src = "register.js"></script>
 <style>
     body,
     h1,
@@ -104,7 +106,7 @@
   </div>
 
   <header class="w3-container w3-white w3-center" style="padding:40px 10px">
-    <h1> Login Field</h1>
+    <h1> Welcome on board!</h1>
   </header>
 
   <form class="w3-center" method="post">
@@ -113,24 +115,24 @@
   <div class="container center">
     <div>
     <label for="email"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="email" id="email" required>
+    <input type="email" placeholder="Enter Username" name="email" id="email" required>
     </div>
     <div>
     <label for="pass"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
     </div>
+    <div>
+    <label for="repass"><b>Confirm Password</b></label>
+    <input type="password" placeholder="Confirm Password" name="repass" id="repass" required>
+    </div>
     <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
+      <input type="checkbox" checked="checked" name="remember"> I have read and agree to the <a href="#">terms.</a>
     </label>
   </div>
 
   <div class="container center">
-    <button type="button" class="cancelbtn" onclick="login()">Login</button>
-    <button type="button" class="cancelbtn" onclick="cancel()">Cancel</button>
-  </div>
-  <span>Forgot <a href="#">password?</a></span>
-  <div>
-  <span>New here? <a href="#" color="blue">Sign Up now!</a></span>
+    <button type="button" class="cancelbtn" id="signUp">Sign Up</button>
+    <button type="button" class="cancelbtn" id="cancel">Cancel</button>
   </div>
 </form>
 

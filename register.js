@@ -1,27 +1,23 @@
-function register(){
-  var email = document.getElementById("email").value;
-  var pass = document.getElementById("pass").value;
-  var cpass = document.getElementById("repass").value;
-  if(email != '' && pass != '' && cpass != ''){
+$(document).ready(function(e) {
+    
+    $('#signUp').button().click(
+		function() {
+			var userEmail = $('#email').val();
+            var password = $('#pass').val();
+            var rePassword = $('#repass').val();
+            console.log(userEmail);
+            if(userEmail === '' || password ===''||rePassword===''){
+               alert("Please Confirm your input");
+            }
+            if(password !== rePassword){
+               alert("Please Confirm your Password");
+            }
+            $.post("/register",{"username":userEmail,"password":password}, function (data, status) {})
+		});
+    $('#cancel').button.click(
+   function() {
+       window.location = "home.html";
+    });
 
-    if(pass!=cpass){
-      alert("Please Confirm your Password");
-    }else{
-    try{
-      alert("Most Welcome");
-
-      // let user = await auth.createUserWithEmailAndPassword(email,pass)
-      // .then((userObj) => this.createUserObj(userObj.user, email)).catch((error) => alert(error));
-    }catch(error){
-      console.log('Login error:'+error);
-      alert(error);
-    }
-  }
-  }else {
-    alert('Wrong format of username or password!')
-  }
-}
-
-function cancel(){
-  window.location = "home.html";
-}
+	
+}); // end ready
