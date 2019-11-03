@@ -11,7 +11,7 @@ var express = require('express');
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
 
-var loginRouter = require('./routes/login');
+//var loginRouter = require('./routes/login');
 var homeRouter = require('./routes/home');
 var storeRouter = require('./routes/store');
 var cartRouter = require('./routes/cart');
