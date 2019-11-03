@@ -241,7 +241,7 @@ app.get('/', (req, res) => res.sendFile('public/login.html', { root : __dirname}
 
 app.post('/login', function (req,res){
 
-     console.log('Getting new user...');
+     console.log(req.body.username);
 
     const query = {
      text:"SELECT username,password from users where username = '"+req.body.username+"'"
