@@ -358,7 +358,7 @@ app.delete('/api/clear',urlencodedParser, async (req,res)=>{
 
 
 //******Andy DB***** PUT Request*************/
-app.put('/addToCart', function(req,res){
+app.patch('/addToCart', function(req,res){
   console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
