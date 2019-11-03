@@ -73,11 +73,11 @@ $(document).ready(function (e) {
       view(books.isbn);
     });
     if(i==0){
-      $('#column-1').append(div);
+      document.getElementById('column-1').append(div);
     } else if(i==1){
-      $('#column-2').prepend(div);
+      document.getElementById('column-2').prepend(div);
     }else{
-      $('#column-3').prepend(div);
+      document.getElementById('column-3').prepend(div);
     }
   }
 
