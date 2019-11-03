@@ -72,13 +72,12 @@ $(document).ready(function (e) {
     button.addEventListener ("click", function() {
       view(books.isbn);
     });
-    console.log(i);
     if(i==0){
-      document.getElementById("column-1").append(div);
+      $('#column-1').append(div);
     } else if(i==1){
-      document.getElementById("column-2").prepend(div);
+      $('#column-2').prepend(div);
     }else{
-      document.getElementById("column-3").prepend(div);
+      $('#column-3').prepend(div);
     }
   }
 
