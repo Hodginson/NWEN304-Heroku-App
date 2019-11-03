@@ -13,14 +13,11 @@ $(document).ready(function(e) {
                alert("Please Confirm your Password");
             }
 
-            function addToCart(isbn){
-
-
                 queryAPI('POST', '/signUp', {
                   username:userEmail,
                   password: password
                 }, function(){});
-              }
+
 
 		});
     $('#cancel').button().click(
