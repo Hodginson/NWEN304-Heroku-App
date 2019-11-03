@@ -7,7 +7,6 @@ var errorHandler = require('errorhandler')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var express = require('express');
-const bcrypt = require('bcryptjs');
 
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
@@ -19,6 +18,7 @@ var cartRouter = require('./routes/cart');
 var usersRouter = require('./routes/users');
 var checkoutRouter = require('./routes/checkout');
 
+const bcrypt = require('bcrypt');
 
 var urlencodedParser= bodyParser.urlencoded({extended: false});
 const { Pool } = require('pg');
