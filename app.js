@@ -197,9 +197,10 @@ app.post('/login', async function (req, res){
   var hashPass = "";
   try{
     const client = await pool.connect();
-    const result = await client.query(`SELECT username hashpassword FROM Users WHERE username='${uname}'`);
+    const result = await client.query(`SELECT username password FROM users WHERE username='${uname}'`);
     const results = { results: result ? result.rows : null };
     console.log("result: "+result);
+    console.log("results: "+results);
     if(results.results.length == 0 ){
       console.log("no such a user !");
       res.status(200).send(false);
