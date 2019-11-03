@@ -369,8 +369,8 @@ app.patch('/addToCart', function(req,res){
     if (err) {
       //print("Error getting books: " + err);
     } else {
-      console.log(queryResponse.rows);
-      res.status(200).send(queryResponse.rows);
+      console.log(queryResponse);
+      res.status(200).send(queryResponse);
     }
   });
 
