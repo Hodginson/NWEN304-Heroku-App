@@ -108,7 +108,7 @@ function searchFunction() {
 
   search = document.getElementById("mySearch").value;
   //queryAPI('GET', '/search', {search:mySearch}, loadBooks);
-  window.location.href = "Browse.html?=" + search;
+  window.location.href = "store.html?=" + search;
 }
 function view(title) {
   window.location.href = "Product.html?=" + title;
