@@ -8,9 +8,11 @@ $(document).ready(function(e) {
             console.log(userEmail);
             if(userEmail === '' || password ===''||rePassword===''){
                alert("Please Confirm your input");
+               
             }
             if(password !== rePassword){
                alert("Please Confirm your Password");
+
             }
 
             queryAPI('POST', '/signUp', {
