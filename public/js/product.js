@@ -54,8 +54,8 @@ function createBook(books) {
 function addToCart(isbn){
 
   console.log(isbn);
-    $.put("/api/addCart", { "isbn": isbn}, function (){});
-    //queryAPI('PATCH', '/addToCart', {"isbn":isbn}, function(){});
+    //$.put("/api/addCart", { "isbn": isbn}, function (){});
+    queryAPI('PATCH', '/addToCart', {"isbn":isbn}, function(){});
   }
 
 function queryAPI(method, path, data, callback) {
@@ -63,7 +63,7 @@ function queryAPI(method, path, data, callback) {
   $.ajax({
     method: method,
     url: 'https://nwne304-group-17.herokuapp.com' + path,
-    data: data,
+    data: parseInt(data),
     contentType: "application/json",
     dataType: "json",
     success: function (res) {
