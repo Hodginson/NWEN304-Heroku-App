@@ -7,7 +7,7 @@ var errorHandler = require('errorhandler')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var express = require('express');
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
 
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
