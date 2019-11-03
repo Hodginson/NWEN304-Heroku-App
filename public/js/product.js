@@ -55,7 +55,14 @@ function addToCart(isbn){
  var name = "zane";
   console.log(isbn);
     //$.put("/api/addCart", { "isbn": isbn}, function (){});
-    queryAPI('PUT', '/addToCart', {isbn:isbn, user:name}, function(){});
+    queryAPI('GET', '/isSignedIn', {}, function(msg){
+      if(msg != 0){
+        queryAPI('PUT', '/addToCart', {isbn:isbn, user:name}, function(){});
+      } else{
+        console.log("log in");
+      }
+    });
+
   }
 
 function queryAPI(method, path, data, callback) {
