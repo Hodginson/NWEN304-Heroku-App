@@ -330,11 +330,11 @@ app.delete('/api/clear',urlencodedParser, async (req,res)=>{
 
 
 //******Andy DB***** PUT Request*************/
-app.put('/api/products',urlencodedParser, async (req,res)=>{
+app.put('/addToCart',urlencodedParser, async (req,res)=>{
   try {
     const client = await pool.connect();
 
-    var result = await client.query('UPDATE cart_table SET item_quantity='+req.body.item_quantity+' WHERE item_id ='+req.body.item_id+';');
+    var result = await client.query("update users set cart=array_cat(cart,"+req.body.isbn+") Where username='zane';");
     if (!result) {
          return res.send("PUT Failure");
        } else {
