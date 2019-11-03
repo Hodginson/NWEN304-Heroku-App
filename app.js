@@ -190,7 +190,7 @@ app.get('/', (req, res) => res.sendFile('public/login.html', { root : __dirname}
 /* ********************************************* */
 
 //login
-app.post('/login', async function (req, res){
+/*app.post('/login', async function (req, res){
   console.log("logining now....")
   var uname = req.body.username;
   var pass = req.body.password;
@@ -237,7 +237,26 @@ app.post('/login', async function (req, res){
     console.log(err);
     res.send("Error "+err);
   }
-});
+});*/
+
+app.post('/login', function (req,res){
+
+     console.log('Getting new user...');
+
+    const query = {
+     text:"SELECT username,password from users where username = '"+req.body.username+"'"
+    }
+
+    pool.query(query, (err, queryResponse) => {
+      if (err) {
+        console.log("Error creating new user: " + err);
+      } else {
+        console.log(query);
+        res.status(201).send(queryResponse);
+      }
+    });
+
+ })
 
 // register
 app.post('/signUp', function (req,res){

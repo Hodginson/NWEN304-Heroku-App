@@ -1,6 +1,6 @@
 $(document).ready(function(e) {
 
-    $("#login").button().click(function(){
+  /*  $("#login").button().click(function(){
     var email = $('#email').val();
     var pass = $("#pass").val();
     console.log(email +" / " + pass);
@@ -12,13 +12,26 @@ $(document).ready(function(e) {
       password: pass
     }, function(){});
 
-  })
+  })*/
 
     $('#cancel').button().click(
     function() {
        window.location = "home.html";
     });
 }); // end ready
+
+function login(){
+  if(email === '' || pass ===''){
+      alert("Please Confirm your input");
+  }else{
+  queryAPI('POST', '/login', {
+    username:email,
+    password: pass
+  }, function(msg){
+    alert(msg);
+  });
+}
+}
 
 
 function queryAPI(method, path, data, callback) {
