@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<title>Login</title>
+<title>Password Reset</title>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
 <style>
   body,
@@ -63,54 +63,55 @@
   </div>
 
   <header class="w3-container w3-white w3-center" style="padding:40px 10px">
-    <h1> Long Time No See</h1>
+    <h1> Reset Password</h1>
   </header>
 
-  <!--Main NavBar ends-->
+  <form class="w3-center" method="post">
 
-  <!--Login Form Start-->
+    <div class="container center">
+        <div>
+        <label for="email"><b>Your Email:</b></label>
+        <input type="email" placeholder="Enter your email" name="email" id="email" required>
+        </div>
+    </div>
 
-  <div class="container center">
+    <div class="container center">
+        <button type="button" class="cancelbtn" id="confirm">Confirm</button>
+        <button type="button" class="cancelbtn" id="cancel">Cancel</button>
+    </div>
 
-
-    <form action="/" method="post" class = "loginForm w3-center" >
-
-      <div class="container">
-        <input type="text" placeholder="Username" name="username" required>
-
-        <input type="password" placeholder="Password" name="password" required>
-
-        <button type="submit" class = "loginButton">Login</button>
-      </div>
-
-      <div class="optContainer" style="background-color:white">
-        <span class="signUp">Not a member, <a href="signUp.html" class = "greenLink">Sign Up</a></span>
-        <span class="psw">Forgot <a href="passReset.html" class = "greenLink">password?</a></span>
-      </div>
-
-    </form>
-
+  <!-- <div class="container center">
+    <div>
+    <label for="email"><b>Username</b></label>
+    <input type="email" placeholder="Enter Username" name="email" id="email" required>
+    </div>
+    <div>
+    <label for="pass"><b>New Password</b></label>
+    <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+    </div>
+    <div>
+    <label for="cpass"><b>Confirm Password</b></label>
+    <input type="password" placeholder="Confirm Password" name="repass" id="cpass" required>
+    </div>
   </div>
 
-  <!--Login Form End-->
-  <footer class="w3-padding-40 w3-red w3-small w3-center w3-bottom" id="footer">
-      <div class="w3-row-padding">
+  <div class="container center">
+    <button type="button" class="cancelbtn" id="reset">Confirm</button>
+    <button type="button" class="cancelbtn" id="cancel">Cancel</button>
+  </div> -->
+</form>
+
+<footer class="w3-padding-40 w3-red w3-small w3-center w3-bottom" id="footer">
+    <div class="w3-row-padding">
 
 
-          <h4>shop footer</h4>
-          <p><a href="#">About us</a></p>
-          <p><a href="#">Support</a></p>
-          <p><a href="#">Payment</a></p>
-          <p><a href="#">Help</a></p>
+        <h4>shop footer</h4>
+        <p><a href="#">About us</a></p>
+        <p><a href="#">Support</a></p>
+        <p><a href="#">Payment</a></p>
+        <p><a href="#">Help</a></p>
 
-      </div>
-    </footer>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-
+    </div>
+  </footer>
+</body>
 </html>
