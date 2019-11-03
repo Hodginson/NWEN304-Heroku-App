@@ -91,7 +91,7 @@ app.post('/passwordReset', function (req,res){
 
 
 //login
-app.post('/login', async, function (req, res) {
+app.post('/login', async (req, res) {
   var email = req.body.email;
   var pass = req.body.pass;
   var id = "";
