@@ -20,7 +20,7 @@ $(document).ready(function(e) {
     });
 }); // end ready
 
-function login(){
+function loginFunction(){
   if(email === '' || pass ===''){
       alert("Please Confirm your input");
   }else{
