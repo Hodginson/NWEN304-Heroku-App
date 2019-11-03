@@ -8,6 +8,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var express = require('express');
 
+const {
+  Pool
+} = require('pg');
+
+const pool = new Pool({
+  connectionString: "postgres://tlytmbyzzcydfw:113545f7066f32de88f12a258e21e6b35647288147ebb4062332187c065ec1d4@ec2-174-129-194-188.compute-1.amazonaws.com:5432/dcadl9s1e5frsb",
+  ssl: true,
+});
+
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
 
@@ -207,7 +216,24 @@ app.get('/api/logged', async (req, res) => {
 });
 
 
- //*******(Andy DB)******GET REQUEST*********************/
+ //*******(Zane)******GET REQUEST*********************/
+
+ app.get('/book', function (req, res) {
+   console.log('Getting tasks...');
+   const query = {
+     text: "SELECT * FROM books"
+   };
+   pool.query(query, (err, queryResponse) => {
+     if (err) {
+       console.log("Error getting books: " + err);
+     } else {
+       console.log(queryResponse.rows);
+       res.status(200).send(queryResponse.rows);
+     }
+   });
+ });
+
+
 app.get('/api/products', async (req, res) => {
   try {
     const client = await pool.connect()
