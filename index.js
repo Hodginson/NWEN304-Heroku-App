@@ -37,6 +37,10 @@ app.get('/',function(req,res){
   res.render('index')
 });
 
+app.get('/browse', (req, res) => res.render('browse'));
+app.get('/login', (req, res) => res.render('login'));
+app.get('/register', (req, res) => res.render('register'));
+
 // Get all tasks.
 app.get('/book', function (req, res) {
   console.log('Getting tasks...');
