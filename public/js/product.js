@@ -47,6 +47,12 @@ function createBook(books) {
   button.addEventListener ("click", function() {
     addToCart(books.isbn);
   });
+  var buy = document.createElement('button');
+  buy.innerHTML += "Buy";
+  div.append(buy);
+  buy.addEventListener ("click", function() {
+    addToCart(books.isbn);
+  });
     $('#column-1').prepend(div);
 
 }
