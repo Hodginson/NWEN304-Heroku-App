@@ -45,20 +45,20 @@ function createBook(books) {
   button.innerHTML += "Add to cart";
   div.append(button);
   button.addEventListener ("click", function() {
-    addToCart(books);
+    addToCart(books.isbn);
   });
     $('#column-1').prepend(div);
 
 }
 
-/*function addToCart(books){
-  const isbn = books.isbn;
-  if(loggedon){
-    queryAPI('PATCH', '/add-to-cart', {
+function addToCart(isbn){
+
+
+    queryAPI('PUT', '/addToCart', {
       isbn: isbn
     }, function());
-  }
-}*/
+
+}
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
