@@ -1,7 +1,5 @@
 $(document).ready(function(e) {
 
-  queryAPI('POST', '/signUp', {}, signUp);
-
   $('#signUp').button().click(signUp());
 
   $('#cancel').button().click(
