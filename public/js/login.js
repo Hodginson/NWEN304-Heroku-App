@@ -28,6 +28,7 @@ function loginFunction(){
     username:email,
     password: pass
   }, function(msg){
+    
     alert(msg);
   });
 }
