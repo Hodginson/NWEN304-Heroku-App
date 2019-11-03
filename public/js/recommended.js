@@ -4,7 +4,7 @@ $(document).ready(function (e) {
 })
 
 function loadBooks(books) {
-
+  var i = 0;
     for (let row = 0; row < books.length; row++) {
 
       createBook(books[row],i);
