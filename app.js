@@ -307,29 +307,6 @@ app.get('/isSignedIn', async (req, res) => {
    });
  });
 
-
-app.get('/api/products', async (req, res) => {
-  try {
-    const client = await pool.connect()
-    var result = await client.query('SELECT * FROM cart_table;');
-    if (!result) {
-      return res.send('No data found');
-      }else{
-      result.rows.forEach(row=>{
-      console.log(row);
-      });
-      }
-
-  res.send(result.rows);
-  client.release();
-
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
-});
-
-
  //*******SEAN DB******GET REQUEST (item_table)*********************/
  app.get('/api/items', async (req, res) => {
   try {
