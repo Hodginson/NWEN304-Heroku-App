@@ -56,14 +56,15 @@ function addToCart(isbn){
 
     queryAPI('PUT', '/addToCart', {
       isbn: isbn
-    }, function(){});}
+    }, function(){});
+  }
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
   $.ajax({
     method: method,
     url: 'https://nwne304-group-17.herokuapp.com' + path,
-    data: JSON.stringify(data),
+    data: data,
     contentType: "application/json",
     dataType: "json",
     success: function (res) {
