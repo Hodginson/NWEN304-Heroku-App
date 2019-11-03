@@ -12,9 +12,9 @@ $(document).ready(function(e) {
             if(password !== rePassword){
                alert("Please Confirm your Password");
             }
-            $.post("/register",{"username":userEmail,"password":password}, function (data, status) {})
+            $.post("/signUp",{"username":userEmail,"password":password}, function (data, status) {})
 		});
-    $('#cancel').button.click(
+    $('#cancel').button().click(
    function() {
        window.location = "home.html";
     });

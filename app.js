@@ -189,6 +189,24 @@ app.get('/', (req, res) => res.sendFile('public/login.html', { root : __dirname}
 
 /* ********************************************* */
 
+// register
+app.post('/signUp', function (req,res){
+
+     console.log('Getting new user...');
+
+    const query = ("insert into users (username,password) values("+req.body.username+"', "+req.body.password+");");
+
+    pool.query(query, (err, queryResponse) => {
+      if (err) {
+        console.log("Error creating new user: " + err);
+      } else {
+        res.status(201).send(queryResponse.rows[0]);
+      }
+    });
+
+ })
+
+
 
 //isLoggedIn (Andy)
 app.get('/api/logged', async (req, res) => {
