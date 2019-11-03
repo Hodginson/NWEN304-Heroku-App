@@ -112,5 +112,4 @@ function searchFunction() {
 }
 function view(title) {
   window.location.href = "Product.html?=" + title;
-
 }
