@@ -21,11 +21,22 @@ var checkoutRouter = require('./routes/checkout');
 
 
 var urlencodedParser= bodyParser.urlencoded({extended: false});
-const { Pool } = require('pg');
+const {
+  Pool
+} = require('pg');
+const pool = new Pool({
+  connectionString: "postgres://hmwrrladplnxbm:52cc755255837add4d9aa96e6f7528a75d5fbbee5d16be8c01b058895f8c000e@ec2-54-235-92-244.compute-1.amazonaws.com:5432/d166o09cksv49j",
+  ssl: true,
+});
+
+pool.connect();
+
+
+/*const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
-});
+});*/
 
 
 
