@@ -37,9 +37,6 @@ app.get('/',function(req,res){
   res.render('index')
 });
 
-app.get('/browse', (req, res) => res.render('browse'));
-app.get('/login', (req, res) => res.render('Login'));
-
 // Get all tasks.
 app.get('/book', function (req, res) {
   console.log('Getting tasks...');
@@ -55,6 +52,91 @@ app.get('/book', function (req, res) {
     }
   });
 });
+
+
+// register
+app.post('/register', function (req,res){
+ 
+     console.log('Getting new user...');
+ 
+    const query = ("insert into users (username,password) values("+req.body.username+"', "+req.body.password+");");   
+    
+    pool.query(query, (err, queryResponse) => {
+      if (err) {
+        console.log("Error creating new user: " + err);
+      } else {
+        res.status(201).send(queryResponse.rows[0]);
+      }
+    });
+  
+ })
+
+
+// password reset  //need to use the user ID !!!!!!!!!!!!!!!!!!!
+app.post('/passwordReset', function (req,res){
+ 
+  console.log('Setting a new password...');
+
+ const query = ("update into users set password="+req.body.password+" where username="+req.body.username+");");   
+ 
+ pool.query(query, (err, queryResponse) => {
+   if (err) {
+     console.log("Error creating new user: " + err);
+   } else {
+     res.status(201).send(queryResponse.rows[0]);
+   }
+ });
+
+})
+
+
+//login
+app.post('/login', async, function (req, res) {
+  var email = req.body.email;
+  var pass = req.body.pass;
+  var id = "";
+  try{
+    const client = await pool.connect();
+    const result = await client.query(`SELECT UserID, username FROM Users WHERE username='${email}'`);
+    const results = { results: result ? result.rows : null };
+
+    if(results.results.length == 0 ){
+      res.status(200).send(false);
+      client.release;
+      return;
+    }
+
+    results.results.forEach(element => {
+      id = UserID;
+    })
+
+    const match = await bcrypt.compareSync(pass,(err, equal) =>{
+      if(err){
+        console.log(err);
+      } else {
+        if(equal){
+          console.log("success")
+        }else{
+          console.log("wrong Password")
+        }
+      }
+    })
+
+    if(match){
+      res.status(200).send(results);
+      client.release;
+      return;
+    }else{
+      res.status(200).send(false);
+      client.release;
+      return;
+    }
+  }catch(err){
+    console.log(err);
+    res.send("Error "+err);
+  }
+});
+
 
 app.get('/search', function (req, res) {
   const someStr = req.body.search
