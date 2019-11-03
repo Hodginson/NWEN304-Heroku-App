@@ -189,6 +189,53 @@ app.get('/', (req, res) => res.sendFile('public/login.html', { root : __dirname}
 
 /* ********************************************* */
 
+//login
+app.post('/login', async function (req, res){
+  var email = req.body.username;
+  var pass = req.body.password;
+  var hashPass = "";
+  try{
+    const client = await pool.connect();
+    const result = await client.query("SELECT username hashpassword FROM Users WHERE username='"+req.body.username+"')");
+    const results = { results: result ? result.rows : null };
+
+    if(results.results.length == 0 ){
+      res.status(200).send(false);
+      client.release;
+      return;
+    }
+
+    results.results.forEach(element => {
+      hashPass = element.hashpassword;
+    })
+
+    const match = await bcrypt.compareSync(pass,hashPass, (err, equal) =>{
+      if(err){
+        console.log(err);
+      } else {
+        if(equal){
+          console.log("success")
+        }else{
+          console.log("wrong Password")
+        }
+      }
+    })
+
+    if(match){
+      res.status(200).send(results);
+      client.release;
+      return;
+    }else{
+      res.status(200).send(false);
+      client.release;
+      return;
+    }
+  }catch(err){
+    console.log(err);
+    res.send("Error "+err);
+  }
+});
+
 // register
 app.post('/signUp', function (req,res){
 

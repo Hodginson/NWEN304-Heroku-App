@@ -69,8 +69,35 @@
 
 
   <!--Login Form Start-->
+  <form class="w3-center" method="post">
 
-  <div class="container center">
+
+    <div class="container center">
+      <div>
+      <label for="email"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="email" id="email" required>
+      </div>
+      <div>
+      <label for="pass"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+      </div>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container center">
+      <button type="button" class="submit" id="login">Login</button>
+      <button type="button" class="submit" id="cancel">cancel</button>
+
+    </div>
+    <span class="psw">Forgot <a href="passReset.html" class = "greenLink">password?</a></span>
+    <div>
+      <span class="signUp">Not a member, <a href="signUp.html" class = "greenLink">Sign Up</a></span>
+    </div>
+  </form>
+
+  <!-- <div class="container center">
 
 
     <form action="/" method="post" class = "loginForm w3-center" >
@@ -90,7 +117,7 @@
 
     </form>
 
-  </div>
+  </div> -->
 
   <!--Login Form End-->
   <footer class="w3-padding-40 w3-red w3-small w3-center w3-bottom" id="footer">
