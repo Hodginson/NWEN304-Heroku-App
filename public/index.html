@@ -48,7 +48,14 @@
           <a href="#" class="w3-bar-item w3-button">Science Books</a>
         </div>
       </div>
-      <a href="/users/login" class="w3-bar-item w3-button w3-right">Login</a>
+      <div class="w3-dropdown-hover">
+        <button class="w3-button ">Sign in</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="/login" class="w3-bar-item w3-button">Sign In</a>
+            <a href="/users/login" class="w3-bar-item w3-button">Sign in with OKTA</a>
+          </div>
+      </div>
+
       <a button onclick="searchFunction()" class="w3-bar-item w3-button w3-grey w3-right">Go</a>
       <input type="search" id="mySearch" class="w3-bar-item w3-input w3-right" placeholder="Search..">
 
