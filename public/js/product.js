@@ -54,7 +54,7 @@ function createBook(books) {
 function addToCart(isbn){
 
   console.log(isbn);
-    queryAPI('PUT', '/addToCart', isbn, function(){});
+    queryAPI('PUT', '/addToCart', {isbn:isbn}, function(){});
   }
 
 function queryAPI(method, path, data, callback) {
@@ -62,7 +62,7 @@ function queryAPI(method, path, data, callback) {
   $.ajax({
     method: method,
     url: 'https://nwne304-group-17.herokuapp.com' + path,
-    data:data,
+    data: JSON.stringify(data),
     contentType: "application/json",
     dataType: "json",
     success: function (res) {
