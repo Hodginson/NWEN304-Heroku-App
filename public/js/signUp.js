@@ -1,32 +1,36 @@
 $(document).ready(function(e) {
 
-    $('#signUp').button().click(
-		function() {
-			var userEmail = $('#email').val();
-            var password = $('#pass').val();
-            var rePassword = $('#repass').val();
-            console.log(userEmail);
-            if(userEmail === '' || password ===''||rePassword===''){
-               alert("Please Confirm your input");
-            }
-            if(password !== rePassword){
-               alert("Please Confirm your Password");
-            }
+  queryAPI('POST', '/signUp', {}, signUp);
 
-                queryAPI('POST', '/signUp', {
-                  username:userEmail,
-                  password: password
-                }, function(){});
+  $('#signUp').button().click(signUp());
 
-
-		});
-    $('#cancel').button().click(
-   function() {
-       window.location = "home.html";
-    });
-
+  $('#cancel').button().click(
+  function() {
+     window.location = "home.html";
+  });
 
 }); // end ready
+
+
+function signUp() {
+  var userEmail = $('#email').val();
+        var password = $('#pass').val();
+        var rePassword = $('#repass').val();
+        console.log(userEmail);
+        if(userEmail === '' || password ===''||rePassword===''){
+           alert("Please Confirm your input");
+        }
+        if(password !== rePassword){
+           alert("Please Confirm your Password");
+        }
+
+        queryAPI('POST', '/signUp', {
+          username:userEmail,
+          password: password
+        }, function(){});
+
+}
+
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
