@@ -338,10 +338,10 @@ app.delete('/api/items',urlencodedParser, async (req,res)=>{
 
 
   //*******Andy DB for Zihui's clear database****** Delete REQUEST (cart_table)*********************/
-app.delete('/api/clear',urlencodedParser, async (req,res)=>{
+app.put('/api/addCart',urlencodedParser, async (req,res)=>{
   try {
     const client = await pool.connect();
-    var result = await client.query('delete from cart_table;');
+    var result = await client.query('update users set cart=array_cat(cart,ARRAY['+ req.body.isbn +']) Where username=\'zane\'');
     if (!result) {
          return res.send("DELETION Failure");
        } else {

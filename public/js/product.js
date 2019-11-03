@@ -54,7 +54,8 @@ function createBook(books) {
 function addToCart(isbn){
 
   console.log(isbn);
-    queryAPI('PATCH', '/addToCart', {"isbn":isbn}, function(){});
+    $.put("/api/addCart", { "isbn": isbn}, function (){});
+    //queryAPI('PATCH', '/addToCart', {"isbn":isbn}, function(){});
   }
 
 function queryAPI(method, path, data, callback) {
