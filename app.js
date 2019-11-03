@@ -18,7 +18,7 @@ var cartRouter = require('./routes/cart');
 var usersRouter = require('./routes/users');
 var checkoutRouter = require('./routes/checkout');
 
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 
 var urlencodedParser= bodyParser.urlencoded({extended: false});
 const { Pool } = require('pg');
