@@ -1,6 +1,6 @@
 var createError = require('http-errors');
 var path = require('path');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 var session = require('express-session');
 var cors = require('cors');
 var errorHandler = require('errorhandler')
@@ -82,7 +82,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(bodyParser.json());
 app.use('/', homeRouter);
 app.use('/login', loginRouter);
 app.use('/browse', storeRouter);
@@ -369,11 +369,11 @@ app.put('/api/addCart',urlencodedParser, async (req,res)=>{
 
 
 //******Andy DB***** PUT Request*************/
-app.patch('/addToCart', function(req,res){
+app.put('/addToCart', function(req,res){
   console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
-    text: "update users set cart=array_cat(cart,ARRAY["+req.body.isbn+"]) Where username='zane'",
+    text: "UPDATE users SET cart=array_cat(cart,ARRAY["+req.body.isbn+"]) WHERE username='zane'",
 
   };
   pool.query(query, (err, queryResponse) => {
