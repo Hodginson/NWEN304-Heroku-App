@@ -30,8 +30,11 @@ function loginFunction(){
     username:email,
     password: pass
   }, function(msg){
-
-    alert(msg);
+    if(msg == '1'){
+      alert("Logged in");
+    }else{
+      alert("Not logged in");
+    }
   });
 }
 }
