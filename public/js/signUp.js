@@ -12,7 +12,16 @@ $(document).ready(function(e) {
             if(password !== rePassword){
                alert("Please Confirm your Password");
             }
-            $.post("/signUp",{"username":userEmail,"password":password}, function (data, status) {})
+
+            function addToCart(isbn){
+
+
+                queryAPI('POST', '/signUp', {
+                  username:userEmail,
+                  password: password
+                }, function(){});
+              }
+
 		});
     $('#cancel').button().click(
    function() {
@@ -21,3 +30,22 @@ $(document).ready(function(e) {
 
 
 }); // end ready
+
+function queryAPI(method, path, data, callback) {
+  console.log("Querying API");
+  $.ajax({
+    method: method,
+    url: 'https://nwne304-group-17.herokuapp.com' + path,
+    data: data,
+    contentType: "application/json",
+    dataType: "json",
+    success: function (res) {
+      console.log("API successfully queried!");
+      console.log(res);
+      callback(res);
+    },
+    error: function (res) {
+      console.log("Error")
+    }
+  });
+}
