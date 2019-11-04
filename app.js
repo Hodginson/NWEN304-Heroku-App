@@ -149,7 +149,7 @@ app.post('/login', function (req,res){
         User.findOne({ where: { username: username } }).then(function (user) {
             if (!user) {
                 res.redirect('/login');
-            } else if (!user.validPassword(password)) {
+            } else if (!bcrypt.compareSync(password, this.password) {
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
