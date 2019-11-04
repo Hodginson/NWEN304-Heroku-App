@@ -300,15 +300,13 @@ app.post('/login', function (req,res){
 //******Zane***** PUT Request*************/
 app.put('/addToCart', function(req,res){
 
-  User.findOne({ where: { id: req.body.id } }).then(function (user) {
-    console.log(user.dataValues.id);
-  })
-});
-      /*console.log('Getting tasks...');
+
+
+      console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
 
-    text: "UPDATE users SET Cart=array_cat(Cart, ARRAY["+req.body.isbn+"]) WHERE id="+req.body.id,
+    text: "UPDATE users SET cart=array_cat(cart, ARRAY["+req.body.isbn+"]) WHERE id="+req.body.id,
     //text:'update books set sold=sold+1 where isbn='+req.body.isbn
 
   };
@@ -319,8 +317,8 @@ app.put('/addToCart', function(req,res){
       console.log(queryResponse.rows);
       res.status(200).send(queryResponse.rows);
     }
-  });*/
-
+  });
+});
 
 
 app.put('/buyBook', function(req,res){
