@@ -288,8 +288,13 @@ app.post('/signUp', function (req,res){
 //isLoggedIn
 app.get('/isSignedIn', async (req, res) => {
   try {
+        if(req.session.user){
+          res.send('yasss');
+        } else{
+          res.send("noooo");
+        }
 
-       res.send(req.session.user);
+
 
       console.log();
       // Need a way to send the users email through here? Hmm
