@@ -161,27 +161,25 @@ function loginRequired(req, res, next) {
        } else {
          if(queryResponse.rows[0].password == req.body.opass){
            exsit = 1;
-
          }else{
            res.send('0');
         }
-        if(exist == 1){
-           console.log("exsit~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    
-            const query2 = {
-             text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
-            }
-            pool.query(query2, (err, queryResponse) => {
-              if(err){
-                console.log("Error resetting password 2 : " + err);
-              }else{
-               res.send('1');
-              }
-            });
-        }
        }
     });
+    if(exist == 1){
+       console.log("exsit~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
+        const query2 = {
+         text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
+        }
+        pool.query(query2, (err, queryResponse) => {
+          if(err){
+            console.log("Error resetting password 2 : " + err);
+          }else{
+           res.send('1');
+          }
+        });
+    }
     })
 
 
