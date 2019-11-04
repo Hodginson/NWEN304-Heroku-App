@@ -180,12 +180,12 @@ app.post('/login', function (req,res){
  //     });
  //
  //  })
-
+//
  //password reset function locally
- /*app.put('/passReset', function (req,res){
+ app.put('/passReset', function (req,res){
 
     console.log(req.body.username);
-
+    var exsit = 0;
      const query = {
       text:"SELECT username,password from users where username = '"+req.body.username+"'"
      }
@@ -193,27 +193,26 @@ app.post('/login', function (req,res){
      pool.query(query, (err, queryResponse) => {
        if (err) {
          console.log("Error resetting password: " + err);
+         res.send(0);
        } else {
-         console.log(queryResponse.rows[0].username + ":" + queryResponse.rows[0].password);
-         if(queryResponse.rows[0].password == req.body.password){
-           const query2 = {
-            text:"UPDATE into users set password='"+req.body.opass+"' where username = '"+req.body.username+"'"
-           }
-            pool.query(query2, (err, queryResponse) => {
-              if (err) {
-                console.log("Error resetting password 2: " + err);
-              } else {
-                 res.send('1')
-              }
-            }
-         }else{
-           res.send('0')
-         }
- //        res.status(200).send(queryResponse.rows);
+          exsit = 1;
        }
-     });
-
-  })*/
+ //        res.status(200).send(queryResponse.rows);
+    });
+      if(exsit === 1){
+        const query2 = {
+         text:"UPDATE into users set password='"+req.body.opass+"' where username = '"+req.body.username+"'"
+        }
+        pool.query(query2, (err, queryResponse) => {
+          if (err) {
+            console.log("Error resetting password 2: " + err);
+            res.send(0);
+          } else {
+             res.send('1')
+          }
+        });
+      }
+    })
 
 
 
