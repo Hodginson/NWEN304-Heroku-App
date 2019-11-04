@@ -238,7 +238,7 @@ app.get('/isSignedIn', async (req, res) => {
     }else{
       res.send("nope");
     }
-  }
+
 });
 
 
