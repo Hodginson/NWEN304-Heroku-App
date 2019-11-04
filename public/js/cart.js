@@ -64,7 +64,9 @@ function createBook(books) {
 }
 
 function buyBook(){
-  queryAPI('PUT', '/buyBook', {isbn:query}, function(){});
+  alert("Thank you for your purchase");
+  window.location.href = "store.html";
+  //queryAPI('PUT', '/buyBook', {isbn:query}, function(){});
 }
 
 
