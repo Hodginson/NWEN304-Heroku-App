@@ -178,28 +178,18 @@ app.post('/signUp', function (req,res){
      })
      .then(user => {
          req.session.user = user.dataValues;
-         res.redirect('/dashboard');
+         res.redirect('/login');
      })
      .catch(error => {
          res.redirect('/signup');
      });
-/*  const query = {
-     text:"insert into users (username,email,password) values('"+req.body.username+"', '"+req.body.password+"')"
-    }
 
-    pool.query(query, (err, queryResponse) => {
-      if (err) {
-        console.log("Error creating new user: " + err);
-      } else {
-        res.status(201).send(queryResponse);
-      }
-    });*/
 
  })
 
 
 
-//isLoggedIn 
+//isLoggedIn
 app.get('/isSignedIn', async (req, res) => {
   try {
      if(!req.user){
