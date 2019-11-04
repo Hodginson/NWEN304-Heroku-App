@@ -159,13 +159,12 @@ function loginRequired(req, res, next) {
        if (err) {
          console.log("Error resetting password: " + err);
        } else {
-
-         //if(queryResponse.rows.password == req.body.opass){
+         if(queryResponse.rows.password == req.body.opass){
            console.log(queryResponse.rows[0].password);
            res.send('1');
-        // }else{
-        //   res.send('0');
-      //   }
+         }else{
+           res.send('0');
+        }
          // if(queryResponse.rows.password == req.body.opass){
          //   const query2 = {
          //    text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
