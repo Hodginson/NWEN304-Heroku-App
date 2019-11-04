@@ -321,7 +321,6 @@ app.put('/addToCart', function(req,res){
   });
 });
 
-});
 
 app.put('/buyBook', function(req,res){
   console.log('Getting tasks...');
