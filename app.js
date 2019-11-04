@@ -147,37 +147,34 @@ function loginRequired(req, res, next) {
 //
  //password reset function locally
  app.put('/passReset', function (req,res){
-   var exsit = 0;
+
     console.log(req.body.username);
      const query = {
-      text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
-      //text: "SELECT username,password from users where username = '"+req.body.username+"'"
+      text: "SELECT username,password from users where username = '"+req.body.username+"'"
      }
 
      pool.query(query, (err, queryResponse) => {
        if (err) {
          console.log("Error resetting password: " + err);
        } else {
-         //if(queryResponse.rows.password == req.body.opass){
-           res.send('1');
-        // }else{
-        //   res.send('0');
-      //   }
+         if(queryResponse.rows.password == req.body.opass){
+           const query2 = {
+            text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
+           }
+           pool.query(query2, (err, queryResponse) => {
+             if(err){
+               console.log("Error resetting password 2 : " + err);
+             }else{
+              res.send('1');
+             }
+           });
+
+
+         }else{
+           res.send('0');
+         }
        }
     });
-
-    // if(exsit == 1){
-    //   const query2 = {
-    //    text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
-    //   }
-    //   pool.query(query2, (err, queryResponse) => {
-    //     if(err){
-    //       console.log("Error resetting password 2 : " + err);
-    //     }else{
-    //      res.send('1');
-    //     }
-    //   });
-    // }
 
     })
 
@@ -240,6 +237,22 @@ app.get('/isSignedIn', function(req, res){
    console.log('Getting tasks...');
    const query = {
      text: "SELECT * FROM books ORDER BY sold desc limit 3"
+   };
+   pool.query(query, (err, queryResponse) => {
+     if (err) {
+       console.log("Error getting books: " + err);
+     } else {
+       console.log(queryResponse.rows);
+       res.status(200).send(queryResponse.rows);
+     }
+   });
+ });
+
+
+ app.get('/getCart', function (req, res) {
+   console.log('Getting tasks...');
+   const query = {
+     text: "SELECT cart FROM users where username = '" + req.body.username + "'"
    };
    pool.query(query, (err, queryResponse) => {
      if (err) {
