@@ -7,6 +7,8 @@ $(document).ready(function (e) {
       button.style.display = "none";
       var userButton = document.getElementById("user");
       userButton.style.display = "block";
+      var logoutButton = document.getElementById("logout");
+      logoutButton.style.display = "block";
     });
     queryAPI('GET', '/book', {}, loadBooks);
 

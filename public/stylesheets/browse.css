@@ -86,6 +86,6 @@ ul {
   left: 50%;
 }
 
-#user{
+#user,#logout{
   display: none;
 }
