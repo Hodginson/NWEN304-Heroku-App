@@ -199,7 +199,7 @@ app.post('/signUp', function (req,res){
 
 
 
-//isLoggedIn (Andy)
+//isLoggedIn 
 app.get('/isSignedIn', async (req, res) => {
   try {
      if(!req.user){
