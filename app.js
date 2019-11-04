@@ -293,7 +293,7 @@ app.get('/isSignedIn', async (req, res) => {
 
       console.log();
       // Need a way to send the users email through here? Hmm
-      res.send(req.user.username); // someone currently logged in
+      //res.send(req.user.username); // someone currently logged in
       client.release();
 
   } catch (err) {
