@@ -315,7 +315,7 @@ app.get('/isSignedIn', async (req, res) => {
      if (err) {
        console.log("Error getting books: " + err);
      } else {
-       console.log(queryResponse.rows);
+       //console.log(queryResponse.rows);
        res.status(200).send(queryResponse.rows);
      }
    });
