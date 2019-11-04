@@ -265,6 +265,7 @@ app.get('/isSignedIn', function(req, res){
    });
  });
 
+//*******(Zane)******GET REQUEST*********************/
  app.get('/recommend', function (req, res) {
    console.log('Getting tasks...');
    const query = {
@@ -279,6 +280,19 @@ app.get('/isSignedIn', function(req, res){
      }
    });
  });
+
+//*******(Zane)******GET REQUEST*********************/
+ app.get('/logout', (req, res) => {
+    if (req.session.user && req.cookies.user_sid) {
+        req.session.user = null;
+        res.clearCookie('user_sid');
+        res.redirect('/');
+    } else {
+        res.redirect('/login');
+    }
+});
+
+
 
 
 
@@ -322,6 +336,7 @@ app.put('/addToCart', function(req,res){
 });
 
 
+//******Zane***** PUT Request*************/
 app.put('/buyBook', function(req,res){
   console.log('Getting tasks...');
 
