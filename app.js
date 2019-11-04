@@ -197,11 +197,14 @@ app.post('/login', function (req,res){
        } else {
            if(queryResponse.rows[0]){
                exsit = 1;
+           }else {
+             res.send(0);
            }
        }
  //        res.status(200).send(queryResponse.rows);
     });
-      if(exsit === 1){
+      if(exsit == 1){
+        console.log("user exsit !");
         const query2 = {
          text:"UPDATE into users set password='"+req.body.opass+"' where username = '"+req.body.username+"'"
         }
