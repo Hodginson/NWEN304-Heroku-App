@@ -232,8 +232,8 @@ app.post('/signUp', function (req,res){
 
 //isLoggedIn
 app.get('/isSignedIn', async (req, res) => {
-    isLoggedIn = true;
-    if(isLoggedIn){
+
+    if(loggedIn){
       res.send(req.session.user);
     }else{
       res.send("nope");
@@ -291,6 +291,7 @@ app.post('/login', function (req,res){
                 console.log(req.session.user);
                 req.session.user = user.dataValues;
                 console.log(req.session.user);
+                loggedIn = true;
                 res.send('1');
             }
           })
