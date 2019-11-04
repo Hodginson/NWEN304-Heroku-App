@@ -14,12 +14,13 @@ $(document).ready(function (e) {
     username = msg.username;
     cart = msg.cart;
     console.log("cart: " + msg.cart);
+    var url = document.URL;
+    var queryStart = url.indexOf("=");
+    var queryEnd = url.length + 1;
+    query = url.slice(queryStart + 1, queryEnd - 1);
+    queryAPI('GET', '/book', {}, setupFunction);
   });
-  var url = document.URL;
-  var queryStart = url.indexOf("=");
-  var queryEnd = url.length + 1;
-  query = url.slice(queryStart + 1, queryEnd - 1);
-  queryAPI('GET', '/book', {}, setupFunction);
+
 
 
 })
