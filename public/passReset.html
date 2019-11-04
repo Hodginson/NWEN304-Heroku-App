@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/passReset.js"></script>
 
 <style>
   body,
@@ -68,7 +71,7 @@
 
   <form class="w3-center" method="post">
 
-    <div class="container center">
+    <!-- <div class="container center">
         <div>
         <label for="email"><b>Your Email:</b></label>
         <input type="email" placeholder="Enter your email" name="email" id="email" required>
@@ -76,29 +79,33 @@
     </div>
 
     <div class="container center">
-        <button type="button" class="cancelbtn" id="confirm">Confirm</button>
+        <button type="button" class="cancelbtn" onclick="resetFunction()" id="confirm">Confirm</button>
         <button type="button" class="cancelbtn" id="cancel">Cancel</button>
-    </div>
+    </div> -->
 
-  <!-- <div class="container center">
+  <div class="container center">
     <div>
     <label for="email"><b>Username</b></label>
     <input type="email" placeholder="Enter Username" name="email" id="email" required>
     </div>
     <div>
-    <label for="pass"><b>New Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+    <label for="pass"><b>Origin Password</b></label>
+    <input type="password" placeholder="Enter Origin Password" name="pass" id="opass" required>
     </div>
     <div>
-    <label for="cpass"><b>Confirm Password</b></label>
-    <input type="password" placeholder="Confirm Password" name="repass" id="cpass" required>
+    <label for="pass"><b>New Password</b></label>
+    <input type="password" placeholder="Enter New Password" name="pass" id="pass" required>
+    </div>
+    <div>
+    <label for="cpass"><b>Confirm New Password</b></label>
+    <input type="password" placeholder="Confirm New Password" name="cpass" id="cpass" required>
     </div>
   </div>
 
   <div class="container center">
-    <button type="button" class="cancelbtn" id="reset">Confirm</button>
+    <button type="button" class="cancelbtn" onclick="resetFunction()" id="reset">Confirm</button>
     <button type="button" class="cancelbtn" id="cancel">Cancel</button>
-  </div> -->
+  </div>
 </form>
 
 <footer class="w3-padding-40 w3-red w3-small w3-center w3-bottom" id="footer">

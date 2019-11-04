@@ -143,6 +143,7 @@ function loginRequired(req, res, next) {
 
 
 
+//login function :
 app.post('/login', function (req,res){
   var username = req.body.username,
         password = req.body.password;
@@ -164,7 +165,7 @@ app.post('/login', function (req,res){
 
     pool.query(query, (err, queryResponse) => {
       if (err) {
-        console.log("Error creating new user: " + err);
+        console.log("Error login: " + err);
       } else {
         console.log(queryResponse.rows[0].username + ":" + queryResponse.rows[0].password);
         if(queryResponse.rows[0].password == req.body.password){
@@ -177,6 +178,64 @@ app.post('/login', function (req,res){
   //});
 
  })
+
+
+ // //reset password with email function :
+ // app.get('/passReset', function (req,res){
+ //
+ //    console.log(req.body.userEmail);
+ //
+ //     const query = {
+ //      text:"SELECT username,email from users where email = '"+req.body.userEmail+"'"
+ //     }
+ //
+ //     pool.query(query, (err, queryResponse) => {
+ //       if (err) {
+ //         console.log("User doesn't exsit " + err);
+ //         res.send(0);
+ //       } else {
+ //
+ //       }
+ //     });
+ //
+ //  })
+
+ //password reset function locally
+ app.put('/passReset', function (req,res){
+
+    console.log(req.body.username);
+
+     const query = {
+      text:"SELECT username,password from users where username = '"+req.body.username+"'"
+     }
+
+     pool.query(query, (err, queryResponse) => {
+       if (err) {
+         console.log("Error resetting password: " + err);
+       } else {
+         console.log(queryResponse.rows[0].username + ":" + queryResponse.rows[0].password);
+         if(queryResponse.rows[0].password == req.body.password){
+           const query2 = {
+            text:"UPDATE into users set password='"+req.body.opass+"' where username = '"+req.body.username+"'"
+           }
+            pool.query(query2, (err, queryResponse) => {
+              if (err) {
+                console.log("Error resetting password 2: " + err);
+              } else {
+                 res.send('1')
+              }
+            }
+         }else{
+           res.send('0')
+         }
+ //        res.status(200).send(queryResponse.rows);
+       }
+     });
+
+  })
+
+
+
 
 // register
 app.post('/signUp', function (req,res){
