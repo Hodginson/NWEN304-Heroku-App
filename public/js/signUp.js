@@ -36,7 +36,7 @@ function signUpFunction(){
   var password = $('#pass').val();
   var rePassword = $('#repass').val();
 
-  if(userEmail === '' || password ===''||rePassword===''){
+  if(username === '' || email ==='' || password ===''||rePassword===''){
        alert("Please Confirm your input");
 
   }else if(password !== rePassword){
