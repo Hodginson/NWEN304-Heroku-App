@@ -186,7 +186,8 @@ function loginRequired(req, res, next) {
          console.log("Error resetting password: " + err);
          res.send(0);
        } else {
-         console.log(queryResponse.rows.username + ":" + queryResponse.rows.password);
+          console.log("response!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+queryResponse.rows);
+         //console.log(queryResponse.rows.username + ":" + queryResponse.rows.password);
          if(typeof queryResponse.rows.username != 'undefined' && queryResponse.rows.password == req.body.opass){
            console.log("success");
 //exsit = 1;
