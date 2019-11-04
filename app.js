@@ -144,8 +144,19 @@ function loginRequired(req, res, next) {
 
 
 app.post('/login', function (req,res){
-
-     console.log(req.body.username);
+  var username = req.body.username,
+        password = req.body.password;
+        User.findOne({ where: { username: username } }).then(function (user) {
+            if (!user) {
+                res.redirect('/login');
+            } else if (!user.validPassword(password)) {
+                res.redirect('/login');
+            } else {
+                req.session.user = user.dataValues;
+                res.redirect('/store');
+            }
+          })
+     /*console.log(req.body.username);
 
     const query = {
      text:"SELECT username,password from users where username = '"+req.body.username+"'"
@@ -160,10 +171,10 @@ app.post('/login', function (req,res){
           res.send('1')
         }else{
           res.send('0')
-        }
+        }*/
 //        res.status(200).send(queryResponse.rows);
-      }
-    });
+  //    }
+  //});
 
  })
 
