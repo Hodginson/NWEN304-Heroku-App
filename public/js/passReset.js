@@ -78,7 +78,7 @@ function queryAPI(method, path, data, callback) {
       callback(res);
     },
     error: function (res) {
-      console.log("Error")
+      console.log("Error:"+res);
     }
   });
 }
