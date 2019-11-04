@@ -45,11 +45,10 @@ var User = sequelize.define('users', {
       }
     }
 
-
-      User.prototype.validPassword= function(password) {
-        return bcrypt.compareSync(password, this.password);
-      }
-
+      //prototype.validPassword= function(password) {
+      //  return bcrypt.compareSync(password, this.password);
+    //  }
+  }
 });
 
 // create all the defined tables in the specified database.
