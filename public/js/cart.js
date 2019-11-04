@@ -27,7 +27,8 @@ $(document).ready(function (e) {
 })
 
 function setupFunction(books) {
-var split = cart.split(',');
+  var x = cart.toString();
+var split = x.split(',');
 console.log("may:" + split)
 for(let j = 0; j<cart.length;j++){
   for (let row = 0; row < books.length; row++) {
