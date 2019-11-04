@@ -12,7 +12,7 @@ $(document).ready(function (e) {
     logoutButton.style.display = "block";
     username = msg.username;
     cart = msg.cart;
-    console.log("cart: " + cart);
+    console.log("cart: " + msg.cart);
   });
   var url = document.URL;
   var queryStart = url.indexOf("=");
