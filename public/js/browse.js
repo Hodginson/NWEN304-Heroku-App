@@ -5,7 +5,7 @@ $(document).ready(function (e) {
     queryAPI('GET', '/isSignedIn', {}, function(msg){
       var button = document.getElementById("sign");
       button.style.display = "none";
-      var userButton = document.getElementById("sign");
+      var userButton = document.getElementById("user");
       userButton.style.display = "block";
     });
     queryAPI('GET', '/book', {}, loadBooks);
