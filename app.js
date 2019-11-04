@@ -97,7 +97,7 @@ function sessionChecker (req, res, next){
     }
 };
 
-app.use(oidc.router);
+/*app.use(oidc.router);
 
 app.use((req, res, next) => {
   if (!req.userinfo) {
@@ -112,7 +112,7 @@ app.use((req, res, next) => {
     }).catch(err => {
       next(err);
     });
-});
+});*/
 
 function loginRequired(req, res, next) {
   if (!req.user) {
@@ -223,7 +223,7 @@ app.post('/login', function (req,res){
 
 
 // register
-app.post('/signUp', function (req,res){
+/*app.post('/signUp', function (req,res){
 
      console.log('Getting new user...');
      User.create({
@@ -240,8 +240,25 @@ app.post('/signUp', function (req,res){
      });
 
 
- })
-
+ })*/
+ app.route('/signup')
+     .get(sessionChecker, (req, res) => {
+         res.sendFile(__dirname + '/public/signup.html');
+     })
+     .post((req, res) => {
+         User.create({
+             username: req.body.username,
+             email: req.body.email,
+             password: req.body.password
+         })
+         .then(user => {
+             req.session.user = user.dataValues;
+             res.redirect('/store');
+         })
+         .catch(error => {
+             res.redirect('/signup');
+         });
+     });
 
 
 //isLoggedIn
