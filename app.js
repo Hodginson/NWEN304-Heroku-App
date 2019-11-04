@@ -188,7 +188,7 @@ function loginRequired(req, res, next) {
            const query2 = {
             text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
            }
-           pool.query(query, (err, queryResponse) => {
+           pool.query(query2, (err, queryResponse) => {
              if(err){
                console.log("Error resetting password 2 : " + err);
              }else{
