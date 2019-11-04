@@ -29,7 +29,7 @@ $(document).ready(function (e) {
 function setupFunction(books) {
   var x = cart.toString();
 var split = x.split(',');
-console.log("may:" + split)
+console.log("may:" + split[1]);
 for(let j = 0; j<cart.length;j++){
   for (let row = 0; row < books.length; row++) {
 
