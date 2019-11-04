@@ -154,9 +154,9 @@ app.post('/login', function (req,res){
             } else if (!user.validPassword(password)) {
                 res.send('0');
             } else {
-                console.logs(req.session.user);
+                console.log(req.session.user);
                 req.session.user = user.dataValues;
-                console.logs("req.session.user");
+                console.log("req.session.user");
                 res.send('1');
             }
           })
