@@ -21,17 +21,6 @@ var checkoutRouter = require('./routes/checkout');
 var loggedIn = false;
 // const bcrypt = require('bcrypt');
 
-//pass reset
-var favicon = require('static-favicon');
-
-var mongoose = require('mongoose');
-var nodemailer = require('nodemailer');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require('bcrypt-nodejs');
-var async = require('async');
-var crypto = require('crypto');
-
 var urlencodedParser= bodyParser.urlencoded({extended: false});
 const { Pool } = require('pg');
 const pool = new Pool({
