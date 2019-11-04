@@ -91,33 +91,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// middleware function to check for logged-in users
-function sessionChecker (req, res, next){
-    if (req.session.user && req.cookies.user_sid) {
-        res.redirect('/dashboard');
-    } else {
-        next();
-    }
-};
-
-
-
-/*app.use(oidc.router);
-
-app.use((req, res, next) => {
-  if (!req.userinfo) {
-    return next();
-  }
-
-  oktaClient.getUser(req.userinfo.sub)
-    .then(user => {
-      req.user = user;
-      res.locals.user = user;
-      next();
-    }).catch(err => {
-      next(err);
-    });
-});*/
 
 function loginRequired(req, res, next) {
   if (!req.user) {
