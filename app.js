@@ -65,7 +65,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRouter);
-//app.use('/login', loginRouter);
+app.use('/login', loginRouter);
 app.use('/browse', storeRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
@@ -124,7 +124,7 @@ function loginRequired(req, res, next) {
 
 
 
-app.route('/login')
+app.get('/login')
     .get(sessionChecker, (req, res) => {
         app.use('/login', loginRouter)
     })
