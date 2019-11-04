@@ -231,7 +231,7 @@ app.post('/signUp', function (req,res){
  })
 
 //isLoggedIn
-app.get('/isSignedIn', async (req, res) => {
+app.get('/isSignedIn', function(req, res){
 
     if(loggedIn){
       res.send(req.session.user);
