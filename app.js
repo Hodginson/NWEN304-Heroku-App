@@ -215,6 +215,7 @@ app.get('/login')
          res.send(0);
        } else {
            if(queryResponse != undefined){
+             console.log("user exsit !");
              //console.log("qr:  "+queryResponse.rows[0].username);
                exsit = 1;
            }else {
