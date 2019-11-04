@@ -35,7 +35,7 @@ function resetFunction(){
   }, function(msg){
     if(msg == '1'){
       alert("You password has been reset!");
-      window.location = "home.html";
+      window.location = "index.html";
     }else{
       alert("Password reset failed!");
     }
