@@ -51,7 +51,7 @@ function createBook(books) {
   var para = document.createElement("p");
   var a = document.createElement('a');
   a.innerHTML += books.title;
-  a.href = "product.html?=" + books.isbn;
+  a.href = "Product.html?=" + books.isbn;
   para.append(a);
   var span = document.createElement('span');
   span.className = "price";
