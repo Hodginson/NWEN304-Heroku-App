@@ -32,7 +32,7 @@ function loginFunction(){
   }, function(msg){
     if(msg == '1'){
       alert("Logged in");
-      window.location = "home.html";
+      window.location.href= "home.html";
     }else{
       alert("Login failed");
     }
