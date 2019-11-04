@@ -50,7 +50,7 @@ var User = sequelize.define('users', {
     //}
 });
 
-User.prototype.validPassword: function(password) {
+User.prototype.validPassword= function(password) {
   return bcrypt.compareSync(password, this.password);
 }//
 
