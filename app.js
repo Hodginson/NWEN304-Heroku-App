@@ -150,36 +150,38 @@ function loginRequired(req, res, next) {
     var exsit = 0;
     console.log(req.body.username);
      const query = {
-      //text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
+      text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"' and password = '"+ req.body.opass+"'"
 
-      text: "SELECT username,password from users where username = '"+req.body.username+"'"
+      //text: "SELECT username,password from users where username = '"+req.body.username+"'"
      }
 
      pool.query(query, (err, queryResponse) => {
        if (err) {
          console.log("Error resetting password: " + err);
+         res.send('0')
        } else {
-         if(queryResponse.rows[0].password == req.body.opass){
-           exsit = 1;
-         }else{
-           res.send('0');
-        }
+         res.send('1');
+        //  if(queryResponse.rows[0].password == req.body.opass){
+        //    exsit = 1;
+        //  }else{
+        //    res.send('0');
+        // }
        }
     });
-    if(exist == 1){
-       console.log("exsit~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
-        const query2 = {
-         text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
-        }
-        pool.query(query2, (err, queryResponse) => {
-          if(err){
-            console.log("Error resetting password 2 : " + err);
-          }else{
-           res.send('1');
-          }
-        });
-    }
+    // if(exist == 1){
+    //    console.log("exsit~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    //
+    //     const query2 = {
+    //      text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
+    //     }
+    //     pool.query(query2, (err, queryResponse) => {
+    //       if(err){
+    //         console.log("Error resetting password 2 : " + err);
+    //       }else{
+    //        res.send('1');
+    //       }
+    //     });
+    // }
     })
 
 
