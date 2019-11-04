@@ -1,5 +1,13 @@
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
+  queryAPI('GET', '/isSignedIn', {}, function(msg){
+    var button = document.getElementById("sign");
+    button.style.display = "none";
+    var userButton = document.getElementById("user");
+    userButton.style.display = "block";
+    var logoutButton = document.getElementById("logout");
+    logoutButton.style.display = "block";
+  });
     queryAPI('GET', '/recommend', {}, loadBooks);
 })
 
