@@ -176,7 +176,7 @@ app.route('/login')
   //    }
   //});
 
- })
+ //})
 
 
  // //reset password with email function :
