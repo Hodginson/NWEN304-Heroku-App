@@ -271,10 +271,11 @@ app.get('/isSignedIn', function(req, res){
 
 //*******(Zane)******GET REQUEST*********************/
  app.get('/logout', (req, res) => {
-    if (req.session.user && req.cookies.user_sid) {
+    if (loggedIn) {
         req.session.user = null;
         res.clearCookie('user_sid');
-        res.redirect('/');
+        loggedIn = false;
+        //res.redirect('/');
     } else {
         res.redirect('/login');
     }
