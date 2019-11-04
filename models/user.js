@@ -24,7 +24,7 @@ var User = sequelize.define('users', {
         type: Sequelize.ARRAY(Sequelize.BIGINT),
         allowNull: true
     },
-    Cart: {
+    cart: {
         type: Sequelize.ARRAY(Sequelize.BIGINT),
         allowNull: true
     },
@@ -46,7 +46,7 @@ var User = sequelize.define('users', {
     },
     //instanceMethods: {
     //User.prototype.validPassword;
-    
+
     //}
 });
 
