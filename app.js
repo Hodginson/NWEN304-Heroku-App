@@ -192,8 +192,8 @@ function loginRequired(req, res, next) {
            console.log("success");
 //exsit = 1;
          }else {
-             res.send(0);*/
-         }
+             res.send(0);
+         }*/
        }
  //        res.status(200).send(queryResponse.rows);
     });
