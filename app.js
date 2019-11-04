@@ -18,7 +18,7 @@ var storeRouter = require('./routes/store');
 var cartRouter = require('./routes/cart');
 var usersRouter = require('./routes/users');
 var checkoutRouter = require('./routes/checkout');
-
+var loggedIn = false;
 // const bcrypt = require('bcrypt');
 
 var urlencodedParser= bodyParser.urlencoded({extended: false});
@@ -123,44 +123,8 @@ function loginRequired(req, res, next) {
 }
 
 
+//*******(Zane)******(old login)Put REQUEST*********************/
 
-/*app.route('/login')
-    .get(sessionChecker, (req, res) => {
-        app.use('/login', loginRouter)
-    })
-    .post((req, res) => {
-        var username = req.body.username,
-            password = req.body.password;
-
-        User.findOne({ where: { username: username } }).then(function (user) {
-            if (!user) {
-                res.redirect('/login');
-            } else if (!user.validPassword(password)) {
-                res.redirect('/login');
-            } else {
-                req.session.user = user.dataValues;
-                co
-                res.redirect('/dashboard');
-            }
-        });
-    });*/
-//login function :
-app.post('/login', function (req,res){
-  var username = req.body.username,
-        password = req.body.password;
-        User.findOne({ where: { username: username } }).then(function (user) {
-            if (!user) {
-                res.send('0');
-            } else if (!user.validPassword(password)) {
-                res.send('0');
-            } else {
-                console.log(req.session.user);
-                req.session.user = user.dataValues;
-                console.log(req.session.user);
-                res.send('1');
-            }
-          })
-      })
      /*console.log(req.body.username);
 
     const query = {
@@ -265,38 +229,15 @@ app.post('/signUp', function (req,res){
 
 
  })
- /*app.route('/signup')
-     .get(sessionChecker, (req, res) => {
-         res.sendFile(__dirname + '/public/signup.html');
-     })
-     .post((req, res) => {
-         User.create({
-             username: req.body.username,
-             email: req.body.email,
-             password: req.body.password
-         })
-         .then(user => {
-             req.session.user = user.dataValues;
-             res.redirect('/store');
-         })
-         .catch(error => {
-             res.redirect('/signup');
-         });
-     });*/
-
 
 //isLoggedIn
 app.get('/isSignedIn', async (req, res) => {
-  try {
-          res.send(req.user.id);
-      console.log();
-      // Need a way to send the users email through here? Hmm
-      //res.send(req.user.username); // someone currently logged in
-      //client.release();
-
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
+    isLoggedIn = true;
+    if(isLoggedIn){
+      res.send(req.session.user);
+    }else{
+      res.send("nope");
+    }
   }
 });
 
@@ -336,6 +277,24 @@ app.get('/isSignedIn', async (req, res) => {
  });
 
 
+
+//******Zane***** POST Request*************/
+app.post('/login', function (req,res){
+  var username = req.body.username,
+        password = req.body.password;
+        User.findOne({ where: { username: username } }).then(function (user) {
+            if (!user) {
+                res.send('0');
+            } else if (!user.validPassword(password)) {
+                res.send('0');
+            } else {
+                console.log(req.session.user);
+                req.session.user = user.dataValues;
+                console.log(req.session.user);
+                res.send('1');
+            }
+          })
+      })
 
 //******Zane***** PUT Request*************/
 app.put('/addToCart', function(req,res){
