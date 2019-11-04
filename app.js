@@ -64,7 +64,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homeRouter);
-app.use('/login', loginRouter);
+//app.use('/login', loginRouter);
 app.use('/browse', storeRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
@@ -123,9 +123,27 @@ function loginRequired(req, res, next) {
 
 
 
+app.route('/login')
+    .get(sessionChecker, (req, res) => {
+        res.sendFile(__dirname + '../public/login.html');
+    })
+    .post((req, res) => {
+        var username = req.body.username,
+            password = req.body.password;
 
+        User.findOne({ where: { username: username } }).then(function (user) {
+            if (!user) {
+                res.redirect('/login');
+            } else if (!user.validPassword(password)) {
+                res.redirect('/login');
+            } else {
+                req.session.user = user.dataValues;
+                res.redirect('/dashboard');
+            }
+        });
+    });
 //login function :
-app.post('/login', function (req,res){
+/*app.post('/login', function (req,res){
   var username = req.body.username,
         password = req.body.password;
         User.findOne({ where: { username: username } }).then(function (user) {
@@ -137,7 +155,7 @@ app.post('/login', function (req,res){
                 req.session.user = user.dataValues;
                 res.send('1');
             }
-          })
+          })*/
      /*console.log(req.body.username);
 
     const query = {
