@@ -7,7 +7,7 @@ var errorHandler = require('errorhandler')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var express = require('express');
-var User = require('./models/Users');
+var User = require('./models/user');
 
 var okta = require("@okta/okta-sdk-nodejs");
 var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
@@ -147,9 +147,9 @@ app.post('/login', function (req,res){
   var username = req.body.username,
         password = req.body.password;
         User.findOne({ where: { username: username } }).then(function (user) {
-            if (!Users) {
+            if (!user) {
                 res.redirect('/login');
-            } else if (!Users.validPassword(password)) {
+            } else if (!user.validPassword(password)) {
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
@@ -187,8 +187,8 @@ app.post('/signUp', function (req,res){
          email: req.body.email,
          password: req.body.password
      })
-     .then(Users => {
-         req.session.user = Users.dataValues;
+     .then(user => {
+         req.session.user = user.dataValues;
          res.redirect('/login');
      })
      .catch(error => {
