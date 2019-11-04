@@ -130,12 +130,12 @@ app.post('/login', function (req,res){
         password = req.body.password;
         User.findOne({ where: { username: username } }).then(function (user) {
             if (!user) {
-                res.redirect(storeRouter);
+                res.redirect('./routes/store');
             } else if (!user.validPassword(password)) {
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
-                res.redirect(storeRouter);
+                res.redirect('./routes/store');
             }
           })
      /*console.log(req.body.username);
