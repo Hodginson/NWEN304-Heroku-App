@@ -184,15 +184,15 @@ function loginRequired(req, res, next) {
      pool.query(query, (err, queryResponse) => {
        if (err) {
          console.log("Error resetting password: " + err);
-         res.send(0);
+        // res.send(0);
        } else {
           console.log("response!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+queryResponse.rows);
          //console.log(queryResponse.rows.username + ":" + queryResponse.rows.password);
-         if(typeof queryResponse.rows.username != 'undefined' && queryResponse.rows.password == req.body.opass){
+        /* if(typeof queryResponse.rows.username != 'undefined' && queryResponse.rows.password == req.body.opass){
            console.log("success");
 //exsit = 1;
          }else {
-             res.send(0);
+             res.send(0);*/
          }
        }
  //        res.status(200).send(queryResponse.rows);
