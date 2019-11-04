@@ -1,6 +1,7 @@
 var username;
 var query;
 var cart;
+var price;
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
   queryAPI('GET', '/isSignedIn', {}, function(msg){
@@ -18,9 +19,6 @@ $(document).ready(function (e) {
   var queryStart = url.indexOf("=");
   var queryEnd = url.length + 1;
   query = url.slice(queryStart + 1, queryEnd - 1);
-  queryAPI('GET', '/getCart', {username:username}, function(msg){
-    console.log(msg);
-  });
   queryAPI('GET', '/book', {}, setupFunction);
 
 
@@ -36,6 +34,7 @@ for(let j = 0; j<split.length;j++){
 
     console.log(books[row].isbn + ": Cart: " + s);
     if(books[row].isbn == s){
+    price += books[row].price;
     createBook(books[row]);
     }
 
@@ -58,6 +57,8 @@ function createBook(books) {
   span.innerHTML = "    $" + books.price;
   para.append(span);
     $('#products').prepend(para);
+    var price = document.getElementById("price")
+    price.innerHTML = "$" + price;
 
 }
 
