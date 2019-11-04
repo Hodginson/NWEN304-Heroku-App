@@ -147,7 +147,6 @@ function loginRequired(req, res, next) {
 //
  //password reset function locally
  app.put('/passReset', function (req,res){
-    var exsit = 0;
     console.log(req.body.username);
      const query = {
       text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"' and password = '"+ req.body.opass+"'"
@@ -158,13 +157,14 @@ function loginRequired(req, res, next) {
      pool.query(query, (err, queryResponse) => {
        if (err) {
          console.log("Error resetting password: " + err);
-         res.send('0')
        } else {
-         if(queryResponse.rows[0].password == req.body.opass){
-           res.send('1');
-         }else{
-           res.send('0');
-        }
+         res.send('1');
+        //  if(queryResponse.rows[0].password == req.body.opass){
+        //      console.log("-----------------------------"+queryResponse.rows[0].password);
+        //    res.send('1');
+        //  }else{
+        //    res.send('0');
+        // }
        }
     });
     // if(exist == 1){
