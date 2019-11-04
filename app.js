@@ -301,7 +301,7 @@ app.post('/login', function (req,res){
 app.put('/addToCart', function(req,res){
 
   User.findOne({ where: { id: req.body.id } }).then(function (user) {
-    console.log(user.dataValues);
+    console.log(user.dataValues.id);
   })
 });
       /*console.log('Getting tasks...');
