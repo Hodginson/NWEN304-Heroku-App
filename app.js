@@ -126,7 +126,7 @@ function loginRequired(req, res, next) {
 
 app.route('/login')
     .get(sessionChecker, (req, res) => {
-        res.render(loginRouter);
+        app.use('/login', loginRouter)
     })
     .post((req, res) => {
         var username = req.body.username,
