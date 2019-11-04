@@ -29,7 +29,7 @@ function setupFunction(books) {
 for(let j = 0; j<cart.length;j++){
   for (let row = 0; row < books.length; row++) {
 
-    //console.log(tasks[row]);
+    console.log(tasks[row] + ": Cart: " + cart[j].isbn);
     if(books[row].isbn == cart[j].isbn){
     createBook(books[row]);
     }
