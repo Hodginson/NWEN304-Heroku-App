@@ -147,9 +147,9 @@ app.post('/login', function (req,res){
   var username = req.body.username,
         password = req.body.password;
         User.findOne({ where: { username: username } }).then(function (user) {
-            if (!user) {
+            if (!users) {
                 res.redirect('/login');
-            } else if (!user.validPassword(password)) {
+            } else if (!users.validPassword(password)) {
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
@@ -187,8 +187,8 @@ app.post('/signUp', function (req,res){
          email: req.body.email,
          password: req.body.password
      })
-     .then(user => {
-         req.session.user = user.dataValues;
+     .then(Users => {
+         req.session.user = Users.dataValues;
          res.redirect('/login');
      })
      .catch(error => {
