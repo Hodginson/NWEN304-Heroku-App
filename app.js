@@ -21,17 +21,6 @@ var checkoutRouter = require('./routes/checkout');
 var loggedIn = false;
 // const bcrypt = require('bcrypt');
 
-//pass reset
-var favicon = require('static-favicon');
-
-var mongoose = require('mongoose');
-var nodemailer = require('nodemailer');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require('bcrypt-nodejs');
-var async = require('async');
-var crypto = require('crypto');
-///end
 
 var urlencodedParser= bodyParser.urlencoded({extended: false});
 const { Pool } = require('pg');
@@ -63,9 +52,7 @@ const oidc = new ExpressOIDC({
   }
 });
 var app = express();
-//pass resetting
-mongoose.connect('mongodb://demo:demo@ds027759.mongolab.com:27759/demo');
-//end
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -77,14 +64,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
-//pass reset
-app.use(favicon());
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(session({ secret: 'session secret key' }));
-app.use(passport.initialize());
-app.use(passport.session());
-//end
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -122,56 +102,6 @@ function sessionChecker (req, res, next){
     }
 };
 
-//pass reset
-var userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  resetPasswordToken: String,
-  resetPasswordExpires: Date
-});
-
-
-userSchema.pre('save', function(next) {
-  var user = this;
-  var SALT_FACTOR = 5;
-
-  if (!user.isModified('password')) return next();
-
-  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
-    if (err) return next(err);
-
-    bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) return next(err);
-      user.password = hash;
-      next();
-    });
-  });
-});
-
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) return cb(err);
-    cb(null, isMatch);
-  });
-};
-
-var User = mongoose.model('User', userSchema);
-
-passport.use(new LocalStrategy(function(username, password, done) {
-  User.findOne({ username: username }, function(err, user) {
-    if (err) return done(err);
-    if (!user) return done(null, false, { message: 'Incorrect username.' });
-    user.comparePassword(password, function(err, isMatch) {
-      if (isMatch) {
-        return done(null, user);
-      } else {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-    });
-  });
-}));
-//end
 
 
 /*app.use(oidc.router);
@@ -375,12 +305,7 @@ app.post('/login', function (req,res){
 
 //******Zane***** PUT Request*************/
 app.put('/addToCart', function(req,res){
-
-  User.findOne({ where: { id: req.body.id } }).then(function (user) {
-    console.log(user.dataValues.id);
-  })
-});
-      /*console.log('Getting tasks...');
+  console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
 
@@ -395,9 +320,9 @@ app.put('/addToCart', function(req,res){
       console.log(queryResponse.rows);
       res.status(200).send(queryResponse.rows);
     }
-  });*/
+  });
 
-
+});
 
 app.put('/buyBook', function(req,res){
   console.log('Getting tasks...');
