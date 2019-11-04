@@ -22,7 +22,19 @@ var User = sequelize.define('users', {
     },
     productsViewed: {
         type: Sequelize.ARRAY(Sequelize.BIGINT),
-        allowNull: false
+        allowNull: true
+    },
+    Cart: {
+        type: Sequelize.ARRAY(Sequelize.BIGINT),
+        allowNull: true
+    },
+    purchases: {
+        type: Sequelize.ARRAY(Sequelize.BIGINT),
+        allowNull: true
+    },
+    purchases: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true
     }
 
 }, {
