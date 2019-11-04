@@ -147,9 +147,9 @@ app.post('/login', function (req,res){
   var username = req.body.username,
         password = req.body.password;
         User.findOne({ where: { username: username } }).then(function (user) {
-            if (!users) {
+            if (!Users) {
                 res.redirect('/login');
-            } else if (!users.validPassword(password)) {
+            } else if (!Users.validPassword(password)) {
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
