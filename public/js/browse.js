@@ -4,7 +4,7 @@ $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
     queryAPI('GET', '/isSignedIn', {}, function(msg){
       var button = getElementById("sign");
-      button.style.display = "none";
+      button = document.style.display = "none";
     });
     queryAPI('GET', '/book', {}, loadBooks);
 
