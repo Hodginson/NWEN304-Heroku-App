@@ -195,7 +195,9 @@ app.post('/login', function (req,res){
          console.log("Error resetting password: " + err);
          res.send(0);
        } else {
-          exsit = 1;
+           if(queryResponse.rows[0]){
+               exsit = 1;
+           }
        }
  //        res.status(200).send(queryResponse.rows);
     });
