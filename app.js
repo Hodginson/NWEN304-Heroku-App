@@ -160,12 +160,11 @@ function loginRequired(req, res, next) {
          console.log("Error resetting password: " + err);
          res.send('0')
        } else {
-         res.send('1');
-        //  if(queryResponse.rows[0].password == req.body.opass){
-        //    exsit = 1;
-        //  }else{
-        //    res.send('0');
-        // }
+         if(queryResponse.rows[0].password == req.body.opass){
+           res.send('1');
+         }else{
+           res.send('0');
+        }
        }
     });
     // if(exist == 1){
