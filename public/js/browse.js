@@ -90,7 +90,7 @@ $(document).ready(function (e) {
   	return /^\w+$/.test(word);
   }
 
-  function() logoutFunction(){
+  function logoutFunction(){
     queryAPI('GET', '/logout', {}, function(msg){
       alert('you have logged out');
       window.location.href = "store.html";
