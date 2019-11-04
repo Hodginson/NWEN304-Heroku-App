@@ -11,13 +11,15 @@ $(document).ready(function (e) {
     var logoutButton = document.getElementById("logout");
     logoutButton.style.display = "block";
     username = msg.username;
+    cart = msg.cart;
+    console.log("cart: " + cart);
   });
   var url = document.URL;
   var queryStart = url.indexOf("=");
   var queryEnd = url.length + 1;
   query = url.slice(queryStart + 1, queryEnd - 1);
   queryAPI('GET', '/getCart', {username:username}, function(msg){
-    cart += msg
+    console.log(msg);
   });
   queryAPI('GET', '/book', {}, setupFunction);
 
