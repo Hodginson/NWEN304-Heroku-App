@@ -1,26 +1,27 @@
 $(document).ready(function(e) {
 
-    $('#signUp').button().click(
+  /*  $('#signUp').button().click(
 		function() {
-			var userEmail = $('#email').val();
-            var password = $('#pass').val();
-            var rePassword = $('#repass').val();
-            console.log(userEmail);
-            if(userEmail === '' || password ===''||rePassword===''){
-               alert("Please Confirm your input");
-               
-            }
-            if(password !== rePassword){
-               alert("Please Confirm your Password");
+			var username = $('#username').val();
+      var email = $('#email').val();
+      var password = $('#pass').val();
+      var rePassword = $('#repass').val();
+      console.log(userEmail);
+      if(userEmail === '' || password ===''||rePassword===''){
+           alert("Please Confirm your input");
 
-            }
+      }
+      if(password !== rePassword){
+        alert("Please Confirm your Password");
 
-            queryAPI('POST', '/signUp', {
+      }
+
+        queryAPI('POST', '/signUp', {
               username:userEmail,
               password: password
             }, function(){});
 
-		});
+		});*/
     $('#cancel').button().click(
    function() {
        window.location = "home.html";
@@ -29,6 +30,25 @@ $(document).ready(function(e) {
 
 }); // end ready
 
+function signUpFunction(){
+  var username = $('#username').val();
+  var email = $('#email').val();
+  var password = $('#pass').val();
+  var rePassword = $('#repass').val();
+
+  if(userEmail === '' || password ===''||rePassword===''){
+       alert("Please Confirm your input");
+
+  }else if(password !== rePassword){
+    alert("Please Confirm your Password");
+
+  }else{
+    queryAPI('POST', '/signUp', {
+          username:userEmail,
+          password: password
+        }, function(){});
+  }
+}
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");

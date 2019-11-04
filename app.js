@@ -97,6 +97,25 @@ var sessionChecker = (req, res, next) => {
     }
 };
 
+app.route('/signup')
+    .get(sessionChecker, (req, res) => {
+        res.sendFile(__dirname + '/public/signup.html');
+    })
+    .post((req, res) => {
+        User.create({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        })
+        .then(user => {
+            req.session.user = user.dataValues;
+            res.redirect('/dashboard');
+        })
+        .catch(error => {
+            res.redirect('/signup');
+        });
+    });
+
 app.use(oidc.router);
 
 app.use((req, res, next) => {
@@ -123,143 +142,6 @@ function loginRequired(req, res, next) {
 
 
 
-/**
-app.get('/', (req, res) => res.sendFile('public/login.html', { root : __dirname}));
-
-//
-// /* PASSPORT SETUP */
-//
-//
-// const passport = require('passport');
-// app.use(passport.initialize());
-// app.use(passport.session());
-//
-// app.get('/success', (req, res) => res.send("Welcome "+req.query.username+"!!"));
-// app.get('/error', (req, res) => res.send("error logging in"));
-//
-// passport.serializeUser(function(user, cb) {
-//   cb(null, user.id);
-// });
-//
-// passport.deserializeUser(function(id, cb) {
-//   User.findById(id, function(err, user) {
-//     cb(err, user);
-//   });
-// });
-//
-//
-//
-//
-// /** MONGOOSE SETUP HELP **/
-//
-//
-// const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/MyDatabase', function (err, res) {
-//   if (err) {
-//   console.log ('ERROR connecting to: ' + "database" + '. ' + err);
-//   } else {
-//   console.log ('Succeeded connected to: ' + "database");
-//   }
-// });
-//
-// const Schema = mongoose.Schema;
-// const UserDetail = new Schema({
-//       username: String,
-//       password: String
-//     });
-// const UserDetails = mongoose.model('userInfo', UserDetail, 'userInfo');
-//
-//
-//
-//
-//
-//
-// /* PASSPORT LOCAL AUTHENTICATION */
-//
-//
-// const LocalStrategy = require('passport-local').Strategy;
-//
-// passport.use(new LocalStrategy(
-//   function(username, password, done) {
-//       UserDetails.findOne({
-//         username: username
-//       }, function(err, user) {
-//         if (err) {
-//           return done(err);
-//         }
-//
-//         if (!user) {
-//           return done(null, false);
-//         }
-//
-//         if (user.password != password) {
-//           return done(null, false);
-//         }
-//         return done(null, user);
-//       });
-//   }
-// ));
-//
-// app.post('/',
-//   passport.authenticate('local', { failureRedirect: '/error' }),
-//   function(req, res) {
-//     res.redirect('/success?username='+req.user.username);
-//   });
-//
-//
-
-
-/* ********************************************* */
-
-//login
-/*app.post('/login', async function (req, res){
-  console.log("logining now....")
-  var uname = req.body.username;
-  var pass = req.body.password;
-  var hashPass = "";
-  try{
-    const client = await pool.connect();
-    const result = await client.query("SELECT password FROM users WHERE username='"+uname+"';");
-    const results = { results: result ? result.rows : null };
-    console.log("result: "+result[0]);
-    console.log("results: "+results);
-    if(results.results.length == 0 ){
-      console.log("no such a user !");
-      res.status(200).send(false);
-      client.release;
-      return;
-    }
-
-    results.results.forEach(element => {
-      hashPass = element.hashpassword;
-    })
-
-    const match = await bcrypt.compareSync(pass,hashPass, (err, equal) =>{
-      if(err){
-        console.log(err);
-      } else {
-        if(equal){
-          console.log("success")
-        }else{
-          console.log("wrong Password")
-        }
-      }
-    })
-
-    if(match){
-      res.status(200).send(results);
-      client.release;
-      return;
-    }else{
-      res.status(200).send(false);
-      client.release;
-      return;
-    }
-  }catch(err){
-    console.log(err);
-    res.send("Error "+err);
-  }
-});*/
 
 app.post('/login', function (req,res){
 
@@ -289,9 +171,20 @@ app.post('/login', function (req,res){
 app.post('/signUp', function (req,res){
 
      console.log('Getting new user...');
-
-    const query = {
-     text:"insert into users (username,password) values('"+req.body.username+"', '"+req.body.password+"')"
+     User.create({
+         username: req.body.username,
+         email: req.body.email,
+         password: req.body.password
+     })
+     .then(user => {
+         req.session.user = user.dataValues;
+         res.redirect('/dashboard');
+     })
+     .catch(error => {
+         res.redirect('/signup');
+     });
+/*  const query = {
+     text:"insert into users (username,email,password) values('"+req.body.username+"', '"+req.body.password+"')"
     }
 
     pool.query(query, (err, queryResponse) => {
@@ -300,7 +193,7 @@ app.post('/signUp', function (req,res){
       } else {
         res.status(201).send(queryResponse);
       }
-    });
+    });*/
 
  })
 
