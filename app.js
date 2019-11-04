@@ -306,7 +306,7 @@ app.get('/isSignedIn', async (req, res) => {
  //*******(Zane)******GET REQUEST*********************/
 
  app.get('/book', function (req, res) {
-   console.log(req.session.user);
+
    console.log('Getting tasks...');
    const query = {
      text: "SELECT * FROM books"
@@ -315,6 +315,7 @@ app.get('/isSignedIn', async (req, res) => {
      if (err) {
        console.log("Error getting books: " + err);
      } else {
+       console.log(req.session.user);
        //console.log(queryResponse.rows);
        res.status(200).send(queryResponse.rows);
      }
