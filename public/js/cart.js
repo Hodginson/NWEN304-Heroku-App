@@ -31,10 +31,11 @@ function setupFunction(books) {
 var split = x.split(',');
 console.log("may:" + split[1]);
 for(let j = 0; j<split.length;j++){
+  var s = parseInt(split[j])
   for (let row = 0; row < books.length; row++) {
 
-    console.log(books[row].isbn + ": Cart: " + split[j]);
-    if(books[row].isbn == split[j].isbn){
+    console.log(books[row].isbn + ": Cart: " + s);
+    if(books[row].isbn == s){
     createBook(books[row]);
     }
 
