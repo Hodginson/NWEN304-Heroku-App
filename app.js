@@ -187,7 +187,7 @@ function loginRequired(req, res, next) {
          res.send(0);
        } else {
          console.log(queryResponse.rows.username + ":" + queryResponse.rows.password);
-         if(queryResponse.rows.password == req.body.opass){
+         if(typeof queryResponse.rows.username != 'undefined' && queryResponse.rows.password == req.body.opass){
            console.log("success");
 //exsit = 1;
          }else {
