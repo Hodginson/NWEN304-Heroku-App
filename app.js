@@ -150,34 +150,34 @@ function loginRequired(req, res, next) {
    var exsit = 0;
     console.log(req.body.username);
      const query = {
-      text: "SELECT username,password from users where username = '"+req.body.username+"'"
+      text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
+      //text: "SELECT username,password from users where username = '"+req.body.username+"'"
      }
 
      pool.query(query, (err, queryResponse) => {
-       console.log(queryResponse.rows.username + ":::::::::::"+queryResponse.rows.password);
        if (err) {
          console.log("Error resetting password: " + err);
        } else {
-         if(queryResponse.rows.password == req.body.opass){
-           exsit = 1;
-         }else{
-           res.send('0');
-         }
+         //if(queryResponse.rows.password == req.body.opass){
+           res.send('1');
+        // }else{
+        //   res.send('0');
+      //   }
        }
     });
 
-    if(exsit == 1){
-      const query2 = {
-       text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
-      }
-      pool.query(query2, (err, queryResponse) => {
-        if(err){
-          console.log("Error resetting password 2 : " + err);
-        }else{
-         res.send('1');
-        }
-      });
-    }
+    // if(exsit == 1){
+    //   const query2 = {
+    //    text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
+    //   }
+    //   pool.query(query2, (err, queryResponse) => {
+    //     if(err){
+    //       console.log("Error resetting password 2 : " + err);
+    //     }else{
+    //      res.send('1');
+    //     }
+    //   });
+    // }
 
     })
 
