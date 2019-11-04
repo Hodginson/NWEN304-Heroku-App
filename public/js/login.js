@@ -32,8 +32,9 @@ function loginFunction(){
   }, function(msg){
     if(msg == '1'){
       alert("Logged in");
+      window.location = "home.html";
     }else{
-      alert("Not logged in");
+      alert("Login failed");
     }
   });
 }
