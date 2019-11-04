@@ -57,8 +57,8 @@ function createBook(books) {
   span.innerHTML = "    $" + books.price;
   para.append(span);
     $('#products').prepend(para);
-    var price = document.getElementById("price")
-    price.innerHTML = "$" + price;
+    var total = document.getElementById("price")
+    total.innerHTML = "$" + price;
 
 }
 
