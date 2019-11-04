@@ -215,7 +215,7 @@ app.route('/login')
          res.send(0);
        } else {
            if(queryResponse != undefined){
-             console.log("qr:  "+queryResponse.rows[0].username);
+             //console.log("qr:  "+queryResponse.rows[0].username);
                exsit = 1;
            }else {
              res.send(0);
