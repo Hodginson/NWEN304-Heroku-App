@@ -176,32 +176,18 @@ function loginRequired(req, res, next) {
  app.put('/passReset', function (req,res){
 
     console.log(req.body.username);
-    var exsit = 0;
      const query = {
-      text:"SELECT username,password from users where username = '"+req.body.username+"'"
+      text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
      }
 
      pool.query(query, (err, queryResponse) => {
        if (err) {
          console.log("Error resetting password: " + err);
-       } else {    
-         exsit = 1;
+       } else {
+        res.send('1');
        }
     });
-      if(exsit == 1){
-        console.log("user exsit ");
-        const query2 = {
-         text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
-        }
-        pool.query(query2, (err, queryResponse) => {
-          if (err) {
-            console.log("Error resetting password 2: " + err);
-            res.send('0');
-          } else {
-             res.send('1')
-          }
-        });
-      }
+
     })
 
 
