@@ -184,7 +184,11 @@ function loginRequired(req, res, next) {
        if (err) {
          console.log("Error resetting password: " + err);
        } else {
-        res.send('1');
+         if(queryResponse.rows.password == req.body.opass){
+           res.send('1');
+         }else{
+           res.send('0');
+         }
        }
     });
 
