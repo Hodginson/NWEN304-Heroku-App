@@ -156,7 +156,7 @@ app.post('/login', function (req,res){
             } else {
                 console.log(req.session.user);
                 req.session.user = user.dataValues;
-                console.log("req.session.user");
+                console.log(req.session.user);
                 res.send('1');
             }
           })
