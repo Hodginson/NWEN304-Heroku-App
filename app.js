@@ -275,10 +275,8 @@ app.get('/isSignedIn', function(req, res){
         //req.session.user = null;
         res.clearCookie('user_sid');
         loggedIn = false;
-        res.status(200).send('yes');
+        location.reload();
         //res.redirect('/');
-    } else {
-        res.redirect('/login');
     }
 });
 
