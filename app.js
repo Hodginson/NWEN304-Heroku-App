@@ -145,6 +145,8 @@ function loginRequired(req, res, next) {
  //
  //  })
 //
+
+//*******(Mars)******PUT REQUEST*********************/
  //password reset function locally
  app.put('/passReset', function (req,res){
     console.log(req.body.username);
@@ -185,8 +187,7 @@ function loginRequired(req, res, next) {
 
 
 
-
-// register
+//*******(Mars)******POST REQUEST*********************/
 app.post('/signUp', function (req,res){
 
      console.log('Getting new user...');
