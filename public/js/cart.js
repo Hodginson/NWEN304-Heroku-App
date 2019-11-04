@@ -1,7 +1,7 @@
 var username;
 var query;
 var cart;
-var price;
+var price = 0.0;
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
   queryAPI('GET', '/isSignedIn', {}, function(msg){
