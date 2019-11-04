@@ -32,7 +32,7 @@ var User = sequelize.define('users', {
         type: Sequelize.ARRAY(Sequelize.BIGINT),
         allowNull: true
     },
-    purchases: {
+    Admin: {
         type: Sequelize.BOOLEAN,
         allowNull: true
     }
