@@ -299,7 +299,12 @@ app.post('/login', function (req,res){
 
 //******Zane***** PUT Request*************/
 app.put('/addToCart', function(req,res){
-  console.log('Getting tasks...');
+
+  User.findOne({ where: { id: req.body.id } }).then(function (user) {
+    console.log(user.dataValues);
+  })
+});
+      /*console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
 
@@ -314,9 +319,9 @@ app.put('/addToCart', function(req,res){
       console.log(queryResponse.rows);
       res.status(200).send(queryResponse.rows);
     }
-  });
+  });*/
 
-});
+
 
 app.put('/buyBook', function(req,res){
   console.log('Getting tasks...');
