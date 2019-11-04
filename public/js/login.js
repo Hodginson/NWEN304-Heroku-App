@@ -26,7 +26,7 @@ function loginFunction(){
   if(email === '' || pass ===''){
       alert("Please Confirm your input");
   }else{
-  queryAPI('GET', '/login', {
+  queryAPI('ROUTE', '/login', {
     username:email,
     password: pass
   }, function(msg){
