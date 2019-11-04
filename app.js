@@ -178,7 +178,7 @@ function loginRequired(req, res, next) {
     console.log(req.body.username);
     var exsit = 0;
      const query = {
-       text:"UPDATE into users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
+       text:"UPDATE users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
       //text:"SELECT username,password from users where username = '"+req.body.username+"'"
      }
 
