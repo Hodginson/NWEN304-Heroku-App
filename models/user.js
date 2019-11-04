@@ -46,7 +46,7 @@ var User = sequelize.define('users', {
     },
     //instanceMethods: {
     //User.prototype.validPassword;
-
+    
     //}
 });
 

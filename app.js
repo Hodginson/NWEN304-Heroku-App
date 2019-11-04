@@ -89,32 +89,13 @@ app.use((req, res, next) => {
 });
 
 // middleware function to check for logged-in users
-var sessionChecker = (req, res, next) => {
+function sessionChecker (req, res, next){
     if (req.session.user && req.cookies.user_sid) {
         res.redirect('/dashboard');
     } else {
         next();
     }
 };
-
-app.route('/signup')
-    .get(sessionChecker, (req, res) => {
-        res.sendFile(__dirname + '/public/signup.html');
-    })
-    .post((req, res) => {
-        User.create({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
-        })
-        .then(user => {
-            req.session.user = user.dataValues;
-            res.redirect('/dashboard');
-        })
-        .catch(error => {
-            res.redirect('/signup');
-        });
-    });
 
 app.use(oidc.router);
 
@@ -149,12 +130,12 @@ app.post('/login', function (req,res){
         password = req.body.password;
         User.findOne({ where: { username: username } }).then(function (user) {
             if (!user) {
-                res.redirect('/login');
+                res.redirect(storeRouter);
             } else if (!user.validPassword(password)) {
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
-                res.redirect('/store');
+                res.redirect(storeRouter);
             }
           })
      /*console.log(req.body.username);
@@ -262,7 +243,7 @@ app.post('/signUp', function (req,res){
 //isLoggedIn
 app.get('/isSignedIn', async (req, res) => {
   try {
-     if(!req.user){
+     if(!req.session.user){
        res.send('0');
       }
       console.log();
