@@ -247,7 +247,7 @@ app.post('/login', function (req,res){
 
 
 // register
-/*app.post('/signUp', function (req,res){
+app.post('/signUp', function (req,res){
 
      console.log('Getting new user...');
      User.create({
@@ -264,8 +264,8 @@ app.post('/login', function (req,res){
      });
 
 
- })*/
- app.route('/signup')
+ })
+ /*app.route('/signup')
      .get(sessionChecker, (req, res) => {
          res.sendFile(__dirname + '/public/signup.html');
      })
@@ -282,15 +282,15 @@ app.post('/login', function (req,res){
          .catch(error => {
              res.redirect('/signup');
          });
-     });
+     });*/
 
 
 //isLoggedIn
 app.get('/isSignedIn', async (req, res) => {
   try {
-     if(!req.session.user){
-       res.send('0');
-      }
+
+       res.send(req.session.user);
+
       console.log();
       // Need a way to send the users email through here? Hmm
       res.send(req.user.username); // someone currently logged in
