@@ -78,7 +78,7 @@ $(document).ready(function (e) {
       view(books.isbn);
     });
     if(i==0){
-      $('#column-1').append(div);
+      $('#column-1').prepend(div);//
     } else if(i==1){
       $('#column-2').prepend(div);
     }else{
@@ -88,6 +88,13 @@ $(document).ready(function (e) {
 
   function ensure_only_letters_and_numbers(word){
   	return /^\w+$/.test(word);
+  }
+
+  function logoutFunction(){
+    queryAPI('GET', '/logout', {}, function(msg){
+      alert('you have logged out');
+      window.location.href = "store.html";
+    });
   }
 
 function queryAPI(method, path, data, callback) {
