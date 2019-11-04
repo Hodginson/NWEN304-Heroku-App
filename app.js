@@ -125,7 +125,7 @@ function loginRequired(req, res, next) {
 
 app.route('/login')
     .get(sessionChecker, (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../public/login.html'));
+        res.render('../public/login.html');
     })
     .post((req, res) => {
         var username = req.body.username,
