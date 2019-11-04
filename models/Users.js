@@ -19,7 +19,12 @@ var User = sequelize.define('users', {
     password: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    productsViewed: {
+        type: Sequelize.ARRAY(Sequelize.BIGINT),
+        allowNull: false
     }
+
 }, {
     hooks: {
       beforeCreate: (user) => {
