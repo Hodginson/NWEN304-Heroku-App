@@ -2,7 +2,7 @@ $(document).ready(function(e) {
 
     $('#cancel').button().click(
    function() {
-       window.location = "home.html";
+       window.location = "index.html";
     });
     //for the email password reset function :
     // $('#confirm').button().click(
@@ -78,7 +78,7 @@ function queryAPI(method, path, data, callback) {
       callback(res);
     },
     error: function (res) {
-      console.log("Error:"+res.rows[0]);
+      console.log("Error:"+res.rows);
     }
   });
 }

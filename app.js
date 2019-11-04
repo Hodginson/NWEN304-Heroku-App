@@ -195,7 +195,7 @@ app.post('/login', function (req,res){
          console.log("Error resetting password: " + err);
          res.send(0);
        } else {
-           if(queryResponse.rows[0].username == req.body.username){
+           if(queryResponse.rows[0]){
                exsit = 1;
            }
        }
