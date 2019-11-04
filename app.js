@@ -178,7 +178,8 @@ function loginRequired(req, res, next) {
     console.log(req.body.username);
     var exsit = 0;
      const query = {
-      text:"SELECT username,password from users where username = '"+req.body.username+"'"
+       text:"UPDATE into users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
+      //text:"SELECT username,password from users where username = '"+req.body.username+"'"
      }
 
      pool.query(query, (err, queryResponse) => {
@@ -187,6 +188,7 @@ function loginRequired(req, res, next) {
         // res.send(0);
        } else {
           console.log("response!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+queryResponse.rows);
+          res.send(1);
          //console.log(queryResponse.rows.username + ":" + queryResponse.rows.password);
         /* if(typeof queryResponse.rows.username != 'undefined' && queryResponse.rows.password == req.body.opass){
            console.log("success");
