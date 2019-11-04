@@ -54,8 +54,9 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
+//app.set('view engine', 'jade');
+app.engine('html', require('jade').renderFile);
+app.set('view engine', 'html');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -125,7 +126,7 @@ function loginRequired(req, res, next) {
 
 app.route('/login')
     .get(sessionChecker, (req, res) => {
-        res.sendFile(__dirname + '../public/login.html');
+        res.render('../public/login.html');
     })
     .post((req, res) => {
         var username = req.body.username,
