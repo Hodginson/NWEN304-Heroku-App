@@ -124,7 +124,7 @@ function loginRequired(req, res, next) {
 
 
 
-app.get('/login')
+/*app.route('/login')
     .get(sessionChecker, (req, res) => {
         app.use('/login', loginRouter)
     })
@@ -139,12 +139,13 @@ app.get('/login')
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
+                co
                 res.redirect('/dashboard');
             }
         });
-    });
+    });*/
 //login function :
-/*app.post('/login', function (req,res){
+app.post('/login', function (req,res){
   var username = req.body.username,
         password = req.body.password;
         User.findOne({ where: { username: username } }).then(function (user) {
@@ -153,10 +154,13 @@ app.get('/login')
             } else if (!user.validPassword(password)) {
                 res.send('0');
             } else {
+                console.logs(req.session.user);
                 req.session.user = user.dataValues;
+                console.logs("req.session.user");
                 res.send('1');
             }
-          })*/
+          })
+      })
      /*console.log(req.body.username);
 
     const query = {
@@ -177,7 +181,7 @@ app.get('/login')
   //    }
   //});
 
- //})
+
 
 
  // //reset password with email function :
@@ -215,7 +219,6 @@ app.get('/login')
          res.send(0);
        } else {
            if(queryResponse != undefined){
-             console.log("user exsit !");
              //console.log("qr:  "+queryResponse.rows[0].username);
                exsit = 1;
            }else {
