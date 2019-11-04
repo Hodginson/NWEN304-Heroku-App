@@ -201,7 +201,7 @@ app.post('/login', function (req,res){
  //  })
 
  //password reset function locally
- app.put('/passReset', function (req,res){
+ /*app.put('/passReset', function (req,res){
 
     console.log(req.body.username);
 
@@ -232,7 +232,7 @@ app.post('/login', function (req,res){
        }
      });
 
-  })
+  })*/
 
 
 
