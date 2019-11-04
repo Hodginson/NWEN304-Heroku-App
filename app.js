@@ -235,8 +235,8 @@ app.get('/isSignedIn', async (req, res) => {
 
     if(loggedIn){
       res.send(req.session.user);
-    }else{
-      res.send("nope");
+    }else if(!loggedIn){
+      res.send('nope');
     }
 
 });
