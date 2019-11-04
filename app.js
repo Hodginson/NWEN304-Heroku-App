@@ -303,7 +303,7 @@ app.put('/addToCart', function(req,res){
   var int = parseInt(req.body.isbn);
   const query = {
 
-    text: "UPDATE users SET cart=array_cat(cart, ARRAY["+req.body.isbn+"]) WHERE username='"+req.body.user+"'",
+    text: "UPDATE users SET cart=array_cat(cart, ARRAY["+req.body.isbn+"]) WHERE username='"+req.body.id+"'",
     //text:'update books set sold=sold+1 where isbn='+req.body.isbn
 
   };
