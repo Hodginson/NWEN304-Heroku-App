@@ -288,7 +288,7 @@ app.post('/signUp', function (req,res){
 //isLoggedIn
 app.get('/isSignedIn', async (req, res) => {
   try {
-        if(req.session.user){
+        if(req.session.user != undefined){
           res.send('yasss');
         } else{
           res.send("noooo");
