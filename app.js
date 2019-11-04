@@ -21,6 +21,17 @@ var checkoutRouter = require('./routes/checkout');
 var loggedIn = false;
 // const bcrypt = require('bcrypt');
 
+//pass reset
+var favicon = require('static-favicon');
+
+var mongoose = require('mongoose');
+var nodemailer = require('nodemailer');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcrypt-nodejs');
+var async = require('async');
+var crypto = require('crypto');
+
 var urlencodedParser= bodyParser.urlencoded({extended: false});
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -52,6 +63,7 @@ const oidc = new ExpressOIDC({
 });
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
@@ -63,6 +75,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', homeRouter);
 app.use('/login', loginRouter);
@@ -97,6 +110,8 @@ function sessionChecker (req, res, next){
         next();
     }
 };
+
+
 
 /*app.use(oidc.router);
 
@@ -299,10 +314,7 @@ app.post('/login', function (req,res){
 
 //******Zane***** PUT Request*************/
 app.put('/addToCart', function(req,res){
-
-
-
-      console.log('Getting tasks...');
+  console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
 
@@ -320,6 +332,7 @@ app.put('/addToCart', function(req,res){
   });
 });
 
+});
 
 app.put('/buyBook', function(req,res){
   console.log('Getting tasks...');
