@@ -186,29 +186,30 @@ function loginRequired(req, res, next) {
          console.log("Error resetting password: " + err);
          res.send(0);
        } else {
-           if(queryResponse != undefined){
-             //console.log("qr:  "+queryResponse.rows[0].username);
-               exsit = 1;
-           }else {
+         console.log(queryResponse.rows[0].username + ":" + queryResponse.rows[0].password);
+         if(queryResponse.rows[0].password == req.body.opass){
+           console.log("success");
+//exsit = 1;
+         }else {
              res.send(0);
-           }
+         }
        }
  //        res.status(200).send(queryResponse.rows);
     });
-      if(exsit == 1){
-        console.log("user exsit !");
-        const query2 = {
-         text:"UPDATE into users set password='"+req.body.opass+"' where username = '"+req.body.username+"'"
-        }
-        pool.query(query2, (err, queryResponse) => {
-          if (err) {
-            console.log("Error resetting password 2: " + err);
-            res.send(0);
-          } else {
-             res.send('1')
-          }
-        });
-      }
+      // if(exsit == 1){
+      //   console.log("user exsit !");
+      //   const query2 = {
+      //    text:"UPDATE into users set password='"+req.body.npass+"' where username = '"+req.body.username+"'"
+      //   }
+      //   pool.query(query2, (err, queryResponse) => {
+      //     if (err) {
+      //       console.log("Error resetting password 2: " + err);
+      //       res.send(0);
+      //     } else {
+      //        res.send('1')
+      //     }
+      //   });
+      // }
     })
 
 
