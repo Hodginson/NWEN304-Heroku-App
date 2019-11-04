@@ -44,7 +44,8 @@ function signUpFunction(){
 
   }else{
     queryAPI('POST', '/signUp', {
-          username:userEmail,
+          username:username,
+          email:email,
           password: password
         }, function(){});
   }
