@@ -191,14 +191,14 @@ function loginRequired(req, res, next) {
          console.log('Password forget...');
 
          const query = {
-           text: "SELECT username,token,tokenExDate FROM users where email = '"+req.body.emailAdd"'"
+           text: "SELECT username,token,tokenExDate FROM users where email = '"+req.body.emailAdd+"'"
          };
          pool.query(query, (err, queryResponse) => {
            if (err) {
              console.log("Error getting books: " + err);
            } else {
              if(queryResponse.rows[0].tokenExDate != null && queryResponse.rows[0].tokenExDate ){
-               
+
              }else{
                res.send('0');
              }
