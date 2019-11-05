@@ -2,7 +2,6 @@
 //*******(Mars)******Oauth login*********************/
 
 
-
 // The Auth0 client, initialized in configureClient()
 let auth0 = null;
 
