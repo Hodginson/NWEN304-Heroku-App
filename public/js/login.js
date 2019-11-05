@@ -1,19 +1,5 @@
 $(document).ready(function(e) {
 
-  /*  $("#login").button().click(function(){
-    var email = $('#email').val();
-    var pass = $("#pass").val();
-    console.log(email +" / " + pass);
-    if(email === '' || pass ===''){
-        alert("Please Confirm your input");
-    }
-    queryAPI('POST', '/login', {
-      username:email,
-      password: pass
-    }, function(){});
-
-  })*/
-
     $('#cancel').button().click(
     function() {
        window.location = "home.html";

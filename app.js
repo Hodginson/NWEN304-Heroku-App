@@ -100,7 +100,7 @@ function loginRequired(req, res, next) {
 }
 
 
-//*******(Zane)******(old login)Put REQUEST*********************/
+//****************(old login)Put REQUEST*********************/
 
      /*console.log(req.body.username);
 
@@ -124,7 +124,7 @@ function loginRequired(req, res, next) {
 
 
 
-
+//*******(Mars)******old password reset function*********************/
  // //reset password with email function :
  // app.get('/passReset', function (req,res){
  //
@@ -272,7 +272,7 @@ app.get('/isSignedIn', function(req, res){
 
 //*******(Zane)******GET REQUEST*********************/
  app.get('/logout', (req, res) => {
-    
+
         //req.session.user = null;
         res.clearCookie('user_sid');
         loggedIn = false;
