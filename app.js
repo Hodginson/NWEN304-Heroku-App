@@ -185,7 +185,26 @@ function loginRequired(req, res, next) {
     // }
     })
 
+//*******(Mars)******PUT REQUEST*********************/
+    app.put('/forgetPass', function (req,res){
 
+         console.log('Password forget...');
+
+         const query = {
+           text: "SELECT username,token,tokenExDate FROM users where email = '"+req.body.emailAdd"'"
+         };
+         pool.query(query, (err, queryResponse) => {
+           if (err) {
+             console.log("Error getting books: " + err);
+           } else {
+             if(queryResponse.rows[0].tokenExDate != null && queryResponse.rows[0].tokenExDate ){
+               
+             }else{
+               res.send('0');
+             }
+           }
+         });
+     })
 
 //*******(Mars)******POST REQUEST*********************/
 app.post('/signUp', function (req,res){
