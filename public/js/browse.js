@@ -27,20 +27,7 @@ $(document).ready(function (e) {
     console.log(searchString);
     //ensure_only_letters_and_numbers(query);
     var i = 0;
-    let matches = books.filter(books => books.title.includes(searchString))
-    let author = books.filter(books => books.author.includes(searchString))
-    let genre = books.filter(books => books.genre.includes(searchString))
-    for(let row = 0; row < author.length; row++){
-      matches.push(author[row]);
-    }
-    for(let row = 0; row < genre.length; row++){
-      matches.push(genre[row]);
-    }
-    console.log(matches);
-    if(matches.length == 0){
-      alert("Nothing mathces your search");
-      window.location.href = "store.html";
-    }
+
     if(queryStart == -1){
       for (let row = 0; row < books.length; row++) {
 
@@ -53,6 +40,20 @@ $(document).ready(function (e) {
 
     }
     if(queryStart > -1){
+      let matches = books.filter(books => books.title.includes(searchString))
+      let author = books.filter(books => books.author.includes(searchString))
+      let genre = books.filter(books => books.genre.includes(searchString))
+      for(let row = 0; row < author.length; row++){
+        matches.push(author[row]);
+      }
+      for(let row = 0; row < genre.length; row++){
+        matches.push(genre[row]);
+      }
+      console.log(matches);
+      if(matches.length == 0){
+        alert("Nothing mathces your search");
+        window.location.href = "store.html";
+      }
       for (let row = 0; row < matches.length; row++) {
 
         createBook(matches[row],i);
