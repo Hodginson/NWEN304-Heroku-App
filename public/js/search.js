@@ -17,7 +17,7 @@ $(document).ready(function (e) {
     var split = query.split('%20');
     var searchString = split.join(' ');
     console.log(searchString);
-    setTimeout(function(){ queryAPI('GET', '/search', {searchQuery:searchString}, loadBooks); }, 300)
+    setTimeout(function(){ queryAPI('GET', '/search', {searchQuery:"Harry"}, loadBooks); }, 300)
 
 
 })
