@@ -19,6 +19,11 @@ $(document).ready(function (e) {
     var queryEnd = url.length + 1;
     query = url.slice(queryStart + 1, queryEnd - 1);
     queryAPI('GET', '/book', {}, setupFunction);
+    var x = cart.toString();
+    var split = x.split(',');
+    if(split == null){
+      alert("you done boo");
+    }
   });
 
 
