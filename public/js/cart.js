@@ -21,7 +21,7 @@ $(document).ready(function (e) {
     queryAPI('GET', '/book', {}, setupFunction);
     var x = cart.toString();
     var split = x.split(',');
-    console.log(split);
+    console.log(split[0]);
     if(split == null){
       alert("you done boo");
     }
