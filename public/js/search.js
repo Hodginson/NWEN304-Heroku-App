@@ -16,7 +16,7 @@ $(document).ready(function (e) {
     var query = url.slice(queryStart + 1, queryEnd - 1);
     var split = query.split('%20');
     var searchString = split.join(' ');
-
+    console.log(searchString);
     queryAPI('GET', '/search', {searchString:searchString}, loadBooks);
 
 })
