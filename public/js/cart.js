@@ -41,9 +41,6 @@ for(let j = 0; j<split.length;j++){
 
   }
 }
-
-
-
 }
 
 
@@ -61,6 +58,11 @@ function createBook(books) {
     var total = document.getElementById("price")
     total.innerHTML = "$" + price;
 
+}
+
+function searchFunction() {
+  search = document.getElementById("mySearch").value;
+  window.location.href = "store.html?=" + search;
 }
 
 function buyBook(){
