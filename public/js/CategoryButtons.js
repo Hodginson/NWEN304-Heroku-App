@@ -1,6 +1,6 @@
 
 
-function loadCategory(val) {
+function loadFiction() {
 
-  window.location.href = "store.html?=" + val;
+  window.location.href = "store.html?=" + "Fiction";
 }
