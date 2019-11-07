@@ -15,10 +15,8 @@ $(document).ready(function (e) {
 })
 
   function loadBooks(books) {
-    console.log("what " + books[0]);
-    if(books.length == 0){
-      alert("you done boo");
-    }
+
+
     var url = document.URL;
     var queryStart = url.indexOf("=");
     var queryEnd = url.length + 1;
@@ -39,6 +37,9 @@ $(document).ready(function (e) {
       matches.push(genre[row]);
     }
     console.log(matches);
+    if(matches.length == 0){
+      alert("you done boo");
+    }
     if(queryStart == -1){
       for (let row = 0; row < books.length; row++) {
 
