@@ -27,7 +27,10 @@ $(document).ready(function (e) {
 
 function setupFunction(books) {
   var x = cart.toString();
-var split = x.split(',');
+  var split = x.split(',');
+  if(split == null){
+    alert("you done boo");
+  }
 console.log("may:" + split[1]);
 for(let j = 0; j<split.length;j++){
   var s = parseInt(split[j])
