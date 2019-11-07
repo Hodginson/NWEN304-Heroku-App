@@ -38,7 +38,8 @@ $(document).ready(function (e) {
     }
     console.log(matches);
     if(matches.length == 0){
-      alert("you done boo");
+      alert("Nothing mathces your search");
+      window.location.href = "store.html";
     }
     if(queryStart == -1){
       for (let row = 0; row < books.length; row++) {

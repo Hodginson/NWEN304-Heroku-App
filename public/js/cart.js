@@ -22,20 +22,16 @@ $(document).ready(function (e) {
 
   });
 
-  //var x = cart.toString();
-  var split;
-  console.log(split[0]);
-  if(cart == null){
-    alert("you done boo");
-  }
+
 
 })
 
 function setupFunction(books) {
   var x = cart.toString();
   var split = x.split(',');
-  if(split == null){
-    alert("you done boo");
+  if(split.lenght == 0){
+    alert("you have nothing inyour cart");
+    window.location.href = "store.html";
   }
 console.log("may:" + split[1]);
 for(let j = 0; j<split.length;j++){
