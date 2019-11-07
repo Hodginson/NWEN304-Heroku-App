@@ -17,13 +17,13 @@ $(document).ready(function (e) {
     var split = query.split('%20');
     var searchString = split.join(' ');
     console.log(searchString);
-    queryAPI('GET', '/search', {searchQuery:searchString}, loadBooks);
+    setTimeout(function(){ queryAPI('GET', '/search', {searchQuery:searchString}, loadBooks); }, 5000)
+
 
 })
 
 function loadBooks(books) {
   for (let row = 0; row < books.length; row++) {
-
     createBook(books[row],i);
     i+=1;
     if(i==3){
