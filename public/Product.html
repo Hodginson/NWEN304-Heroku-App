@@ -10,6 +10,7 @@
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/product.js"></script>
 <link href="stylesheets/browse.css" rel="stylesheet">
+<script src="js/CategoryButtons.js"></script>
 
 <body>
 
@@ -21,21 +22,21 @@
       <div class="w3-dropdown-hover">
         <button class="w3-button ">Books</button>
         <div class="w3-dropdown-content w3-bar-block w3-card-4">
-          <a href="#" class="w3-bar-item w3-button">Fiction</a>
-          <a href="#" class="w3-bar-item w3-button">Crime</a>
-          <a href="#" class="w3-bar-item w3-button">Childrens Books</a>
-          <a href="#" class="w3-bar-item w3-button">Autobiography</a>
+          <a onclick = "loadFiction()" value="Fiction" class="w3-bar-item w3-button">Fiction</a>
+          <a onclick = "loadCrime()" value="Crime" class="w3-bar-item w3-button">Crime</a>
+          <a onclick="loadChildrens()" value="Childrens Book" class="w3-bar-item w3-button">Childrens Books</a>
+          <a onclick="loadAutoBiography()" value="AutoBiography" class="w3-bar-item w3-button">Autobiography</a>
         </div>
       </div>
       <div id = "sign" class="w3-dropdown-hover">
         <button class="w3-button ">Sign in</button>
           <div  class="w3-dropdown-content w3-bar-block w3-card-4">
-          <a href="/gglogin.html"   class="w3-bar-item w3-button">Sign In</a>
+          <a href="/gglogin.html" class="w3-bar-item w3-button">Sign In</a>
           <!--<a href="/users/login" class="w3-bar-item w3-button">Sign in with Google</a>-->
           </div>
       </div>
-      <a href="Cart.html" id="user" class="w3-bar-item w3-button w3-right">Cart</a>
-      <a href="Cart.html" id="logout" class="w3-bar-item w3-button w3-right">Logout</a>
+      <a href="/cart" id="user" class="w3-bar-item w3-button w3-right">Cart</a>
+      <a onclick="logoutFunction()" id="logout" class="w3-bar-item w3-button w3-right">Logout</a>
 
       <a button onclick="searchFunction()" class="w3-bar-item w3-button w3-grey w3-right">Go</a>
       <input type="search" id="mySearch" class="w3-bar-item w3-input w3-right" placeholder="Search..">
