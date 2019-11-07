@@ -262,10 +262,10 @@ app.get('/isSignedIn', function(req, res){
  //*******(Zane)******GET REQUEST*********************/
 
  app.get('/search', function (req, res) {
-console.log(req.body.searchString);
+   console.log(req.body.searchQuery);
    console.log('Getting tasks...');
    const query = {
-     text: "SELECT * FROM books where title Like='%"+req.body.searchString+"%'"
+     text: "SELECT * FROM books where title Like='%"+req.body.searchQuery+"%'"
    };
    pool.query(query, (err, queryResponse) => {
      if (err) {
