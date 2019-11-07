@@ -15,8 +15,8 @@ $(document).ready(function (e) {
 })
 
   function loadBooks(books) {
-
-    if(books == null){
+    console.log(books[0]);
+    if(books[0] == null){
       alert("you done boo");
     }
     var url = document.URL;
