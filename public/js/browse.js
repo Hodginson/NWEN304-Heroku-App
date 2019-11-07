@@ -15,6 +15,10 @@ $(document).ready(function (e) {
 })
 
   function loadBooks(books) {
+
+    if(books == null){
+      alert("you done boo");
+    }
     var url = document.URL;
     var queryStart = url.indexOf("=");
     var queryEnd = url.length + 1;

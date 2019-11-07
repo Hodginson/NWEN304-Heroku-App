@@ -22,10 +22,10 @@ $(document).ready(function (e) {
 
   });
 
-  var x = cart.toString();
-  var split[];
+  //var x = cart.toString();
+  var split;
   console.log(split[0]);
-  if(split == null){
+  if(cart == null){
     alert("you done boo");
   }
 
