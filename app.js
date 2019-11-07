@@ -271,8 +271,8 @@ app.get('/isSignedIn', function(req, res){
      if (err) {
        console.log("Error getting books: " + err);
      } else {
-       console.log(req.session.user);
-       //console.log(queryResponse.rows);
+       console.log(queryResponse.rows);
+       console.log(req.body.searchString);
        res.status(200).send(queryResponse.rows);
      }
    });
