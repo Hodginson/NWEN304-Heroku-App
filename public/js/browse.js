@@ -118,7 +118,7 @@ function queryAPI(method, path, data, callback) {
 
 function searchFunction() {
   search = document.getElementById("mySearch").value;
-  window.location.href = "store.html?=" + search;
+  window.location.href = "search.html?=" + search;
 }
 
 function view(title) {
