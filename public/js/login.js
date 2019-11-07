@@ -2,7 +2,7 @@ $(document).ready(function(e) {
 
     $('#cancel').button().click(
     function() {
-       window.location = "home.html";
+       window.location = "index.html";
     });
 }); // end ready
 
