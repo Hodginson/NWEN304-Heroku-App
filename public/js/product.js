@@ -34,6 +34,11 @@ function setupFunction(books) {
 
 }
 
+function searchFunction() {
+  search = document.getElementById("mySearch").value;
+  window.location.href = "store.html?=" + search;
+}
+
 function createBook(books) {
   var div = document.createElement("div");
   div.className = "card";

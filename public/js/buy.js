@@ -30,9 +30,6 @@ function setupFunction(books) {
     }
 
   }
-
-
-
 }
 
 
@@ -53,6 +50,11 @@ function createBook(books) {
 
 function buyBook(){
   queryAPI('PUT', '/buyBook', {isbn:query}, function(){});
+}
+
+function searchFunction() {
+  search = document.getElementById("mySearch").value;
+  window.location.href = "store.html?=" + search;
 }
 
 

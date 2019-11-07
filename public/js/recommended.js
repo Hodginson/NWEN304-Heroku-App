@@ -19,6 +19,8 @@ function loadBooks(books) {
     }
   }
 
+
+
 // load the books into the browse page -- Zane
 function createBook(books,i) {
   var div = document.createElement("div");
@@ -45,6 +47,11 @@ function createBook(books,i) {
   }else{
     $('#column-3').prepend(div);
   }
+}
+
+function searchFunction() {
+  search = document.getElementById("mySearch").value;
+  window.location.href = "store.html?=" + search;
 }
 
 function queryAPI(method, path, data, callback) {

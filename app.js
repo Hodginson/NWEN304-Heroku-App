@@ -100,7 +100,7 @@ function loginRequired(req, res, next) {
 }
 
 
-//****************(old login)Put REQUEST*********************/
+//****************Zane(old login)Put REQUEST*********************/
 
      /*console.log(req.body.username);
 
@@ -226,6 +226,8 @@ app.post('/signUp', function (req,res){
 
  })
 
+
+//*******(Zane)******GET REQUEST*********************/
 //isLoggedIn
 app.get('/isSignedIn', function(req, res){
 
@@ -257,6 +259,25 @@ app.get('/isSignedIn', function(req, res){
    });
  });
 
+ //*******(Zane)******GET REQUEST*********************/
+
+ app.get('/search', function (req, res) {
+
+   console.log('Getting tasks...');
+   const query = {
+     text: "SELECT * FROM books where title Like='%"+req.body.searchString+"%'"
+   };
+   pool.query(query, (err, queryResponse) => {
+     if (err) {
+       console.log("Error getting books: " + err);
+     } else {
+       console.log(req.session.user);
+       //console.log(queryResponse.rows);
+       res.status(200).send(queryResponse.rows);
+     }
+   });
+ });
+
 //*******(Zane)******GET REQUEST*********************/
  app.get('/recommend', function (req, res) {
    console.log('Getting tasks...');
@@ -273,7 +294,7 @@ app.get('/isSignedIn', function(req, res){
    });
  });
 
-
+//*******(Zane)******GET REQUEST*********************/
  app.get('/getCart', function (req, res) {
    console.log('Getting tasks...');
    const query = {

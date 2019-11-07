@@ -26,6 +26,11 @@ function loginFunction(){
 }
 }
 
+function searchFunction() {
+  search = document.getElementById("mySearch").value;
+  window.location.href = "store.html?=" + search;
+}
+
 
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
