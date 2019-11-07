@@ -262,7 +262,7 @@ app.get('/isSignedIn', function(req, res){
  //*******(Zane)******GET REQUEST*********************/
 
  app.get('/search', function (req, res) {
-   console.log("why:"+req.body.searchQuery);
+   console.log("why:"+req.body.searchQuery); //for some reason this req.body.searchQuery is always undefined regardless of what is parsed
    console.log('Getting tasks...');
    const query = {
      text: "SELECT * FROM books where title Like='%"+req.body.searchQuery+"%'"

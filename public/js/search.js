@@ -1,4 +1,5 @@
 //All work done by Zane
+//Does not currently work
 var searchItem;
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
@@ -17,7 +18,7 @@ $(document).ready(function (e) {
     var split = query.split('%20');
     var searchString = split.join(' ');
     console.log(searchString);
-    setTimeout(function(){ queryAPI('GET', '/search', {searchQuery:"Harry"}, loadBooks); }, 300)
+    queryAPI('GET', '/search', {searchQuery:1}, loadBooks); 
 
 
 })
