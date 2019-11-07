@@ -23,7 +23,7 @@ $(document).ready(function (e) {
   });
 
   var x = cart.toString();
-  var split = x.split(',');
+  var split[];
   console.log(split[0]);
   if(split == null){
     alert("you done boo");
