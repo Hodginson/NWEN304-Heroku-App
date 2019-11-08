@@ -31,7 +31,7 @@ $(document).ready(function (e) {
 function setupFunction(books) {
   var x = cart.toString();
   var split = x.split(',');
-  if(split.lenght == 0){
+  if(split.length == 0){
     alert("you have nothing inyour cart");
     window.location.href = "store.html";
   }
