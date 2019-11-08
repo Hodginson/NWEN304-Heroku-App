@@ -75,7 +75,19 @@ function searchFunction() {
 function buyBook(){
   alert("Thank you for your purchase");
   window.location.href = "store.html";
-  //queryAPI('PUT', '/buyBook', {isbn:query}, function(){});
+  var x = cart.toString();
+  var split = x.split(',');
+  if(split.lenght == 0){
+    alert("you have nothing in your cart");
+    window.location.href = "store.html";
+  }
+  for(let row = 0; row<split.length;row++){
+    var cartISBN = parseInt(split[row])
+    queryAPI('PUT', '/buyBook', {isbn:cartISBN}, function(){});
+  }
+  alert("Thank you for purchasing from our store");
+  window.location.href = "store.html";
+
 }
 
 
