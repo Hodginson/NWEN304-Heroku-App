@@ -4,6 +4,7 @@ var purchases
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
     queryAPI('GET', '/isSignedIn', {}, function(msg){
+      if(msg!=0){
       var button = document.getElementById("sign");
       button.style.display = "none";
       var userButton = document.getElementById("user");
@@ -12,6 +13,7 @@ $(document).ready(function (e) {
       logoutButton.style.display = "block";
       purchases = msg.purchases;
       queryAPI('GET', '/book', {}, setupFunction);
+    }
     });
 
 
