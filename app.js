@@ -361,8 +361,9 @@ app.put('/addToCart', function(req,res){
     } else {
       //console.log(queryResponse.rows);
       User.findOne({ where: { username:username } }).then(function (user) {
-        console.log(user.dataValues);
+        console.log(req.session);
         req.session.user = user.dataValues;
+
       });
       res.status(200).send(queryResponse.rows);
     }
