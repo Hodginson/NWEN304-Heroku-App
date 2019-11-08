@@ -398,6 +398,7 @@ app.put('/addToPurchases', function(req,res){
       //print("Error getting books: " + err);
     } else {
       console.log(queryResponse.rows);
+      req.session.user.cart = queryResponse.rows;
       res.status(200).send(queryResponse.rows);
     }
   });

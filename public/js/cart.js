@@ -66,6 +66,7 @@ function createBook(books) {
   para.append(button);
   button.addEventListener ("click", function() {
     queryAPI('DELETE', '/removeFromCart', {isbn:books.isbn, username:username}, function(){});
+    window.location.href = "cart.html";
   });
     $('#products').prepend(para);
     var total = document.getElementById("price")
