@@ -4,7 +4,7 @@ var searchItem;
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
     queryAPI('GET', '/isSignedIn', {}, function(msg){
-      console.log(msg);
+      if(msg!=0){
       var button = document.getElementById("sign");
       button.style.display = "none";
       var userButton = document.getElementById("user");
@@ -13,6 +13,7 @@ $(document).ready(function (e) {
       logoutButton.style.display = "block";
       var profileButton = document.getElementById("profile");
       profileButton.style.display = "block";
+    }
     });
     queryAPI('GET', '/book', {}, loadBooks);
 
