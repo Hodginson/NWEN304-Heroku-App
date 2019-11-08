@@ -418,7 +418,7 @@ app.delete('/removeFromCart', function(req,res){
     } else {
         User.findOne({ where: { username: username } }).then(function (user) {
           req.session.user = user.dataValues;
-        }
+        });
       console.log(queryResponse.rows);
       console.log(req.session.user.cart);
       // = queryResponse.rows;
