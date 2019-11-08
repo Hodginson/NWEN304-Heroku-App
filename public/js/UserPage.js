@@ -19,20 +19,9 @@ $(document).ready(function (e) {
 })
 
 function setupFunction(books) {
-  if(purchases == null){
-    alert("you have nothing in your cart");
-    window.location.href = "store.html";
-  }
   var str = purchases.toString();
   var split = str.split(',');
-
-
   console.log(split);
-  if(split[0] == ""){
-    alert("you have nothing in your cart");
-    window.location.href = "store.html";
-  }
-
 console.log("may:" + split[1]);
 var i = 0;
 for(let j = 0; j<split.length;j++){
@@ -99,7 +88,6 @@ function queryAPI(method, path, data, callback) {
     dataType: "json",
     success: function (res) {
       console.log("API successfully queried!");
-      console.log(res);
       callback(res);
     },
     error: function (res) {
