@@ -316,7 +316,9 @@ app.get('/isSignedIn', function(req, res){
         //req.session.user = null;
         res.clearCookie('user_sid');
         loggedIn = false;
-        res.send('yes');
+        req.session.destroy();
+        res.redirect('/');
+
         //res.redirect('/');
 
 });
