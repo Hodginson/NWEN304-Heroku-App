@@ -441,7 +441,6 @@ app.delete('/removeFromCart', function(req,res){
 //******Zane***** delete Request*************/
 app.delete('/deleteCart', function(req,res){
   console.log('Getting tasks...');
-  var int = parseInt(req.body.isbn);
   var username = req.body.username;
   const query = {
     text: "UPDATE users SET cart=null WHERE username='"+req.body.username+"'",
