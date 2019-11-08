@@ -359,7 +359,7 @@ app.put('/addToCart', function(req,res){
       //print("Error getting books: " + err);
     } else {
       //console.log(queryResponse.rows);
-      User.findOne({ where: { username: username } }).then(function (user) {
+      User.findOne({ where: { id: req.body.id } }).then(function (user) {
         req.session.user = user.dataValues;
       });
       res.status(200).send(queryResponse.rows);
@@ -401,7 +401,7 @@ app.put('/addToPurchases', function(req,res){
       //print("Error getting books: " + err);
     } else {
       console.log(queryResponse.rows);
-      User.findOne({ where: { username: username } }).then(function (user) {
+      User.findOne({ where: { username: req.body.username } }).then(function (user) {
         req.session.user = user.dataValues;
       });
       res.status(200).send(queryResponse.rows);
