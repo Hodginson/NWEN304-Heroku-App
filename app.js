@@ -360,11 +360,15 @@ app.put('/addToCart', function(req,res){
       //print("Error getting books: " + err);
     } else {
       //console.log(queryResponse.rows);
-      User.findOne({ where: { username:username } }).then(function (user) {
+      /*User.findOne({ where: { username:username } }).then(function (user) {
         console.log(queryResponse.rows);
         req.session.user.cart = queryResponse.rows;
 
-      });
+      });*/
+
+      req.session.reload(function(err) {
+          // session updated
+        })
       res.status(200).send(queryResponse.rows);
     }
   });
