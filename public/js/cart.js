@@ -84,7 +84,7 @@ function buyBook(){
   for(let row = 0; row<split.length;row++){
     var cartISBN = parseInt(split[row])
     queryAPI('PUT', '/buyBook', {isbn:cartISBN}, function(){});
-    queryAPI('PUT', '/addToPurchases', {isbn:cartISBN}, function(){});
+    queryAPI('PUT', '/addToPurchases', {isbn:cartISBN, username:username}, function(){});
   }
   alert("Thank you for purchasing from our store");
   window.location.href = "store.html";
