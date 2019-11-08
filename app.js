@@ -360,20 +360,18 @@ app.put('/addToCart', function(req,res){
       //print("Error getting books: " + err);
     } else {
       //console.log(queryResponse.rows);
-      User.findOne({ where: { username:username } }).then(function (user) {
-        console.log(queryResponse.rows);
-          req.session.save(function(err) {
-        req.session.reload(function(err) {
-            req.session.user = user.dataValues
-                      // session updated
-          });
-        });
-
-      });
-
-
-      res.status(200).send(queryResponse.rows);
+          res.status(200).send(queryResponse.rows);
     }
+  });
+  User.findOne({ where: { username:username } }).then(function (user) {
+    console.log(queryResponse.rows);
+      req.session.save(function(err) {
+    req.session.reload(function(err) {
+        req.session.user = user.dataValues
+                  // session updated
+      });
+    });
+
   });
 });
 
