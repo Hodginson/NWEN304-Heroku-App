@@ -403,6 +403,7 @@ app.put('/addToPurchases', function(req,res){
     } else {
       console.log(queryResponse.rows);
       User.findOne({ where: { username: req.body.username } }).then(function (user) {
+        console.log("HI");
         req.session.user = user.dataValues;
       });
       res.status(200).send(queryResponse.rows);
