@@ -11,9 +11,10 @@ $(document).ready(function (e) {
       var logoutButton = document.getElementById("logout");
       logoutButton.style.display = "block";
       purchases = msg.purchases;
+      queryAPI('GET', '/book', {}, setupFunction);
     });
 
-    queryAPI('GET', '/book', {}, setupFunction);
+
 
 })
 
