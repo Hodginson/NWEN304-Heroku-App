@@ -18,6 +18,7 @@ var storeRouter = require('./routes/store');
 var cartRouter = require('./routes/cart');
 var usersRouter = require('./routes/users');
 var checkoutRouter = require('./routes/checkout');
+var profileRouter = require('./routes/profile');
 var loggedIn = false;
 // const bcrypt = require('bcrypt');
 
