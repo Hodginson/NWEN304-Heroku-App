@@ -358,7 +358,10 @@ app.put('/addToCart', function(req,res){
     if (err) {
       //print("Error getting books: " + err);
     } else {
-      console.log(queryResponse.rows);
+      //console.log(queryResponse.rows);
+      User.findOne({ where: { username: username } }).then(function (user) {
+        req.session.user = user.dataValues;
+      });
       res.status(200).send(queryResponse.rows);
     }
   });
@@ -398,7 +401,9 @@ app.put('/addToPurchases', function(req,res){
       //print("Error getting books: " + err);
     } else {
       console.log(queryResponse.rows);
-
+      User.findOne({ where: { username: username } }).then(function (user) {
+        req.session.user = user.dataValues;
+      });
       res.status(200).send(queryResponse.rows);
     }
   });
@@ -419,9 +424,9 @@ app.delete('/removeFromCart', function(req,res){
         User.findOne({ where: { username: username } }).then(function (user) {
           req.session.user = user.dataValues;
         });
-      console.log(queryResponse.rows);
-      console.log(req.session.user.cart);
-      // = queryResponse.rows;
+    //  console.log(queryResponse.rows);
+    //  console.log(req.session.user.cart);
+
       res.status(200).send(queryResponse.rows);
     }
   });
