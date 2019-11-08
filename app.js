@@ -390,10 +390,26 @@ app.put('/addToPurchases', function(req,res){
   console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
-
     text: "UPDATE users SET purchases=array_cat(purchases, ARRAY["+req.body.isbn+"]) WHERE username='"+req.body.username+"'",
     //text:'update books set sold=sold+1 where isbn='+req.body.isbn
+  };
+  pool.query(query, (err, queryResponse) => {
+    if (err) {
+      //print("Error getting books: " + err);
+    } else {
+      console.log(queryResponse.rows);
+      res.status(200).send(queryResponse.rows);
+    }
+  });
+});
 
+//******Zane***** delete Request*************/
+app.delete('/removeFromCart', function(req,res){
+  console.log('Getting tasks...');
+  var int = parseInt(req.body.isbn);
+  const query = {
+    text: "UPDATE users SET cart=array_remove(cart, "+req.body.isbn+") WHERE username='"+req.body.username+"'",
+    //text:'update books set sold=sold+1 where isbn='+req.body.isbn
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {

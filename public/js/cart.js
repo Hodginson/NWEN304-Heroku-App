@@ -61,6 +61,10 @@ function createBook(books) {
   span.className = "price";
   span.innerHTML = "    $" + books.price;
   para.append(span);
+  var button = document.createElement('button');
+  button.innerHTML += "Remove Item";
+  button.onclick = "remove("+books.isbn+")";
+  para.append(button);
     $('#products').prepend(para);
     var total = document.getElementById("price")
     total.innerHTML = "$" + price;
@@ -72,6 +76,9 @@ function searchFunction() {
   window.location.href = "store.html?=" + search;
 }
 
+function searchFunction(isbn) {
+  queryAPI('DELETE', '/removeFromCart', {isbn:isbn, username:username}, function(){});
+}
 function buyBook(){
   alert("Thank you for your purchase");
   window.location.href = "store.html";
