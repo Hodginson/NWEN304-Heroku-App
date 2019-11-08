@@ -1,5 +1,6 @@
 //All work done by Zane
 var searchItem;
+
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
     queryAPI('GET', '/isSignedIn', {}, function(msg){
@@ -98,9 +99,7 @@ $(document).ready(function (e) {
   }
 
   function logoutFunction(){
-    queryAPI('GET', '/logout', {}, function(msg){
-
-    });
+    queryAPI('GET', '/logout', {}, function(msg){});
     alert('you have logged out');
     window.location.href = "store.html";
   }

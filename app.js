@@ -317,7 +317,7 @@ app.get('/isSignedIn', function(req, res){
         res.clearCookie('user_sid');
         loggedIn = false;
         req.session.destroy();
-      
+
 
         //res.redirect('/');
 
@@ -422,16 +422,34 @@ app.delete('/removeFromCart', function(req,res){
   var username = req.body.username;
   const query = {
     text: "UPDATE users SET cart=array_remove(cart, "+req.body.isbn+") WHERE username='"+req.body.username+"'",
-    //text:'update books set sold=sold+1 where isbn='+req.body.isbn
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
-      //print("Error getting books: " + err);
+      console.log("Error getting books: " + err);
     } else {
-
     //  console.log(queryResponse.rows);
     //  console.log(req.session.user.cart);
+      res.status(200).send(queryResponse.rows);
+    }
+  });
+  User.findOne({ where: { username:username } }).then(function (user) {
+    req.session.user = user.dataValues
+    req.session.save();
+  });
+});
 
+//******Zane***** delete Request*************/
+app.delete('/deleteCart', function(req,res){
+  console.log('Getting tasks...');
+  var int = parseInt(req.body.isbn);
+  var username = req.body.username;
+  const query = {
+    text: "UPDATE users SET cart=null WHERE username='"+req.body.username+"'",
+  };
+  pool.query(query, (err, queryResponse) => {
+    if (err) {
+      console.log("Error getting books: " + err);
+    } else {
       res.status(200).send(queryResponse.rows);
     }
   });

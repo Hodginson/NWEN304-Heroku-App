@@ -22,16 +22,12 @@ function setupFunction(books) {
   var query = url.slice(queryStart + 1, queryEnd - 1);
 
   for (let row = 0; row < books.length; row++) {
-
     //console.log(tasks[row]);
     if(books[row].isbn == query){
     createBook(books[row]);
     }
 
   }
-
-
-
 }
 
 function searchFunction() {
@@ -82,7 +78,12 @@ function addToCart(isbn){
           alert("Successfully added to cart");
         });
     });
+  }
 
+  function logoutFunction(){
+    queryAPI('GET', '/logout', {}, function(msg){});
+    alert('you have logged out');
+    window.location.href = "store.html";
   }
 
 function queryAPI(method, path, data, callback) {

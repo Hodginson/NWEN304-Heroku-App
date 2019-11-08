@@ -94,9 +94,16 @@ function buyBook(){
     queryAPI('PUT', '/buyBook', {isbn:cartISBN}, function(){});
     queryAPI('PUT', '/addToPurchases', {isbn:cartISBN, username:username}, function(){});
   }
+  queryAPI('DELETE', '/deleteCart', {username:username}, function(){});
   alert("Thank you for purchasing from our store");
   window.location.href = "store.html";
 
+}
+
+function logoutFunction(){
+  queryAPI('GET', '/logout', {}, function(msg){});
+  alert('you have logged out');
+  window.location.href = "store.html";
 }
 
 

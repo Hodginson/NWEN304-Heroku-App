@@ -54,6 +54,12 @@ function searchFunction() {
   window.location.href = "store.html?=" + search;
 }
 
+function logoutFunction(){
+  queryAPI('GET', '/logout', {}, function(msg){});
+  alert('you have logged out');
+  window.location.href = "store.html";
+}
+
 function queryAPI(method, path, data, callback) {
   console.log("Querying API");
   $.ajax({
