@@ -391,7 +391,7 @@ app.put('/addToPurchases', function(req,res){
   var int = parseInt(req.body.isbn);
   const query = {
 
-    text: "UPDATE users SET purchases=array_cat(purchases, ARRAY["+req.body.isbn+"]) WHERE username="+req.body.username,
+    text: "UPDATE users SET purchases=array_cat(purchases, ARRAY["+req.body.isbn+"]) WHERE username='"+req.body.username+"'",
     //text:'update books set sold=sold+1 where isbn='+req.body.isbn
 
   };
