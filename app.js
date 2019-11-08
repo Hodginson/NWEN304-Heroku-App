@@ -362,10 +362,12 @@ app.put('/addToCart', function(req,res){
       //console.log(queryResponse.rows);
       User.findOne({ where: { username:username } }).then(function (user) {
         console.log(queryResponse.rows);
+          req.session.save(function(err) {
         req.session.reload(function(err) {
             req.session.user = user.dataValues
                       // session updated
-          })
+          });
+        });
 
       });
 
