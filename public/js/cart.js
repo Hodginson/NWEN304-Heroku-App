@@ -29,12 +29,13 @@ $(document).ready(function (e) {
 })
 
 function setupFunction(books) {
-  var x = cart.toString();
-  var split = x.split(',');
-  if(split.length==0){
+  if(cart == null){
     alert("you have nothing in your cart");
     window.location.href = "store.html";
   }
+  var x = cart.toString();
+  var split = x.split(',');
+
 
   console.log(split);
   if(split[0] == ""){
