@@ -29,13 +29,17 @@ $(document).ready(function (e) {
 })
 
 function setupFunction(books) {
-  var x = cart.toString();
-  var split = x.split(',');
+  var x;
+  var split;
+  if(split.length==0){
+  x = cart.toString();
+  split = x.split(',');
   console.log(split);
   if(split[0] == ""){
     alert("you have nothing in your cart");
     window.location.href = "store.html";
   }
+}
 console.log("may:" + split[1]);
 for(let j = 0; j<split.length;j++){
   var s = parseInt(split[j])
@@ -85,7 +89,7 @@ function buyBook(){
   window.location.href = "store.html";
   var x = cart.toString();
   var split = x.split(',');
-  if(split.lenght == 0){
+  if(split[0] == 0){
     alert("you have nothing in your cart");
     window.location.href = "store.html";
   }
