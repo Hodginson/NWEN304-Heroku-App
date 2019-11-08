@@ -72,6 +72,7 @@ app.use('/browse', storeRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/checkout', checkoutRouter);
+app.use('/profile', profileRouter);
 
 
 app.use(session({
