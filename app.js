@@ -236,7 +236,7 @@ app.get('/isSignedIn', function(req, res){
     if(loggedIn){
       res.send(req.session.user);
     }else if(!loggedIn){
-      res.send('nope');
+      res.send('0');
     }
 
 });
@@ -318,8 +318,9 @@ app.get('/isSignedIn', function(req, res){
         //req.session.user = null;
         res.clearCookie('user_sid');
         loggedIn = false;
+        req.logout();
         req.session.destroy();
-
+        res.send('1');
 
         //res.redirect('/');
 
@@ -364,7 +365,7 @@ app.put('/addToCart', function(req,res){
       //print("Error getting books: " + err);
     } else {
       //console.log(queryResponse.rows);
-          res.status(200).send(queryResponse.rows);
+          res.status(200).send("Added to cart");
     }
   });
   User.findOne({ where: { username:username } }).then(function (user) {
@@ -388,7 +389,7 @@ app.put('/buyBook', function(req,res){
       //print("Error getting books: " + err);
     } else {
       console.log(queryResponse.rows);
-      res.status(200).send(queryResponse.rows);
+      res.status(200).send("Successfully bought book");
     }
   });
 
@@ -408,7 +409,7 @@ app.put('/addToPurchases', function(req,res){
     } else {
       console.log(queryResponse.rows);
 
-      res.status(200).send(queryResponse.rows);
+      res.status(200).send("Added to Purchases");
     }
   });
   User.findOne({ where: { username:req.body.username } }).then(function (user) {
@@ -431,7 +432,7 @@ app.delete('/removeFromCart', function(req,res){
     } else {
     //  console.log(queryResponse.rows);
     //  console.log(req.session.user.cart);
-      res.status(200).send(queryResponse.rows);
+      res.status(200).send("Removded " + req.body.isbn + " from the cart");
     }
   });
   User.findOne({ where: { username:username } }).then(function (user) {
@@ -451,7 +452,7 @@ app.delete('/deleteCart', function(req,res){
     if (err) {
       console.log("Error getting books: " + err);
     } else {
-      res.status(200).send(queryResponse.rows);
+      res.status(200).send("The cart is now empty");
     }
   });
   User.findOne({ where: { username:username } }).then(function (user) {
