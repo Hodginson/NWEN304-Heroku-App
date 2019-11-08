@@ -385,6 +385,26 @@ app.put('/buyBook', function(req,res){
 
 });
 
+//******Zane***** PUT Request*************/
+app.put('/addToPurchases', function(req,res){
+  console.log('Getting tasks...');
+  var int = parseInt(req.body.isbn);
+  const query = {
+
+    text: "UPDATE users SET purchases=array_cat(purchases, ARRAY["+req.body.isbn+"]) WHERE id="+req.body.id,
+    //text:'update books set sold=sold+1 where isbn='+req.body.isbn
+
+  };
+  pool.query(query, (err, queryResponse) => {
+    if (err) {
+      //print("Error getting books: " + err);
+    } else {
+      console.log(queryResponse.rows);
+      res.status(200).send(queryResponse.rows);
+    }
+  });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
