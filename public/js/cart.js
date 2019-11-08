@@ -76,7 +76,7 @@ function searchFunction() {
   window.location.href = "store.html?=" + search;
 }
 
-function searchFunction(isbn) {
+function remove(isbn) {
   queryAPI('DELETE', '/removeFromCart', {isbn:isbn, username:username}, function(){});
 }
 function buyBook(){
