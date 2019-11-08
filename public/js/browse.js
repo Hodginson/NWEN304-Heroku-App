@@ -4,6 +4,7 @@ var searchItem;
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
     queryAPI('GET', '/isSignedIn', {}, function(msg){
+      console.log(msg);
       var button = document.getElementById("sign");
       button.style.display = "none";
       var userButton = document.getElementById("user");
