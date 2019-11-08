@@ -41,7 +41,6 @@ for(let j = 0; j<split.length;j++){
 
     //console.log(books[row].isbn + ": purchases: " + s);
     if(books[row].isbn == s){
-    price += books[row].price;
     createBook(books[row],i);
     i++;
     if(i==3){
