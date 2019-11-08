@@ -433,10 +433,11 @@ app.delete('/removeFromCart', function(req,res){
       res.status(200).send(queryResponse.rows);
     }
   });
-  User.findOne({ where: { username:req.body.username } }).then(function (user) {
+  /*User.findOne({ where: { username:username } }).then(function (user) {
     req.session.user = user.dataValues
     req.session.save();
-  });
+  });*/
+  req.session.reload();
 });
 
 

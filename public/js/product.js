@@ -78,8 +78,9 @@ function addToCart(isbn){
   console.log(isbn);
     //$.put("/api/addCart", { "isbn": isbn}, function (){});
     queryAPI('GET', '/isSignedIn', {}, function(msg){
-
-        queryAPI('PUT', '/addToCart', {isbn:isbn, username:msg.username}, function(){});
+        queryAPI('PUT', '/addToCart', {isbn:isbn, username:msg.username}, function(){
+          alert("Successfully added to cart");
+        });
     });
 
   }
@@ -98,7 +99,7 @@ function queryAPI(method, path, data, callback) {
       callback(res);
     },
     error: function (res) {
-      alert("You need to login first");
+      console.log("Error")
     }
   });
 }
