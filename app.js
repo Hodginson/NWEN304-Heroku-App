@@ -360,7 +360,8 @@ app.put('/addToCart', function(req,res){
       //print("Error getting books: " + err);
     } else {
       //console.log(queryResponse.rows);
-      User.findOne({ where: { username: username } }).then(function (user) {
+      User.findOne({ where: { username: 'hodginson' } }).then(function (user) {
+        console.log("hi");
         req.session.user = user.dataValues;
       });
       res.status(200).send(queryResponse.rows);
