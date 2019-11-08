@@ -19,6 +19,10 @@ $(document).ready(function (e) {
 })
 
 function setupFunction(books) {
+  if(purchases == null){
+    alert("Nothing mathces your search");
+    window.location.href = "store.html";
+  }
   var str = purchases.toString();
   var split = str.split(',');
   console.log(split);

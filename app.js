@@ -318,9 +318,9 @@ app.get('/isSignedIn', function(req, res){
         //req.session.user = null;
         res.clearCookie('user_sid');
         loggedIn = false;
-        req.logout();
+        //req.logout();
         req.session.destroy();
-        res.send('1');
+        //res.send('1');
 
         //res.redirect('/');
 
