@@ -348,9 +348,10 @@ app.post('/login', function (req,res){
 app.put('/addToCart', function(req,res){
   console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
+  var username = req.body.username;
   const query = {
 
-    text: "UPDATE users SET cart=array_cat(cart, ARRAY["+req.body.isbn+"]) WHERE id="+req.body.id,
+    text: "UPDATE users SET cart=array_cat(cart, ARRAY["+req.body.isbn+"]) WHERE id="+req.body.username,
     //text:'update books set sold=sold+1 where isbn='+req.body.isbn
 
   };
@@ -359,7 +360,7 @@ app.put('/addToCart', function(req,res){
       //print("Error getting books: " + err);
     } else {
       //console.log(queryResponse.rows);
-      User.findOne({ where: { id: req.body.id } }).then(function (user) {
+      User.findOne({ where: { username: username } }).then(function (user) {
         req.session.user = user.dataValues;
       });
       res.status(200).send(queryResponse.rows);

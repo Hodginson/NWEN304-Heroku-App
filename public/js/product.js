@@ -79,7 +79,7 @@ function addToCart(isbn){
     //$.put("/api/addCart", { "isbn": isbn}, function (){});
     queryAPI('GET', '/isSignedIn', {}, function(msg){
 
-        queryAPI('PUT', '/addToCart', {isbn:isbn, id:msg.id}, function(){});
+        queryAPI('PUT', '/addToCart', {isbn:isbn, username:msg.username}, function(){});
     });
 
   }
