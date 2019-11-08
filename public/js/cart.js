@@ -32,7 +32,7 @@ function setupFunction(books) {
   var x = cart.toString();
   var split = x.split(',');
   console.log(split);
-  if(split[0] == undefined){
+  if(split[0] == ""){
     alert("you have nothing in your cart");
     window.location.href = "store.html";
   }
