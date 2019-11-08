@@ -421,7 +421,7 @@ app.delete('/removeFromCart', function(req,res){
     if (err) {
       //print("Error getting books: " + err);
     } else {
-        User.findOne({ where: { username: username } }).then(function (user) {
+        User.findOne({ where: { username: req.body.username } }).then(function (user) {
           req.session.user = user.dataValues;
         });
     //  console.log(queryResponse.rows);
