@@ -351,7 +351,7 @@ app.put('/addToCart', function(req,res){
   var username = req.body.username;
   const query = {
 
-    text: "UPDATE users SET cart=array_cat(cart, ARRAY["+req.body.isbn+"]) WHERE id="+req.body.username,
+    text: "UPDATE users SET cart=array_cat(cart, ARRAY["+req.body.isbn+"]) WHERE username="+req.body.username,
     //text:'update books set sold=sold+1 where isbn='+req.body.isbn
 
   };
