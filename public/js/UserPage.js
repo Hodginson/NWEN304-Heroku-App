@@ -34,7 +34,7 @@ function setupFunction(books) {
   }
 
 console.log("may:" + split[1]);
-int i = 0;
+var i = 0;
 for(let j = 0; j<split.length;j++){
   var s = parseInt(split[j])
   for (let row = 0; row < books.length; row++) {
