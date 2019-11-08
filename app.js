@@ -365,12 +365,8 @@ app.put('/addToCart', function(req,res){
   });
   User.findOne({ where: { username:username } }).then(function (user) {
 
-
-    req.session.destroy(function(err) {
-        req.session.user = user.dataValues
-                  // session updated
-      });
-
+    req.session.user = user.dataValues
+    req.session.save();
 
   });
 });
