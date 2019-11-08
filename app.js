@@ -413,6 +413,7 @@ app.put('/addToPurchases', function(req,res){
 app.delete('/removeFromCart', function(req,res){
   console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
+  var username = req.body.username;
   const query = {
     text: "UPDATE users SET cart=array_remove(cart, "+req.body.isbn+") WHERE username='"+req.body.username+"'",
     //text:'update books set sold=sold+1 where isbn='+req.body.isbn
@@ -421,7 +422,7 @@ app.delete('/removeFromCart', function(req,res){
     if (err) {
       //print("Error getting books: " + err);
     } else {
-        User.findOne({ where: { username: req.body.username } }).then(function (user) {
+        User.findOne({ where: { username: username } }).then(function (user) {
           req.session.user = user.dataValues;
         });
     //  console.log(queryResponse.rows);
