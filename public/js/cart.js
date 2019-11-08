@@ -32,6 +32,9 @@ function setupFunction(books) {
   var x;
   var split;
   if(split.length==0){
+    alert("you have nothing in your cart");
+    window.location.href = "store.html";
+  }
   x = cart.toString();
   split = x.split(',');
   console.log(split);
@@ -39,7 +42,7 @@ function setupFunction(books) {
     alert("you have nothing in your cart");
     window.location.href = "store.html";
   }
-}
+
 console.log("may:" + split[1]);
 for(let j = 0; j<split.length;j++){
   var s = parseInt(split[j])
