@@ -365,11 +365,12 @@ app.put('/addToCart', function(req,res){
   });
   User.findOne({ where: { username:username } }).then(function (user) {
 
-      req.session.destroy(function(err) {});
-
+      req.session.save(function(err) {
+    req.session.reload(function(err) {
         req.session.user = user.dataValues
                   // session updated
-
+      });
+    });
 
   });
 });
