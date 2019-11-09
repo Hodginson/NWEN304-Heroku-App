@@ -1,5 +1,7 @@
 //All work done by Zane
 var query;
+var loggedIn=false;
+var username;
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
   queryAPI('GET', '/isSignedIn', {}, function(msg){
@@ -12,6 +14,7 @@ $(document).ready(function (e) {
     logoutButton.style.display = "block";
     var profileButton = document.getElementById("profile");
     profileButton.style.display = "block";
+    loggedIn =true;
     username = msg.username;
   }
   });
@@ -53,7 +56,19 @@ function createBook(books) {
 }
 
 function buyBook(){
-  queryAPI('PUT', '/buyBook', {isbn:query}, function(){});
+  if(loggedIn){
+    queryAPI('PUT', '/buyBook', {isbn:query}, function(){});
+    queryAPI('PUT', '/addToPurchases', {isbn:query, username:username}, function(){
+      alert("Thank you for your purchase");
+      window.location.href = "store.html";
+    });
+  }else{
+    queryAPI('PUT', '/buyBook', {isbn:query}, function(){
+      alert("Thank you for your purchase");
+      window.location.href = "store.html";
+    });
+  }
+
 }
 
 function searchFunction() {
