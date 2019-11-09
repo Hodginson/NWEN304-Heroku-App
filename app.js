@@ -69,12 +69,12 @@ app.use((req, res, next) => {
         res.clearCookie('user_sid');
         loggedIn = false;
     }
-    if(!req.cookies.user_sid && req.session.user){
+  /*  if(!req.cookies.user_sid && req.session.user){
       req.logout();
       req.session.destroy();
       req.session.save();
       loggedIn = false;
-    }
+    }*/
     next();
 });
 
