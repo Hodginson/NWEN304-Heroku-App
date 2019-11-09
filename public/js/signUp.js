@@ -38,7 +38,7 @@ function signUpFunction(){
   var email = $('#email').val();
   var password = $('#pass').val();
   var rePassword = $('#repass').val();
-
+  if($('pass').val.length<4){
   if(username === '' || email ==='' || password ===''||rePassword===''){
        alert("Please Confirm your input");
 
@@ -46,12 +46,13 @@ function signUpFunction(){
     alert("Please Confirm your Password");
 
   }else{
-    queryAPI('POST', '/signUp', {
+    /*queryAPI('POST', '/signUp', {
           username:username,
           email:email,
           password: password
-        }, function(){});
+        }, function(){});*/
   }
+}
 }
 
 function queryAPI(method, path, data, callback) {
