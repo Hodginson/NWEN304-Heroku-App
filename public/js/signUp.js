@@ -38,7 +38,6 @@ function signUpFunction(){
   var email = $('#email').val();
   var password = $('#pass').val();
   var rePassword = $('#repass').val();
-  if($('pass').val.length<4){
   if(username === '' || email ==='' || password ===''||rePassword===''){
        alert("Please Confirm your input");
 
@@ -53,7 +52,6 @@ function signUpFunction(){
           password: password
         }, function(){});*/
   }
-}
 }
 
 function queryAPI(method, path, data, callback) {
