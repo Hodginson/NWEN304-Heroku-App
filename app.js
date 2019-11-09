@@ -66,7 +66,7 @@ app.use(session({
 
 app.use((req, res, next) => {
     if (req.cookies.user_sid && !req.session.user) {
-        res.clearCookie('user_sid');
+        res.clearCookie('userID');
         loggedIn = false;
     }
   /*  if(!req.cookies.user_sid && req.session.user){
@@ -288,7 +288,7 @@ app.get('/isSignedIn', function(req, res){
  app.get('/logout', (req, res) => {
 
         req.session.user = null;
-        res.clearCookie('user_sid');
+        res.clearCookie('userID');
         loggedIn = false;
         req.logout();
         req.session.destroy();
