@@ -14,6 +14,8 @@ $(document).ready(function (e) {
     userButton.style.display = "block";
     var logoutButton = document.getElementById("logout");
     logoutButton.style.display = "block";
+    var profileButton = document.getElementById("profile");
+    profileButton.style.display = "block";
     username = msg.username;
     cart = msg.cart;
     console.log("cart: " + msg.cart);

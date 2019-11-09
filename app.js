@@ -178,7 +178,7 @@ app.use((req, res, next) => {
          });
      })
 
-//*******(Mars)******POST REQUEST*********************/
+//*******(Zane)******POST REQUEST*********************/
 app.post('/signUp', function (req,res){
 
      console.log('Getting new user...');
@@ -189,6 +189,7 @@ app.post('/signUp', function (req,res){
      })
      .then(user => {
          req.session.user = user.dataValues;
+         res.send('1')
          res.redirect('/login');
      })
      .catch(error => {
