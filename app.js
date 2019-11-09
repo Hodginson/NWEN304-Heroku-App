@@ -185,7 +185,7 @@ app.use((req, res, next) => {
          });
      })
 
-//*******(Mars)******POST REQUEST*********************/
+//*******(Zane)******POST REQUEST*********************/
 app.post('/signUp', function (req,res){
 
      console.log('Getting new user...');
@@ -241,7 +241,7 @@ app.get('/isSignedIn', function(req, res){
    console.log("why:"+req.body.searchQuery); //for some reason this req.body.searchQuery is always undefined regardless of what is parsed
    console.log('Getting books...');
    const query = {
-     text: "SELECT * FROM books where title Like='%"+req.body.searchQuery+"%' OR genre like='%" +req.body.searchQuery+ "%' OR author like='%"+req.body.searchQuery+ "%'"
+     text: "SELECT * FROM books where title Like='%"+req.body.searchQuery+"%' OR genre like='%" +req.body.searchQuery+ "%' OR author like='%"+req.body.searchQuery+ "%'",
    };
    pool.query(query, (err, queryResponse) => {
      if (err) {
