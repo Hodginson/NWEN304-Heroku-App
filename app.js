@@ -373,7 +373,7 @@ app.put('/addToPurchases', function(req,res){
     } else {
       console.log(queryResponse.rows);
 
-      res.status(200).send("Added to Purchases");
+      res.status(200).send('1');
     }
   });
   User.findOne({ where: { username:req.body.username } }).then(function (user) {
@@ -395,7 +395,7 @@ app.delete('/removeFromCart', function(req,res){
     } else {
     //  console.log(queryResponse.rows);
     //  console.log(req.session.user.cart);
-      res.status(200).send("Removded " + req.body.isbn + " from the cart");
+      res.status(200).send('1');
     }
   });
   User.findOne({ where: { username:username } }).then(function (user) {
@@ -414,7 +414,7 @@ app.delete('/deleteCart', function(req,res){
     if (err) {
       console.log("Error getting books: " + err);
     } else {
-      res.status(200).send("The cart is now empty");
+      res.status(200).send('1');
     }
   });
   User.findOne({ where: { username:username } }).then(function (user) {
