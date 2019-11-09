@@ -65,16 +65,16 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-    if (req.cookies.user_sid && !req.session.user) {
+    if (req.cookies.userID && !req.session.user) {
         res.clearCookie('userID');
         loggedIn = false;
     }
-  /*  if(!req.cookies.user_sid && req.session.user){
+    if(!req.cookies.userID && req.session.user){
       req.logout();
       req.session.destroy();
       req.session.save();
       loggedIn = false;
-    }*/
+    }
     next();
 });
 
