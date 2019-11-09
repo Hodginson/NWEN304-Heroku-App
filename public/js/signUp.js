@@ -1,5 +1,5 @@
 //*******(Mars)***************************/
-
+//Password requirements done by Zane
 
 $(document).ready(function(e) {
 
