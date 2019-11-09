@@ -45,12 +45,14 @@ function signUpFunction(){
     alert("Please Confirm your Password");
 
   }else{
-    alert("HELLO");
-    /*queryAPI('POST', '/signUp', {
+    queryAPI('POST', '/signUp', {
           username:username,
           email:email,
           password: password
-        }, function(){});*/
+        }, function(){
+          alert("You have successfully signed up");
+          window.location.href = "login.html";
+        });
   }
 }
 
