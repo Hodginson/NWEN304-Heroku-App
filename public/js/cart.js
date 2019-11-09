@@ -81,7 +81,7 @@ function createBook(books) {
   });
     $('#products').prepend(para);
     var total = document.getElementById("price")
-    total.innerHTML = "$" + price;
+    total.innerHTML = "$" + price.toFixed(2);
 
 }
 

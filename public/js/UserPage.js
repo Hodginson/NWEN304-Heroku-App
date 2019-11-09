@@ -23,10 +23,9 @@ $(document).ready(function (e) {
 })
 
 function setupFunction(books) {
-  if(purchases == null){
-    alert("Nothing mathces your search");
-    window.location.href = "store.html";
-  }
+  if(purchases != null){
+
+
   var str = purchases.toString();
   var split = str.split(',');
   console.log(split);
@@ -46,6 +45,7 @@ for(let j = 0; j<split.length;j++){
     }
 
   }
+}
 }
 }
 
