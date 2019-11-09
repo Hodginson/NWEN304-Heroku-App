@@ -30,27 +30,7 @@ const pool = new Pool({
 });
 
 
-var oktaClient = new okta.Client({
-  orgUrl: 'https://dev-310068.oktapreview.com',
-  token: '00bJYd0L3NzL4txuaD70VRA-FPr-QwxWiiNz2I3090'
-});
 
-const oidc = new ExpressOIDC({
-  issuer: "https://dev-310068.oktapreview.com/oauth2/default",
-  client_id: '0oah94rgl2BfrVS4e0h7',
-  client_secret: 'bMglTnK7d8Lyj3iAHS0pRiUO0y-rBiwXA6J4W8oR',
-  redirect_uri: 'https://fathomless-tor-48342.herokuapp.com/users/callback',
-  scope: "openid profile",
-  routes: {
-    login: {
-      path: "/users/login"
-    },
-    callback: {
-      path: "/users/callback",
-      defaultRedirect: "/store"
-    }
-  }
-});
 var app = express();
 
 
@@ -92,14 +72,6 @@ app.use((req, res, next) => {
     }
     next();
 });
-
-
-function loginRequired(req, res, next) {
-  if (!req.user) {
-    return res.status(401).render("unauthenticated");
-  }
-  next();
-}
 
 
 //****************Zane(old login)Put REQUEST*********************/
@@ -326,9 +298,6 @@ app.get('/isSignedIn', function(req, res){
         //res.redirect('/');
 
 });
-
-
-
 
 
 //******Zane***** POST Request*************/
