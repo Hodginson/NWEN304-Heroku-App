@@ -17,6 +17,7 @@ $(document).ready(function (e) {
     loggedIn =true;
     username = msg.username;
   }
+  console.log(loggedIn);
   });
   var url = document.URL;
   var queryStart = url.indexOf("=");
