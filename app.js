@@ -354,7 +354,7 @@ app.put('/buyBook', function(req,res){
       //print("Error getting books: " + err);
     } else {
       console.log(queryResponse.rows);
-      res.send('Successfully bought book');
+      res.send('1');
     }
   });
 
