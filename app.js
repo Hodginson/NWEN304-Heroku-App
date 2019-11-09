@@ -202,23 +202,19 @@ app.post('/signUp', function (req,res){
 
 
 //*******(Zane)******GET REQUEST*********************/
-//isLoggedIn
 app.get('/isSignedIn', function(req, res){
-
     if(loggedIn){
       res.send(req.session.user);
     }else if(!loggedIn){
       res.send('0');
     }
-
 });
 
 
  //*******(Zane)******GET REQUEST*********************/
 
  app.get('/book', function (req, res) {
-
-   console.log('Getting tasks...');
+   console.log('Getting books...');
    const query = {
      text: "SELECT * FROM books"
    };
@@ -237,7 +233,7 @@ app.get('/isSignedIn', function(req, res){
 
  app.get('/search', function (req, res) {
    console.log("why:"+req.body.searchQuery); //for some reason this req.body.searchQuery is always undefined regardless of what is parsed
-   console.log('Getting tasks...');
+   console.log('Getting books...');
    const query = {
      text: "SELECT * FROM books where title Like='%"+req.body.searchQuery+"%'"
    };
@@ -254,7 +250,6 @@ app.get('/isSignedIn', function(req, res){
 
 //*******(Zane)******GET REQUEST*********************/
  app.get('/recommend', function (req, res) {
-   console.log('Getting tasks...');
    const query = {
      text: "SELECT * FROM books ORDER BY sold desc limit 3"
    };
@@ -270,7 +265,6 @@ app.get('/isSignedIn', function(req, res){
 
 //*******(Zane)******GET REQUEST*********************/
  app.get('/getCart', function (req, res) {
-   console.log('Getting tasks...');
    const query = {
      text: "SELECT cart FROM users where username = '" + req.body.username + "'"
    };
@@ -321,7 +315,6 @@ app.post('/login', function (req,res){
 
 //******Zane***** PUT Request*************/
 app.put('/addToCart', function(req,res){
-  console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   var username = req.body.username;
   const query = {
@@ -347,12 +340,8 @@ app.put('/addToCart', function(req,res){
 
 //******Zane***** PUT Request*************/
 app.put('/buyBook', function(req,res){
-  console.log('Getting tasks...');
-
   const query = {
-
     text:'update books set sold=sold+1 where isbn='+req.body.isbn
-
   };
   pool.query(query, (err, queryResponse) => {
     if (err) {
@@ -367,7 +356,6 @@ app.put('/buyBook', function(req,res){
 
 //******Zane***** PUT Request*************/
 app.put('/addToPurchases', function(req,res){
-  console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   const query = {
     text: "UPDATE users SET purchases=array_cat(purchases, ARRAY["+req.body.isbn+"]) WHERE username='"+req.body.username+"'",
@@ -390,7 +378,6 @@ app.put('/addToPurchases', function(req,res){
 
 //******Zane***** delete Request*************/
 app.delete('/removeFromCart', function(req,res){
-  console.log('Getting tasks...');
   var int = parseInt(req.body.isbn);
   var username = req.body.username;
   const query = {
@@ -413,7 +400,6 @@ app.delete('/removeFromCart', function(req,res){
 
 //******Zane***** delete Request*************/
 app.delete('/deleteCart', function(req,res){
-  console.log('Getting tasks...');
   var username = req.body.username;
   const query = {
     text: "UPDATE users SET cart=null WHERE username='"+req.body.username+"'",
