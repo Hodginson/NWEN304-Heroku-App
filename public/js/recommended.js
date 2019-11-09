@@ -1,3 +1,4 @@
+//All work done by Zane
 $(document).ready(function (e) {
   // Read all existing tasks from the api and create new items for them on the page.
   queryAPI('GET', '/isSignedIn', {}, function(msg){
@@ -74,7 +75,6 @@ function queryAPI(method, path, data, callback) {
     dataType: "json",
     success: function (res) {
       console.log("API successfully queried!");
-      console.log(res);
       callback(res);
     },
     error: function (res) {

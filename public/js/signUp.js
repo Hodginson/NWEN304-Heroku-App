@@ -25,6 +25,7 @@ $(document).ready(function(e) {
             }, function(){});
 
 		});*/
+
     $('#cancel').button().click(
    function() {
        window.location = "home.html";
