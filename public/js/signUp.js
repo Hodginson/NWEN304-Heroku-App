@@ -46,7 +46,7 @@ function signUpFunction(){
     alert("Please Confirm your Password");
 
   }else{
-    ALERT("HELLO");
+    alert("HELLO");
     /*queryAPI('POST', '/signUp', {
           username:username,
           email:email,
