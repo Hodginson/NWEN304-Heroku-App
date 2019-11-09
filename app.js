@@ -9,8 +9,6 @@ var logger = require('morgan');
 var express = require('express');
 var User = require('./models/user');
 
-var okta = require("@okta/okta-sdk-nodejs");
-var ExpressOIDC = require("@okta/oidc-middleware").ExpressOIDC;
 
 var loginRouter = require('./routes/login');
 var homeRouter = require('./routes/home');
